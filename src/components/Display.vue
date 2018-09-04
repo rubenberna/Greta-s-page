@@ -13,10 +13,11 @@
           <span>Make appointment</span>
           <span>Every Friday</span>
         </div>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo...</p>
+
       </div>
     </div>
-    <br>
+    <p class="display-card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo...</p>
+    <span style="font-weight:bold">Read More <font-awesome-icon icon="angle-double-right" /> </span>
     <br>
     <br>
   </div>
@@ -29,13 +30,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  @import '../../style/main.scss';
   @import url('https://fonts.googleapis.com/css?family=Raleway');
 
   .display-label {
     text-transform: uppercase;
     font-family: "Open Sans";
     margin-bottom: 20px;
-    font-weight: 600;
+    font-weight: $font-weight-p;
     letter-spacing: .24rem;
     line-height: 1.8;
     font-style: normal;
@@ -48,27 +50,20 @@ export default {
 
     .display-card-image {
      width: 45%;
-     height: 100%;
+     max-height: inherit;
     }
 
     .display-card-description {
       display: flex;
       flex-direction: column;
       max-width: 45%;
-      max-height: inherit;
+      max-height: 250px;
       justify-content: space-around;
       align-items: center;
       text-align: center;
       font-family: 'Raleway', sans-serif;
       line-height: 1.2;
       font-weight: 400px;
-      p {
-        max-width: inherit;
-        line-height: 1;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-      }
 
       .display-card-description-availability {
         display: flex;
@@ -87,5 +82,16 @@ export default {
         }
       }
     }
+  }
+
+  .display-card-text {
+    max-width: 750px;
+    margin-top: -40px;
+    line-height: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-family: $font-family-p;
+    font-weight: $font-weight-p;
   }
 </style>
