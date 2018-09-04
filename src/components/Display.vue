@@ -17,7 +17,7 @@
       </div>
     </div>
     <p class="display-card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo...</p>
-    <span style="font-weight:bold">Read More <font-awesome-icon icon="angle-double-right" /> </span>
+    <span style="font-weight:bold">Read More <font-awesome-icon icon="coffee" /> </span>
     <br>
     <br>
   </div>

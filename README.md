@@ -1,4 +1,4 @@
-# balance
+# Kinesiologist site
 
 ## Project setup
 ```
