@@ -13,7 +13,7 @@
     <input placeholder="Password" >
   </sui-form-field>
   <sui-form-field>
-    <p>No account yet? You can create one</p>
+    <span>No account yet? You can create one</span>
   </sui-form-field>
   <sui-button type="submit">Enter</sui-button>
 </sui-form>
