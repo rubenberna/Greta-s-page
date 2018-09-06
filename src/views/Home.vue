@@ -2,7 +2,7 @@
   <div id="home">
     <banner/>
     <intro/>
-    <display/>
+    <allTherapies/>
   </div>
 </template>
 
@@ -10,15 +10,14 @@
 // @ is an alias to /src
 import banner from '@/components/Banner.vue';
 import intro from '@/components/Intro.vue';
-import display from '@/components/Display.vue';
-
+import allTherapies from '@/components/AllTherapies.vue';
 
 export default {
   name: 'home',
   components: {
     banner,
     intro,
-    display
+    allTherapies
   }
 }
 </script>

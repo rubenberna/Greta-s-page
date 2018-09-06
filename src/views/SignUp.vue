@@ -4,29 +4,59 @@
       <h3>Let's create a new account</h3>
     </div>
     <sui-form>
-  <sui-form-field>
-    <label>Name</label>
-    <input placeholder="Name" >
-  </sui-form-field>
-  <sui-form-field>
-    <label>Email address</label>
-    <input placeholder="Email address" >
-  </sui-form-field>
-  <sui-form-field>
-    <label>Password</label>
-    <input placeholder="Password" >
-  </sui-form-field>
-  <sui-form-field>
-  <sui-button type="submit">Enter</sui-button> <span>Or go back to the Homepage</span>
-</sui-form-field>
-</sui-form>
+      <sui-form-field>
+        <label>Name</label>
+        <input v-model='user.name'
+               placeholder="Name" >
+      </sui-form-field>
+      <sui-form-field error>
+        <label>Email address</label>
+        <input v-model='user.email'
+               placeholder="Email address" >
+      </sui-form-field>
+      <sui-form-field error>
+        <label>Password</label>
+        <input v-model='user.password'
+               type="password"
+               placeholder="Password" >
+      </sui-form-field>
+      <sui-form-field>
+        <sui-button @click='signUp'
+                    type="submit">
+                    Sign-up
+        </sui-button>
+                    <span>Or go back to the <router-link to="/" style="font-weight:bold">Homepage</router-link></span>
+      </sui-form-field>
+    </sui-form>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'signUp'
-}
+  import firebase from 'firebase'
+
+  export default {
+    name: 'signUp',
+    data(){
+      return {
+        user: {
+          name: null,
+          email: null,
+          password: null
+        }
+      }
+    },
+    methods: {
+      signUp() {
+        firebase.auth().createUserWithEmailAndPassword(this.user.email, this.user.password)
+          .then((user) => {
+            alert('Your account has been created')
+          }),
+          (err) => {
+            alert('Oops. ' + err.message)
+          }
+        }
+    }
+  }
 </script>
 
 <style lang="scss" scoped>
@@ -46,3 +76,9 @@ export default {
     }
   }
 </style>
+
+<!--
+firebase.auth().currentUser
+if(user) {
+  user.updateProfile({
+    displayname: this.user.name -->

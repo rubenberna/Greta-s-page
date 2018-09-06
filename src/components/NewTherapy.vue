@@ -1,12 +1,12 @@
 <template>
-  <div class="manage">
-    Management page
+  <div class="new-therapy">
+    Create therapy
   </div>
 </template>
 
 <script>
 export default {
-  name: 'manage',
+  name: 'newTherapy',
   data () {
     return {
 
