@@ -41,6 +41,9 @@ export default {
     letter-spacing: .24rem;
     line-height: 1.8;
     font-style: normal;
+    h5 {
+      font-size: 1rem;
+    }
   }
   .all-therapies-card {
     display: flex;
@@ -64,6 +67,9 @@ export default {
       font-family: 'Raleway', sans-serif;
       line-height: 1.2;
       font-weight: 400px;
+      h1 {
+        font-size: 2.2rem;
+      }
 
       .all-therapies-card-description-availability {
         display: flex;

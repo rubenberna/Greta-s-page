@@ -1,6 +1,5 @@
 <template>
   <div>
-    <NavbarBlack />
     <div class="manage container">
       <sui-table basic="very" celled collapsing size='large'>
         <sui-table-header>

@@ -24,14 +24,7 @@ export default {
     })
     return result;
   },
+  addNewTherapy() {
 
+  }
 }
-
-
-
-//
-// return db.collection("therapies").get()
-
-
-
-// return result

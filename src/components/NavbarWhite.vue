@@ -44,31 +44,34 @@
 </script>
 
 <style lang="scss" scoped>
-  .navbar-menu {
-    height: 65px;
-    color: white;
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-  }
-
-  .ui.secondary.pointing.menu .active.item {
-    color: white;
-    border-color: white;
-    &:hover {
+  .navbar {
+    padding-left: 30px;
+    .navbar-menu {
+      height: 65px;
       color: white;
-      opacity: 0.8;
-      border-color: white;
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
     }
-  }
 
-  .ui.secondary.pointing.menu .item {
-    font-size: 17px;
-    color: white;
-    border-bottom: 2px solid rgba(255,255,255,.15);
-    &:hover {
-      color: white !important;
-      opacity: 0.8;
+    .ui.secondary.pointing.menu .active.item {
+      color: white;
+      border-color: white;
+      &:hover {
+        color: white;
+        opacity: 0.8;
+        border-color: white;
+      }
+    }
+
+    .ui.secondary.pointing.menu .item {
+      font-size: 17px;
+      color: white;
+      border-bottom: 2px solid rgba(255,255,255,.15);
+      &:hover {
+        color: white !important;
+        opacity: 0.8;
+      }
     }
   }
 </style>
