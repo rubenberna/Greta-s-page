@@ -13,11 +13,10 @@ const actions = {
   async fetchTherapies({ commit }) {
     commit('setTherapies', null);
     const response = await db.fetchTherapies();
-    console.log(response);
     commit('setTherapies', response)
   },
-  async newTherapy(therapy) {
-    await db.addNewTherapy(therapy);
+  async createTherapy({ commit }, therapy) {
+    await db.createTherapy(therapy);
     router.push('/management');
   }
 }

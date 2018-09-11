@@ -16,7 +16,7 @@
                 <sui-image :src='therapy.picture' shape="rounded" size="mini" />
                 <sui-header-content>
                   {{therapy.name}}
-                  <sui-header-subheader>Greta Lowell</sui-header-subheader>
+                  <sui-header-subheader>{{therapy.therapist}}</sui-header-subheader>
                 </sui-header-content>
               </h4>
             </sui-table-cell>

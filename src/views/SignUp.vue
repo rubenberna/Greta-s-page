@@ -32,8 +32,6 @@
 </template>
 
 <script>
-  import firebase from 'firebase'
-
   export default {
     name: 'signUp',
     data(){
@@ -47,13 +45,6 @@
     },
     methods: {
       signUp() {
-        firebase.auth().createUserWithEmailAndPassword(this.user.email, this.user.password)
-          .then((user) => {
-            alert('Your account has been created')
-          }),
-          (err) => {
-            alert('Oops. ' + err.message)
-          }
         }
     }
   }

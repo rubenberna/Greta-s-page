@@ -1,62 +1,105 @@
 <template>
   <div class="new-therapy container">
+    <h3 class="new-therapy-title">Create new Therapy</h3>
     <div class="row">
     <form class="col s12">
       <div class="row">
-        <div class="input-field col s6">
-          <input placeholder="Yoga" id="name" type="text" class="validate">
+        <div class="input-field col s4">
+          <input id="name" type="text" class="validate" v-model='therapy.name'>
           <label for="name">Name of therapy</label>
         </div>
-        <div class="file-field input-field">
+        <div class="input-field col s4">
+          <input id="input_text" type="text" class="validate" data-length="120" v-model='therapy.teaser'>
+          <label for="input_text">Teaser</label>
+        </div>
+        <div class="file-field input-field col s4">
           <div class="btn">
-            <span>Picture</span>
+            <span>Upload picture</span>
             <input type="file">
           </div>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input disabled value="I am not editable" id="disabled" type="text" class="validate">
-          <label for="disabled">Disabled</label>
+          <textarea id="textarea1" class="materialize-textarea" v-model='therapy.description'/>
+          <label for="textarea1">Describe this therapy</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input id="password" type="password" class="validate">
-          <label for="password">Password</label>
+          <textarea id="textarea1" class="materialize-textarea" v-model='therapy.method' />
+          <label for="textarea1">How is the treatment?</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input id="email" type="email" class="validate">
-          <label for="email">Email</label>
+          <textarea id="textarea1" class="materialize-textarea" v-model='therapy.indications' />
+          <label for="textarea1">What is it indicated for?</label>
         </div>
       </div>
       <div class="row">
-        <div class="col s12">
-          This is an inline input field:
-          <div class="input-field inline">
-            <input id="email_inline" type="email" class="validate">
-            <label for="email_inline">Email</label>
-            <span class="helper-text" data-error="wrong" data-success="right">Helper text</span>
-          </div>
+        <div class="input-field col s4">
+          <input id="price" type="number" class="validate" v-model='therapy.price'>
+          <label for="price">Price</label>
+        </div>
+        <div class="input-field col s4">
+          <input id="availability" type="text" class="validate" v-model='therapy.availability'>
+          <label for="availability">Availability</label>
+        </div>
+        <div class="input-field col s4">
+          <select v-model='therapy.therapist'>
+            <option value="" disabled selected>Please select </option>
+            <option value="1">Greta Lowel</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+          </select>
+          <label>Therapist</label>
         </div>
       </div>
+      <a class="waves-effect waves-light btn" style="color:white" @click='createTherapy(therapy)'>create</a>
     </form>
   </div>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'newTherapy',
-  data () {
-    return {
+  import { mapActions } from 'vuex'
 
+  export default {
+    name: 'newTherapy',
+    data () {
+      return {
+        therapy: {
+          availability: null,
+          description: null,
+          indications: null,
+          method: null,
+          name: null,
+          picture: null,
+          price: null,
+          teaser: null,
+          therapist: null,
+        }
+      }
+    },
+    methods: {
+      ...mapActions(['createTherapy'])
+    },
+    created() {
     }
   }
-}
 </script>
 
 <style lang="scss" scoped>
+  .new-therapy {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    max-width: 811px;
+    .new-therapy-title {
+      padding: 20px 0px;
+      align-self: flex-start;
+    }
+  }
 </style>
