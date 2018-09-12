@@ -4,25 +4,36 @@
       <h2>Sign-in</h2>
     </div>
     <sui-form>
-  <sui-form-field>
-    <label>Email address</label>
-    <input placeholder="Email address" >
-  </sui-form-field>
-  <sui-form-field>
-    <label>Password</label>
-    <input placeholder="Password" >
-  </sui-form-field>
-  <sui-form-field>
-    <p>No account yet? You can create one</p>
-  </sui-form-field>
-  <sui-button type="submit">Enter</sui-button>
-</sui-form>
+      <sui-form-field error>
+        <label>Email address</label>
+        <input placeholder="Email address" >
+      </sui-form-field>
+      <sui-form-field error>
+        <label>Password</label>
+        <input type="password"
+               placeholder="Password" >
+      </sui-form-field>
+      <sui-form-field>
+        <span>No account yet? You can <router-link to="/sign-up" style="font-weight:bold">create one</router-link></span>
+      </sui-form-field>
+        <sui-button @click="login"
+                    type="submit">
+                    Enter
+        </sui-button>
+    </sui-form>
   </div>
 </template>
 
 <script>
+import router from '../router.js'
+
 export default {
-  name: 'login'
+  name: 'login',
+  methods: {
+    login() {
+      router.push('/');
+    }
+  }
 }
 </script>
 

@@ -1,22 +1,22 @@
 <template>
-  <div class="display container">
-    <div class="display-label">
-      <h5>Appointments</h5>
+  <div class="all-therapies container">
+    <div class="all-therapies-label">
+      <h5>Healings</h5>
     </div>
-    <div class="display-card">
-      <div class="display-card-image">
+    <div class="all-therapies-card">
+      <div class="all-therapies-card-image">
         <sui-image src="http://res.cloudinary.com/megslist/image/upload/v1536062052/jenn-evelyn-ann-112980-unsplash.jpg" size="large" />
       </div>
-      <div class="display-card-description">
+      <div class="all-therapies-card-description">
         <h1>Polarity Healing lets you enjoy the outdoors again</h1>
-        <div class="display-card-description-availability">
+        <div class="all-therapies-card-description-availability">
           <span>Make appointment</span>
           <span>Every Friday</span>
         </div>
 
       </div>
     </div>
-    <p class="display-card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo...</p>
+    <p class="all-therapies-card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo...</p>
     <span style="font-weight:bold">Read More <font-awesome-icon icon="coffee" /> </span>
     <br>
     <br>
@@ -25,7 +25,7 @@
 
 <script>
 export default {
-  name: 'display'
+  name: 'allTherapies'
 }
 </script>
 
@@ -33,7 +33,7 @@ export default {
   @import '../../style/main.scss';
   @import url('https://fonts.googleapis.com/css?family=Raleway');
 
-  .display-label {
+  .all-therapies-label {
     text-transform: uppercase;
     font-family: "Open Sans";
     margin-bottom: 20px;
@@ -41,19 +41,22 @@ export default {
     letter-spacing: .24rem;
     line-height: 1.8;
     font-style: normal;
+    h5 {
+      font-size: 1rem;
+    }
   }
-  .display-card {
+  .all-therapies-card {
     display: flex;
     max-width: 750px;
     height: 300px;
     justify-content: space-between;
 
-    .display-card-image {
+    .all-therapies-card-image {
      width: 45%;
      max-height: inherit;
     }
 
-    .display-card-description {
+    .all-therapies-card-description {
       display: flex;
       flex-direction: column;
       max-width: 45%;
@@ -64,8 +67,11 @@ export default {
       font-family: 'Raleway', sans-serif;
       line-height: 1.2;
       font-weight: 400px;
+      h1 {
+        font-size: 2.2rem;
+      }
 
-      .display-card-description-availability {
+      .all-therapies-card-description-availability {
         display: flex;
         justify-content: center;
         align-items: baseline;
@@ -84,7 +90,7 @@ export default {
     }
   }
 
-  .display-card-text {
+  .all-therapies-card-text {
     max-width: 750px;
     margin-top: -40px;
     line-height: 1;

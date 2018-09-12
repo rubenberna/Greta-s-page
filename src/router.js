@@ -3,7 +3,11 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import About from './views/About.vue'
 import Manage from './views/Manage.vue'
+import NewTherapy from './views/NewTherapy.vue'
+import EditTherapy from './views/EditTherapy.vue'
+import ShowTherapy from './views/ShowTherapy.vue'
 import Login from './views/Login.vue'
+import SignUp from './views/SignUp.vue'
 
 Vue.use(Router)
 
@@ -17,25 +21,39 @@ export default new Router({
       component: Home
     },
     {
+      path: '/sign-up',
+      name: 'signUp',
+      component: SignUp
+    },
+    {
       path: '/login',
       name: 'login',
       component: Login
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: About
+      path: '/new',
+      name: 'newTherapy',
+      component: NewTherapy
     },
     {
-      path: '/manage',
+      path: '/edit/:therapy_id',
+      name: 'editTherapy',
+      component: EditTherapy
+    },
+    {
+      path: '/management',
       name: 'manage',
-      component: Manage,
-      meta: {
-        requiresAuth: true
-      }
+      component: Manage
+    },
+    {
+      path: '/:therapy_id',
+      name: 'showTherapy',
+      component: ShowTherapy
+    },
+    {
+      path: '/about',
+      name: 'about',
+      component: About
     }
   ]
 })
