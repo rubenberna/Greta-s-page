@@ -14,8 +14,12 @@
         </div>
         <div class="file-field input-field col s4">
           <div class="btn">
-            <span>Upload picture</span>
-            <input type="file">
+            <span>Image</span>
+            <input type="file"
+                   @change='onFileSelect($event.target.files[0])'>
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text">
           </div>
         </div>
       </div>
@@ -75,7 +79,7 @@
           indications: null,
           method: null,
           name: null,
-          picture: null,
+          image: null,
           price: null,
           teaser: null,
           therapist: null,
@@ -83,7 +87,11 @@
       }
     },
     methods: {
-      ...mapActions(['createTherapy'])
+      ...mapActions(['createTherapy', 'uploadImage']),
+      onFileSelect(image) {
+        // this.therapy.image = image
+        this.uploadImage(image)
+      }
     },
     created() {
     }
