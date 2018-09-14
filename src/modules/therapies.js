@@ -18,6 +18,10 @@ const actions = {
   async createTherapy({ commit }, therapy) {
     await db.createTherapy(therapy);
     router.push('/management');
+  },
+  uploadImage({ commit }, image) {
+    console.log(image);
+    db.uploadImage(image);
   }
 }
 

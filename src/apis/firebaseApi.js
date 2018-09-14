@@ -1,4 +1,5 @@
 import db from '../../db/firebaseInit'
+import firebase from 'firebase'
 
 export default {
   fetchTherapies() {
@@ -13,8 +14,9 @@ export default {
           'description': doc.data().description,
           'method': doc.data().method,
           'indications': doc.data().indications,
-          'picture': doc.data().picture_url,
+          'imageture': doc.data().picture_url,
           'availability': doc.data().availability,
+          'picture': doc.data().picture,
           'price': doc.data().price,
           'therapist': doc.data().therapist,
         }
@@ -38,5 +40,33 @@ export default {
       .then(ref => {
         console.log('Added document with ID: ', ref.id);
       })
+  },
+  uploadImage(image) {
+    const storageRef = firebase.storage().ref()
+    const imageRef = storageRef.child(`therapies/${image.name}`)
+
+    const metadata = {
+      contentType: 'image/jpeg'
+    };
+
+    const uploadTask = imageRef.put(image, metadata);
+
+    uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
+      function (snapshot) {
+        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        console.log('Upload is ' + '% done');
+        switch (snapshot.case) {
+          case firebase.storage.TaskState.PAUSED:
+            console.log('Upload is paused');
+            break;
+          case firebase.storage.TaskState.RUNNING:
+            console.log('Upload is running');
+            break;
+        }
+      }, function () {
+        uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+          console.log('File available at', downloadURL);
+        });
+      });
   }
 }

@@ -15,7 +15,8 @@
         <div class="file-field input-field col s4">
           <div class="btn">
             <span>Upload picture</span>
-            <input type="file">
+            <input type="file"
+                   @change='onFileSelect($event.target.files[0])'>
           </div>
         </div>
       </div>
@@ -83,7 +84,10 @@
       }
     },
     methods: {
-      ...mapActions(['createTherapy'])
+      ...mapActions(['createTherapy', 'uploadImage']),
+      onFileSelect(image) {
+        this.uploadImage(image)
+      }
     },
     created() {
     }
