@@ -14,9 +14,12 @@
         </div>
         <div class="file-field input-field col s4">
           <div class="btn">
-            <span>Upload picture</span>
+            <span>Image</span>
             <input type="file"
                    @change='onFileSelect($event.target.files[0])'>
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text">
           </div>
         </div>
       </div>

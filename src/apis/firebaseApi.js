@@ -52,7 +52,7 @@ export default {
     const uploadTask = imageRef.put(image, metadata);
 
     uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
-      function (snapshot) {
+      snapshot => {
         const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         console.log('Upload is ' + '% done');
         switch (snapshot.case) {
@@ -63,10 +63,10 @@ export default {
             console.log('Upload is running');
             break;
         }
-      }, function () {
-        uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
-          console.log('File available at', downloadURL);
-        });
+      }, function() {
+          uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+            console.log('File available at', downloadURL);
+          });
       });
   }
 }
