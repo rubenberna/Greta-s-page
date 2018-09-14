@@ -79,7 +79,7 @@
           indications: null,
           method: null,
           name: null,
-          picture: null,
+          image: null,
           price: null,
           teaser: null,
           therapist: null,
@@ -89,6 +89,7 @@
     methods: {
       ...mapActions(['createTherapy', 'uploadImage']),
       onFileSelect(image) {
+        // this.therapy.image = image
         this.uploadImage(image)
       }
     },
