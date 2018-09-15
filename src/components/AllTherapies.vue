@@ -1,7 +1,7 @@
 <template>
   <div class="all-therapies container">
     <div class="all-therapies-label">
-      <h5>Healings</h5>
+      <h5>Treatments</h5>
     </div>
     <div class="all-therapies-card">
       <div class="all-therapies-card-image">
@@ -13,10 +13,11 @@
           <span>Make appointment</span>
           <span>Every Friday</span>
         </div>
-
       </div>
     </div>
-    <p class="all-therapies-card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo...</p>
+    <p class="all-therapies-card-text">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo...
+    </p>
     <span style="font-weight:bold">Read More <font-awesome-icon icon="coffee" /> </span>
     <br>
     <br>
