@@ -1,7 +1,7 @@
 <template>
   <div class="signUp container">
     <div class="signUp-title">
-      <h3>Let's create a new account</h3>
+      <h4>Let's create a new account</h4>
     </div>
     <sui-form>
       <sui-form-field>
@@ -21,7 +21,7 @@
                placeholder="Password" >
       </sui-form-field>
       <sui-form-field>
-        <sui-button @click='signUp'
+        <sui-button @click.prevent='signUp'
                     type="submit">
                     Sign-up
         </sui-button>
@@ -32,6 +32,8 @@
 </template>
 
 <script>
+  import firebase from 'firebase';
+
   export default {
     name: 'signUp',
     data(){
@@ -45,6 +47,17 @@
     },
     methods: {
       signUp() {
+         firebase
+          .auth()
+          .createUserWithEmailAndPassword(this.user.email, this.user.password)
+          .then(
+            user => {
+              alert(`Account created for ${user.email}`);
+              this.$router.push('/');
+            },
+            err => {
+            alert(err.message);
+          });
         }
     }
   }
