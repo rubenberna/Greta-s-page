@@ -1,7 +1,7 @@
 <template>
   <div class="signUp container">
     <div class="signUp-title">
-      <h3>Let's create a new account</h3>
+      <h4>Let's create a new account</h4>
     </div>
     <sui-form>
       <sui-form-field>
@@ -9,19 +9,19 @@
         <input v-model='user.name'
                placeholder="Name" >
       </sui-form-field>
-      <sui-form-field error>
+      <sui-form-field>
         <label>Email address</label>
         <input v-model='user.email'
                placeholder="Email address" >
       </sui-form-field>
-      <sui-form-field error>
+      <sui-form-field>
         <label>Password</label>
         <input v-model='user.password'
                type="password"
                placeholder="Password" >
       </sui-form-field>
       <sui-form-field>
-        <sui-button @click='signUp'
+        <sui-button @click.prevent='signUp'
                     type="submit">
                     Sign-up
         </sui-button>
@@ -32,6 +32,8 @@
 </template>
 
 <script>
+  import firebase from 'firebase';
+
   export default {
     name: 'signUp',
     data(){
@@ -45,6 +47,17 @@
     },
     methods: {
       signUp() {
+         firebase
+          .auth()
+          .createUserWithEmailAndPassword(this.user.email, this.user.password)
+          .then(
+            user => {
+              alert(`Account created for ${user.email}`);
+              this.$router.push('/');
+            },
+            err => {
+            alert(err.message);
+          });
         }
     }
   }

@@ -1,22 +1,24 @@
 <template>
   <div class="login container">
     <div class="login-title">
-      <h2>Sign-in</h2>
+      <h4>Login please</h4>
     </div>
     <sui-form>
-      <sui-form-field error>
+      <sui-form-field>
         <label>Email address</label>
-        <input placeholder="Email address" >
+        <input placeholder="Email address"
+               v-model='user.email'>
       </sui-form-field>
-      <sui-form-field error>
+      <sui-form-field>
         <label>Password</label>
         <input type="password"
-               placeholder="Password" >
+               placeholder="Password"
+               v-model='user.password'>
       </sui-form-field>
       <sui-form-field>
         <span>No account yet? You can <router-link to="/sign-up" style="font-weight:bold">create one</router-link></span>
       </sui-form-field>
-        <sui-button @click="login"
+        <sui-button @click.prevent="login"
                     type="submit">
                     Enter
         </sui-button>
@@ -25,16 +27,34 @@
 </template>
 
 <script>
-import router from '../router.js'
+  import firebase from 'firebase';
 
-export default {
-  name: 'login',
-  methods: {
-    login() {
-      router.push('/');
+  export default {
+    name: 'login',
+    data(){
+      return {
+        user: {
+          email: null,
+          password: null
+        }
+      }
+    },
+    methods: {
+      login() {
+         firebase
+          .auth()
+          .signInWithEmailAndPassword(this.user.email, this.user.password)
+          .then(
+            user => {
+              alert(`You are logged in as ${user.email}`);
+              this.$router.push('/');
+            },
+            err => {
+              alert(err.message);
+          });
+        }
     }
   }
-}
 </script>
 
 <style lang="scss" scoped>
