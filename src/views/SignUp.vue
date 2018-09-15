@@ -9,12 +9,12 @@
         <input v-model='user.name'
                placeholder="Name" >
       </sui-form-field>
-      <sui-form-field error>
+      <sui-form-field>
         <label>Email address</label>
         <input v-model='user.email'
                placeholder="Email address" >
       </sui-form-field>
-      <sui-form-field error>
+      <sui-form-field>
         <label>Password</label>
         <input v-model='user.password'
                type="password"

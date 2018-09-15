@@ -4,11 +4,11 @@
       <h2>Sign-in</h2>
     </div>
     <sui-form>
-      <sui-form-field error>
+      <sui-form-field>
         <label>Email address</label>
         <input placeholder="Email address" >
       </sui-form-field>
-      <sui-form-field error>
+      <sui-form-field>
         <label>Password</label>
         <input type="password"
                placeholder="Password" >
