@@ -2,20 +2,35 @@
   <div class="navbar">
     <section class="navbar-menu">
       <sui-menu pointing secondary >
-        <a
-        is="sui-menu-item"
-        v-for="item in items"
-        :active="isActive(item)"
-        :key="item"
-        :content="item"
-        @click="select(item)"
-        />
+        <sui-menu-menu position="right">
+          <a
+          is="sui-menu-item"
+          :active="isActive('Home')"
+          content="Home"
+          @click.prevent="select('Home'); "
+          />
+        </sui-menu-menu>
+        <sui-menu-menu position="right">
+          <a
+          is="sui-menu-item"
+          :active="isActive('About')"
+          content="About"
+          @click.prevent="select('About'); "
+          />
+        </sui-menu-menu>
+        <sui-menu-menu position="right">
+          <sui-dropdown text="Treatments">
+            <sui-dropdown-menu>
+              <sui-dropdown-item>New</sui-dropdown-item>
+            </sui-dropdown-menu>
+          </sui-dropdown>
+        </sui-menu-menu>
         <sui-menu-menu position="right">
           <a
           is="sui-menu-item"
           :active="isActive('Logout')"
           content="Logout"
-          @click="select('Logout')"
+          @click.prevent="select('Logout'); "
           />
         </sui-menu-menu>
       </sui-menu>
@@ -24,12 +39,14 @@
 </template>
 
 <script>
+  import firebase from 'firebase'
+
   export default {
     name: 'navbar',
     data() {
       return {
         active: 'Home',
-        items: ['Home', 'Messages', 'Friends'],
+        items: ['Home', 'About', 'Treatments'],
       };
     },
     methods: {
@@ -38,6 +55,11 @@
       },
       select(name) {
         this.active = name;
+      },
+      logout() {
+        firebase
+          .auth()
+          .signOut()
       }
     }
   }
@@ -52,25 +74,39 @@
       display: flex;
       justify-content: flex-end;
       align-items: flex-end;
-    }
 
-    .ui.secondary.pointing.menu .active.item {
-      color: white;
-      border-color: white;
-      &:hover {
-        color: white;
-        opacity: 0.8;
-        border-color: white;
+      .ui.menu .ui.dropdown {
+        display: flex;
+        align-items: center;
+        font-size: 17px;
+        &:hover {
+          color: white !important;
+          opacity: 0.8;
+        }
+        .menu>.item:hover {
+          color: black !important;
+        }
       }
-    }
 
-    .ui.secondary.pointing.menu .item {
-      font-size: 17px;
-      color: white;
-      border-bottom: 2px solid rgba(255,255,255,.15);
-      &:hover {
-        color: white !important;
-        opacity: 0.8;
+      .ui.secondary.pointing.menu {
+        border-bottom: 0px;
+        .item {
+          font-size: 17px;
+          color: white;
+          &:hover {
+            color: white !important;
+            opacity: 0.8;
+            }
+        }
+        .active.item {
+          color: white;
+          border-bottom: 2px solid white;
+          &:hover {
+            color: white;
+            opacity: 0.8;
+            border-color: white;
+          }
+        }
       }
     }
   }
