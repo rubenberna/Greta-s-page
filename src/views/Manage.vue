@@ -13,7 +13,7 @@
           <sui-table-row v-for='therapy in therapies' :key='therapy.id'>
             <sui-table-cell>
               <h4 is="sui-header" image>
-                <sui-image :src='therapy.picture' shape="rounded" size="mini" />
+                <sui-image :src='therapy.image' shape="rounded" size="mini" />
                 <sui-header-content>
                   {{therapy.name}}
                   <sui-header-subheader>{{therapy.therapist}}</sui-header-subheader>
@@ -37,7 +37,6 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
-import NavbarBlack from '@/components/NavbarBlack';
 
 export default {
   name: 'manage',
@@ -49,9 +48,9 @@ export default {
   },
   created() {
     this.fetchTherapies()
+    console.log(this.therapies);
   },
   components: {
-    NavbarBlack
   }
 }
 </script>
