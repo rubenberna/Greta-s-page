@@ -46,7 +46,7 @@
     name: 'navbar',
     data() {
       return {
-        active: 'Home',
+        active: 'About',
         items: ['Home', 'About', 'Treatments'],
       };
     },
@@ -77,11 +77,13 @@
 </script>
 
 <style lang="scss" scoped>
+  @import '../../style/main.scss';
+
   .navbar {
     padding-left: 30px;
     .navbar-menu {
       height: 65px;
-      color: white;
+      color: $dark-grey;
       display: flex;
       justify-content: flex-end;
       align-items: flex-end;
@@ -91,7 +93,7 @@
         align-items: center;
         font-size: 17px;
         &:hover {
-          color: white !important;
+          color: $dark-grey !important;
           opacity: 0.8;
         }
         .menu>.item:hover {
@@ -103,19 +105,19 @@
         border-bottom: 0px;
         .item {
           font-size: 17px;
-          color: white;
+          color: $dark-grey;
           &:hover {
-            color: white !important;
+            color: $dark-grey !important;
             opacity: 0.8;
             }
         }
         .active.item {
-          color: white;
-          border-bottom: 2px solid white;
+          color: $dark-grey;
+          border-bottom: 2px solid $dark-grey;
           &:hover {
-            color: white;
+            color: $dark-grey;
             opacity: 0.8;
-            border-color: white;
+            border-color: $dark-grey;
           }
         }
       }

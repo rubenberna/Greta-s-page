@@ -46,14 +46,14 @@ export default new Router({
       component: Manage
     },
     {
+      path: '/about',
+      name: 'about',
+      component: About
+    },
+    {
       path: '/:therapy_id',
       name: 'showTherapy',
       component: ShowTherapy
     },
-    {
-      path: '/about',
-      name: 'about',
-      component: About
-    }
   ]
 })
