@@ -89,11 +89,8 @@
     methods: {
       ...mapActions(['createTherapy', 'uploadImage']),
       onFileSelect(image) {
-        // this.therapy.image = image
         this.uploadImage(image)
       }
-    },
-    created() {
     }
   }
 </script>

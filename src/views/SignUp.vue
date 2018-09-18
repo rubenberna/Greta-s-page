@@ -21,7 +21,7 @@
                placeholder="Password" >
       </sui-form-field>
       <sui-form-field>
-        <sui-button @click.prevent='signUp'
+        <sui-button @click.prevent='signUp(user)'
                     type="submit">
                     Sign-up
         </sui-button>
@@ -32,7 +32,7 @@
 </template>
 
 <script>
-  import firebase from 'firebase';
+  import { mapActions } from 'vuex'
 
   export default {
     name: 'signUp',
@@ -45,21 +45,7 @@
         }
       }
     },
-    methods: {
-      signUp() {
-         firebase
-          .auth()
-          .createUserWithEmailAndPassword(this.user.email, this.user.password)
-          .then(
-            user => {
-              alert(`Account created for ${user.email}`);
-              this.$router.push('/');
-            },
-            err => {
-            alert(err.message);
-          });
-        }
-    }
+    methods: mapActions(['signUp'])
   }
 </script>
 

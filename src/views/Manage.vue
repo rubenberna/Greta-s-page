@@ -1,5 +1,6 @@
 <template>
   <div>
+    <NavbarGrey/>
     <div class="manage container">
       <sui-table basic="very" celled collapsing size='large'>
         <sui-table-header>
@@ -36,23 +37,24 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex'
+  import { mapActions, mapGetters } from 'vuex'
+  import NavbarGrey from '@/components/NavbarGrey'
 
-export default {
-  name: 'manage',
-  computed: {
-    ...mapGetters(['therapies'])
-  },
-  methods: {
-    ...mapActions(['fetchTherapies'])
-  },
-  created() {
-    this.fetchTherapies()
-    console.log(this.therapies);
-  },
-  components: {
+  export default {
+    name: 'manage',
+    computed: {
+      ...mapGetters(['therapies'])
+    },
+    methods: {
+      ...mapActions(['fetchTherapies'])
+    },
+    created() {
+      this.fetchTherapies()
+    },
+    components: {
+      NavbarGrey
+    }
   }
-}
 </script>
 
 <style lang="scss" scoped>

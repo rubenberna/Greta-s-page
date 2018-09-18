@@ -1,6 +1,6 @@
 import db from '../../db/firebaseInit'
 import firebase from 'firebase'
-import store from '../modules/therapies'
+import router from '../router'
 
 let imageURL = ''
 
@@ -82,5 +82,32 @@ export default {
                 imageURL = downloadURL
               })
           })
-  }
+      },
+      login(user) {
+        console.log(user.email, user.password);
+         firebase
+          .auth()
+          .signInWithEmailAndPassword(user.email, user.password)
+          .then(
+            user => {
+              console.log(`You are logged in as ${user.email}`);
+              router.push('/');
+            },
+            err => {
+              alert(err.message);
+            });
+      },
+      signUp(user) {
+         firebase
+          .auth()
+          .createUserWithEmailAndPassword(user.email, user.password)
+          .then(
+            user => {
+              console.log(`Account created for ${user}`);
+              router.push('/');
+            },
+            err => {
+            alert(err.message);
+          });
+        }
 }
