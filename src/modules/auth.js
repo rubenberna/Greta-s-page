@@ -1,4 +1,3 @@
-import fb from '../../db/firebaseInit'
 import db from '../apis/firebaseApi'
 
 const state = {
@@ -11,24 +10,20 @@ const getters = {
 }
 
 const actions = {
-  async login({ commit, dispatch }, user) {
-    const response = await db.login(user)
-    console.log(response);
-    // commit('setCurrentUser', user)
+  login({ commit }, user) {
+    db.login(user)
+  },
+  assignUser({ commit }, user) {
+    commit('setCurrentUser', user)
   },
   signUp({ commit }, user) {
     db.signUp(user)
-  },
-  async fetchUserProfile({ state, commit }) {
-    const { currentUser } = state
-    console.log(currentUser);
-    // const response = await db.fetchUserProfile(currentUser)
-    // console.log(response);
   }
 }
 
 const mutations = {
   setCurrentUser: (state, user) => {
+    console.log(user.email);
     state.currentUser = user
   },
   setUserProfile: (state, user) => {
