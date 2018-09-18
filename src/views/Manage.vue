@@ -37,24 +37,24 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex'
-import NavbarGrey from '@/components/NavbarGrey'
+  import { mapActions, mapGetters } from 'vuex'
+  import NavbarGrey from '@/components/NavbarGrey'
 
-export default {
-  name: 'manage',
-  computed: {
-    ...mapGetters(['therapies'])
-  },
-  methods: {
-    ...mapActions(['fetchTherapies'])
-  },
-  created() {
-    this.fetchTherapies()
-  },
-  components: {
-    NavbarGrey
+  export default {
+    name: 'manage',
+    computed: {
+      ...mapGetters(['therapies'])
+    },
+    methods: {
+      ...mapActions(['fetchTherapies'])
+    },
+    created() {
+      this.fetchTherapies()
+    },
+    components: {
+      NavbarGrey
+    }
   }
-}
 </script>
 
 <style lang="scss" scoped>

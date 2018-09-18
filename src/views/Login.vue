@@ -18,7 +18,7 @@
       <sui-form-field>
         <span>No account yet? You can <router-link to="/sign-up" style="font-weight:bold">create one</router-link></span>
       </sui-form-field>
-        <sui-button @click.prevent="login"
+        <sui-button @click.prevent='login(user)'
                     type="submit">
                     Enter
         </sui-button>
@@ -27,7 +27,7 @@
 </template>
 
 <script>
-  import firebase from 'firebase';
+  import { mapActions } from 'vuex'
 
   export default {
     name: 'login',
@@ -39,21 +39,7 @@
         }
       }
     },
-    methods: {
-      login() {
-         firebase
-          .auth()
-          .signInWithEmailAndPassword(this.user.email, this.user.password)
-          .then(
-            user => {
-              alert(`You are logged in as ${user.email}`);
-              this.$router.push('/');
-            },
-            err => {
-              alert(err.message);
-          });
-        }
-    }
+    methods: mapActions(['login'])
   }
 </script>
 
