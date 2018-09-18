@@ -1,5 +1,6 @@
 import db from '../../db/firebaseInit'
 import firebase from 'firebase'
+import router from '../router'
 
 let imageURL = ''
 
@@ -89,8 +90,8 @@ export default {
           .signInWithEmailAndPassword(user.email, user.password)
           .then(
             user => {
-              alert(`You are logged in as ${user.email}`);
-              this.$router.push('/');
+              console.log(`You are logged in as ${user.email}`);
+              router.push('/');
             },
             err => {
               alert(err.message);
@@ -102,8 +103,8 @@ export default {
           .createUserWithEmailAndPassword(user.email, user.password)
           .then(
             user => {
-              alert(`Account created for ${user.email}`);
-              this.$router.push('/');
+              console.log(`Account created for ${user}`);
+              router.push('/');
             },
             err => {
             alert(err.message);

@@ -10,8 +10,9 @@ const getters = {
 }
 
 const actions = {
-   login({ commit }, user) {
+    login({ commit }, user) {
      db.login(user)
+     router.push('/')
     // commit('setUser', user)
   },
   signUp({ commit }, user) {
