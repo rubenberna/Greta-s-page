@@ -1,8 +1,9 @@
+import fb from '../../db/firebaseInit'
 import db from '../apis/firebaseApi'
-import router from '../router'
 
 const state = {
-  currentUser: null
+  currentUser: null,
+  userProfile: {}
 }
 
 const getters = {
@@ -10,19 +11,29 @@ const getters = {
 }
 
 const actions = {
-    login({ commit }, user) {
-     db.login(user)
-     router.push('/')
-    // commit('setUser', user)
+  async login({ commit, dispatch }, user) {
+    const response = await db.login(user)
+    console.log(response);
+    // commit('setCurrentUser', user)
   },
   signUp({ commit }, user) {
     db.signUp(user)
+  },
+  async fetchUserProfile({ state, commit }) {
+    const { currentUser } = state
+    console.log(currentUser);
+    // const response = await db.fetchUserProfile(currentUser)
+    // console.log(response);
   }
 }
 
 const mutations = {
-  setUser: (state, user) => {
+  setCurrentUser: (state, user) => {
     state.currentUser = user
+  },
+  setUserProfile: (state, user) => {
+    console.log(user.email);
+    state.userProfile = user
   }
 
 }

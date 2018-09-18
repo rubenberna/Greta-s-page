@@ -5,30 +5,26 @@ import firebaseConfig from './firebaseConfig'
 const firebaseApp = firebase.initializeApp(firebaseConfig)
 
 const db = firebase.firestore()
+const auth = firebase.auth()
+const currentUser = auth.currentUser
 
 db.settings({
   timestampsInSnapshots: true
 })
 
-export default firebaseApp.firestore()
+const usersCollection = db.collection('users')
+const therapiesCollection = db.collection('therapies')
+const bookingsCollection = db.collection('bookings')
+const therapistsCollection = db.collection('therapists')
+const eventsCollection = db.collection('events')
 
-
-// import firebase from 'firebase'
-// import 'firebase/firestore'
-// import firebaseConfig from './firebaseConfig'
-//
-// const firestore = firebase.firestore()
-//
-// const firebaseApp = firestore.initializeApp(firebaseConfig)
-//
-// export default firebaseApp
-//
-//
-// /////
-// import firebase from 'firebase'
-// import 'firebase/firestore'
-// import firebaseConfig from './firebaseConfig'
-//
-// const firebaseApp = firebase.initializeApp(firebaseConfig)
-//
-// export default firebaseApp.firestore()
+export default {
+  db,
+  auth,
+  currentUser,
+  usersCollection,
+  therapiesCollection,
+  bookingsCollection,
+  therapistsCollection,
+  eventsCollection
+}

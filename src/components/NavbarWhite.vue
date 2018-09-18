@@ -28,9 +28,9 @@
         <sui-menu-menu position="right">
           <a
           is="sui-menu-item"
-          :active="isActive('Logout')"
-          content="Logout"
-          @click.prevent="select('Logout'); "
+          :active="isActive('Login')"
+          content="Login"
+          @click.prevent="select('Login'); router('/login')"
           />
         </sui-menu-menu>
       </sui-menu>
