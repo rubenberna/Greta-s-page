@@ -47,13 +47,13 @@
       }
     },
     methods: mapActions(['signUp']),
-    computed: mapGetters(['errorMsg'])
+    computed: mapGetters(['errorMsg', 'successMsg'])
   }
 </script>
 
 <style lang="scss" scoped>
   @import '../../style/main.scss';
-  
+
   .signUp {
     display: flex;
     flex-direction: column;

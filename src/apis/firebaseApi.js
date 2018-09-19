@@ -109,6 +109,7 @@ export default {
           router.push('/');
         },
         err => {
+        console.log(err);
         store.dispatch('recordError', err.message)
       });
     },
@@ -122,9 +123,9 @@ export default {
       .auth()
       .sendPasswordResetEmail(email)
       .then(() => {
-        console.log('Email sent to', email);
+        store.dispatch('recordSuccess', `Email sent to ${email}`);
       }).catch(error => {
-        console.log('error');
+        store.dispatch('recordError', error.message)
       })
   }
 }

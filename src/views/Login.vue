@@ -8,8 +8,8 @@
         <label>Email address</label>
         <input placeholder="Email address"
                v-model='user.email'>
-          <p class="login-reset-password_error">{{resetPass.error}}</p>
-          <p class="login-reset-password_success">{{resetPass.success}}</p>
+          <p class="login-reset-password_error">{{resetPass.error}} {{errorMsg}}</p>
+          <p class="login-reset-password_success">{{successMsg}}</p>
       </sui-form-field>
       <sui-form-field>
         <section class='login-password'>
@@ -21,8 +21,7 @@
                v-model='user.password'>
       </sui-form-field>
       <sui-form-field>
-        <p class="login-error_msg">{{ errorMsg }}</p>
-        <span>No account yet? You can <router-link to="/sign-up" style="font-weight:bold">create one</router-link></span>
+        <span>No account yet? You can <router-link to="/sign-up" style="font-weight:bold" @click="clearMsgs">create one</router-link></span>
       </sui-form-field>
       <div class="login-submit">
         <sui-button type="submit"
@@ -54,22 +53,22 @@
         }
       }
     },
+    computed: mapGetters(['errorMsg', 'successMsg']),
     methods: {
-      ...mapActions(['login', 'resetPassword']),
+      ...mapActions(['login', 'resetPassword', 'clearMsgs']),
       home() {
         this.$router.push('/')
       },
       newPassword() {
         if (!this.user.email) {
           this.resetPass.error = "Please fill in your email address first"
+          this.clearMsgs()
         } else {
           this.resetPass.error = null
           this.resetPassword(this.user.email)
-          this.resetPass.success = "Please check your email account for instructions"
         }
       }
-    },
-    computed: mapGetters(['errorMsg'])
+    }
   }
 </script>
 

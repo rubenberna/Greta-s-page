@@ -4,12 +4,13 @@ import router from '../router'
 const state = {
   currentUser: window.localStorage.getItem('current_user'),
   errorMsg: null,
-  resetMsg: null,
+  successMsg: null
 }
 
 const getters = {
   currentUser: state => state.currentUser,
-  errorMsg: state => state.errorMsg
+  errorMsg: state => state.errorMsg,
+  successMsg: state => state.successMsg
 }
 
 const actions = {
@@ -30,11 +31,21 @@ const actions = {
     router.push('/')
   },
   recordError({ commit }, msg) {
-    commit('setError', msg)
+    commit('setSucc', null)
+    commit('setErr', null)
+    commit('setErr', msg)
   },
-  async resetPassword({ commit }, email) {
-    await db.resetPassword(email)
-    commit('resetMsg', "Please check your email to reset password")
+  recordSuccess({ commit }, msg) {
+    commit('setErr', null)
+    commit('setSucc', null)
+    commit('setSucc', msg)
+  },
+  resetPassword({ commit }, email) {
+    db.resetPassword(email)
+  },
+  clearMsgs({ commit }) {
+    commit('setErr', null)
+    commit('setSucc', null)
   }
 }
 
@@ -42,11 +53,11 @@ const mutations = {
   setCurrentUser: (state, user) => {
     state.currentUser = user
   },
-  setError: (state, msg) => {
+  setErr: (state, msg) => {
     state.errorMsg = msg
   },
-  resetMsg: (state, msg) => {
-    state.resetMsg = msg
+  setSucc: (state, msg) => {
+    state.successMsg = msg
   }
 }
 
