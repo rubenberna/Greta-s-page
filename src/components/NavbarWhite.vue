@@ -26,7 +26,8 @@
           </sui-dropdown>
         </sui-menu-menu>
         <sui-menu-menu position="right"
-                       v-if='currentUser'>
+                       v-if='currentUser'
+                       class='profile-menu'>
           <sui-dropdown :text='currentUser.displayName'>
             <sui-dropdown-menu>
               <sui-dropdown-item @click='logout'>
@@ -53,12 +54,11 @@
   import { mapActions, mapGetters } from 'vuex'
 
   export default {
-    name: 'navbar',
+    name: 'navbarWhite',
     data() {
       return {
         active: 'Home',
         items: ['Home', 'About', 'Treatments'],
-        // msg: `Welcome ${this.currentUser.displayName}`
       };
     },
     computed: {
@@ -83,6 +83,8 @@
 </script>
 
 <style lang="scss" scoped>
+  @import '../../style/main.scss';
+
   .navbar {
     padding-left: 30px;
     .navbar-menu {
@@ -124,6 +126,9 @@
             border-color: white;
           }
         }
+      }
+      .profile-menu {
+        padding-left: 25px;
       }
     }
   }
