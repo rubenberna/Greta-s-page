@@ -4,6 +4,7 @@ import router from '../router'
 const state = {
   currentUser: window.localStorage.getItem('current_user'),
   errorMsg: null,
+  resetMsg: null,
 }
 
 const getters = {
@@ -30,6 +31,10 @@ const actions = {
   },
   recordError({ commit }, msg) {
     commit('setError', msg)
+  },
+  async resetPassword({ commit }, email) {
+    await db.resetPassword(email)
+    commit('resetMsg', "Please check your email to reset password")
   }
 }
 
@@ -39,6 +44,9 @@ const mutations = {
   },
   setError: (state, msg) => {
     state.errorMsg = msg
+  },
+  resetMsg: (state, msg) => {
+    state.resetMsg = msg
   }
 }
 

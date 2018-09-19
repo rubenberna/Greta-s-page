@@ -1,7 +1,7 @@
 <template>
   <div class="signUp container">
     <div class="signUp-title">
-      <h4>Let's create a new account</h4>
+      <h4>New account</h4>
     </div>
     <sui-form>
       <sui-form-field>

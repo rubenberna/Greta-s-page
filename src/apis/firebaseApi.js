@@ -116,5 +116,15 @@ export default {
     firebase
       .auth()
       .signOut()
+  },
+  resetPassword(email) {
+    firebase
+      .auth()
+      .sendPasswordResetEmail(email)
+      .then(() => {
+        console.log('Email sent to', email);
+      }).catch(error => {
+        console.log('error');
+      })
   }
 }

@@ -1,7 +1,7 @@
 <template>
   <div class="login container">
     <div class="login-title">
-      <h4>Login please</h4>
+      <h4>Login</h4>
     </div>
     <sui-form>
       <sui-form-field>
@@ -10,9 +10,12 @@
                v-model='user.email'>
       </sui-form-field>
       <sui-form-field>
-        <label>Password</label>
+        <section class='login-password'>
+          <label>Password</label>
+          <label>Reset password</label>
+        </section>
         <input type="password"
-               placeholder="Password"
+               placeholder="******"
                v-model='user.password'>
       </sui-form-field>
       <sui-form-field>
@@ -42,13 +45,17 @@
         user: {
           email: null,
           password: null
-        }
+        },
+        emailErr: null
       }
     },
     methods: {
-      ...mapActions(['login']),
+      ...mapActions(['login', 'resetPassword']),
       home() {
         this.$router.push('/')
+      },
+      forgottenPassword() {
+        this.resetPassword(this.user.email)
       }
     },
     computed: mapGetters(['errorMsg'])
@@ -56,6 +63,8 @@
 </script>
 
 <style lang="scss" scoped>
+  @import '../../style/main.scss';
+
   .login {
     display: flex;
     flex-direction: column;
@@ -67,11 +76,31 @@
       margin-bottom: 20px;
       font-weight: bold;
     }
-    .login-error_msg {
-      color: red;
-    }
-    .login-submit {
+    .login-options {
       display: flex;
+      flex-direction: column;
+      .login-error_msg {
+        color: red;
+      }
+    }
+    .login-password {
+      width: 350px;
+      display: flex;
+      justify-content: space-between;
+      font-weight: bold;
+      label {
+        color: black;
+        &:last-child {
+          color: #bbbbbb;
+          align-self: flex-end;
+          font-weight: lighter;
+          cursor: pointer;
+          &:hover {
+            color: $dark-grey;
+          }
+
+        }
+      }
     }
   }
 </style>
