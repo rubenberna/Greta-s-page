@@ -27,8 +27,7 @@
         </sui-menu-menu>
         <sui-menu-menu position="right"
                        v-if='currentUser'>
-          <p>{{currentUser.displayName}}</p>
-          <sui-dropdown text='Welcome'>
+          <sui-dropdown :text='currentUser.displayName'>
             <sui-dropdown-menu>
               <sui-dropdown-item @click='logout'>
                 Logout
