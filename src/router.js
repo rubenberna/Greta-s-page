@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import firebase from 'firebase'
 import Home from './views/Home.vue'
 import About from './views/About.vue'
 import Manage from './views/Manage.vue'
@@ -11,7 +12,7 @@ import SignUp from './views/SignUp.vue'
 
 Vue.use(Router)
 
-export default new Router({
+let router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
@@ -23,27 +24,42 @@ export default new Router({
     {
       path: '/sign-up',
       name: 'signUp',
-      component: SignUp
+      component: SignUp,
+      meta: {
+        requiresGuest: true
+      }
     },
     {
       path: '/login',
       name: 'login',
-      component: Login
+      component: Login,
+      meta: {
+        requiresGuest: true
+      }
     },
     {
       path: '/new',
       name: 'newTherapy',
-      component: NewTherapy
+      component: NewTherapy,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/edit/:therapy_id',
       name: 'editTherapy',
-      component: EditTherapy
+      component: EditTherapy,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/management',
       name: 'manage',
-      component: Manage
+      component: Manage,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/about',
@@ -57,3 +73,44 @@ export default new Router({
     },
   ]
 })
+
+// Nav guards
+
+router.beforeEach((to, from, next) => {
+  // Check for requiresAuth guard
+  if(to.matched.some(record => record.meta.requiresAuth)) {
+    // Check if NOT logged in
+    if(!firebase.auth().currentUser) {
+      // Go to Login
+      next({
+        path: '/login',
+        query: {
+          redirect: to.fullPath
+        }
+      })
+    } else {
+      // Proceed to route
+      next();
+    }
+  } else if(to.matched.some(record => record.meta.requiresGuest)) {
+    // Check if logged in
+    if(firebase.auth().currentUser) {
+      // Go to Home
+      next({
+        path: '/',
+        query: {
+          redirect: to.fullPath
+        }
+      })
+    } else {
+      // Proceed to route
+      next();
+    }
+  }
+  else {
+    // Proceed to route
+    next();
+  }
+});
+
+export default router;

@@ -26,9 +26,9 @@
           </sui-dropdown>
         </sui-menu-menu>
         <sui-menu-menu position="right"
-                       v-if='currentUser'
+                       v-if='isLoggedIn'
                        class='profile-menu'>
-          <sui-dropdown :text='currentUser.displayName'>
+          <sui-dropdown :text='profile.name'>
             <sui-dropdown-menu>
               <sui-dropdown-item @click='logout'>
                 Logout
@@ -54,7 +54,7 @@
   import { mapActions, mapGetters } from 'vuex'
 
   export default {
-    name: 'navbarGrey',
+    name: 'navbarWhite',
     data() {
       return {
         active: 'About',
@@ -62,10 +62,10 @@
       };
     },
     computed: {
-      ...mapGetters(['therapies', 'currentUser'])
+      ...mapGetters(['therapies', 'isLoggedIn', 'profile'])
     },
     methods: {
-      ...mapActions(['fetchTherapies', 'logout']),
+      ...mapActions(['fetchTherapies', 'logout', 'loggedIn', 'getProfile']),
       isActive(name) {
         return this.active === name;
       },
@@ -78,6 +78,7 @@
     },
     created() {
       this.fetchTherapies();
+      this.loggedIn();
     }
   }
 </script>

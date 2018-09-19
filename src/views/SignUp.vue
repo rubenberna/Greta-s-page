@@ -1,7 +1,7 @@
 <template>
   <div class="signUp container">
     <div class="signUp-title">
-      <h4>Let's create a new account</h4>
+      <h4>New account</h4>
     </div>
     <sui-form>
       <sui-form-field>
@@ -47,11 +47,13 @@
       }
     },
     methods: mapActions(['signUp']),
-    computed: mapGetters(['errorMsg'])
+    computed: mapGetters(['errorMsg', 'successMsg'])
   }
 </script>
 
 <style lang="scss" scoped>
+  @import '../../style/main.scss';
+
   .signUp {
     display: flex;
     flex-direction: column;
@@ -64,7 +66,7 @@
       font-weight: bold;
     }
     .signUp-error_msg {
-      color: red;
+      color: $danger;
       padding-top: 10px;
     }
   }

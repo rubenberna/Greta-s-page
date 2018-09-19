@@ -1,23 +1,27 @@
 <template>
   <div class="login container">
     <div class="login-title">
-      <h4>Login please</h4>
+      <h4>Login</h4>
     </div>
     <sui-form>
       <sui-form-field>
         <label>Email address</label>
         <input placeholder="Email address"
                v-model='user.email'>
+          <p class="login-reset-password_error">{{resetPass.error}} {{errorMsg}}</p>
+          <p class="login-reset-password_success">{{successMsg}}</p>
       </sui-form-field>
       <sui-form-field>
-        <label>Password</label>
+        <section class='login-password'>
+          <label>Password</label>
+          <label @click='newPassword'>Reset password</label>
+        </section>
         <input type="password"
                placeholder="Password"
                v-model='user.password'>
       </sui-form-field>
       <sui-form-field>
-        <p class="login-error_msg">{{ errorMsg }}</p>
-        <span>No account yet? You can <router-link to="/sign-up" style="font-weight:bold">create one</router-link></span>
+        <span>No account yet? You can <router-link to="/sign-up" style="font-weight:bold" @click="clearMsgs">create one</router-link></span>
       </sui-form-field>
       <div class="login-submit">
         <sui-button type="submit"
@@ -42,20 +46,35 @@
         user: {
           email: null,
           password: null
+        },
+        resetPass: {
+          error: null,
+          success: null
         }
       }
     },
+    computed: mapGetters(['errorMsg', 'successMsg']),
     methods: {
-      ...mapActions(['login']),
+      ...mapActions(['login', 'resetPassword', 'clearMsgs']),
       home() {
         this.$router.push('/')
+      },
+      newPassword() {
+        if (!this.user.email) {
+          this.resetPass.error = "Please fill in your email address first"
+          this.clearMsgs()
+        } else {
+          this.resetPass.error = null
+          this.resetPassword(this.user.email)
+        }
       }
-    },
-    computed: mapGetters(['errorMsg'])
+    }
   }
 </script>
 
 <style lang="scss" scoped>
+  @import '../../style/main.scss';
+
   .login {
     display: flex;
     flex-direction: column;
@@ -67,11 +86,37 @@
       margin-bottom: 20px;
       font-weight: bold;
     }
-    .login-error_msg {
-      color: red;
+    .login-reset-password_error {
+      color: $danger;
     }
-    .login-submit {
+    .login-reset-password_success {
+      color: $success;
+    }
+    .login-options {
       display: flex;
+      flex-direction: column;
+      .login-error_msg {
+        color: $danger;
+      }
+    }
+    .login-password {
+      width: 350px;
+      display: flex;
+      justify-content: space-between;
+      font-weight: bold;
+      label {
+        color: black;
+        &:last-child {
+          color: #bbbbbb;
+          align-self: flex-end;
+          font-weight: lighter;
+          cursor: pointer;
+          &:hover {
+            color: $dark-grey;
+          }
+
+        }
+      }
     }
   }
 </style>
