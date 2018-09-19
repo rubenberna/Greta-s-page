@@ -8,14 +8,16 @@
         <label>Email address</label>
         <input placeholder="Email address"
                v-model='user.email'>
+          <p class="login-reset-password_error">{{resetPass.error}}</p>
+          <p class="login-reset-password_success">{{resetPass.success}}</p>
       </sui-form-field>
       <sui-form-field>
         <section class='login-password'>
           <label>Password</label>
-          <label>Reset password</label>
+          <label @click='newPassword'>Reset password</label>
         </section>
         <input type="password"
-               placeholder="******"
+               placeholder="Password"
                v-model='user.password'>
       </sui-form-field>
       <sui-form-field>
@@ -46,7 +48,10 @@
           email: null,
           password: null
         },
-        emailErr: null
+        resetPass: {
+          error: null,
+          success: null
+        }
       }
     },
     methods: {
@@ -54,8 +59,14 @@
       home() {
         this.$router.push('/')
       },
-      forgottenPassword() {
-        this.resetPassword(this.user.email)
+      newPassword() {
+        if (!this.user.email) {
+          this.resetPass.error = "Please fill in your email address first"
+        } else {
+          this.resetPass.error = null
+          this.resetPassword(this.user.email)
+          this.resetPass.success = "Please check your email account for instructions"
+        }
       }
     },
     computed: mapGetters(['errorMsg'])
@@ -76,11 +87,17 @@
       margin-bottom: 20px;
       font-weight: bold;
     }
+    .login-reset-password_error {
+      color: $danger;
+    }
+    .login-reset-password_success {
+      color: $success;
+    }
     .login-options {
       display: flex;
       flex-direction: column;
       .login-error_msg {
-        color: red;
+        color: $danger;
       }
     }
     .login-password {

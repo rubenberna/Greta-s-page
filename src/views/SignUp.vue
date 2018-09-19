@@ -52,6 +52,8 @@
 </script>
 
 <style lang="scss" scoped>
+  @import '../../style/main.scss';
+  
   .signUp {
     display: flex;
     flex-direction: column;
@@ -64,7 +66,7 @@
       font-weight: bold;
     }
     .signUp-error_msg {
-      color: red;
+      color: $danger;
       padding-top: 10px;
     }
   }
