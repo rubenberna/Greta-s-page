@@ -91,7 +91,6 @@ export default {
       .then(
         user => {
           console.log(`You are logged in as ${user.user.email}`);
-          store.dispatch('assignUser', user.user)
           router.push('/');
         },
         err => {
@@ -105,11 +104,10 @@ export default {
       .then(
         user => {
           console.log(`Account created for ${user.user.email}`);
-          store.dispatch('assignUser', user.user)
           router.push('/');
         },
         err => {
-        console.log(err);
+        alert(err.message)
         store.dispatch('recordError', err.message)
       });
     },
@@ -127,5 +125,11 @@ export default {
       }).catch(error => {
         store.dispatch('recordError', error.message)
       })
+  },
+  loggedIn() {
+    return !!firebase.auth().currentUser
+  },
+  getProfile() {
+    return firebase.auth().currentUser
   }
 }
