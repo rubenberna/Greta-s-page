@@ -19,10 +19,15 @@
         <p class="login-error_msg">{{ errorMsg }}</p>
         <span>No account yet? You can <router-link to="/sign-up" style="font-weight:bold">create one</router-link></span>
       </sui-form-field>
-        <sui-button @click.prevent='login(user)'
-                    type="submit">
+      <div class="login-submit">
+        <sui-button type="submit"
+                    @click.prevent='login(user)'>
                     Enter
-        </sui-button>
+      </sui-button>
+      <sui-button basic negative
+                  @click.prevent='home'>
+                  Back</sui-button>
+      </div>
     </sui-form>
   </div>
 </template>
@@ -40,7 +45,12 @@
         }
       }
     },
-    methods: mapActions(['login']),
+    methods: {
+      ...mapActions(['login']),
+      home() {
+        this.$router.push('/')
+      }
+    },
     computed: mapGetters(['errorMsg'])
   }
 </script>
@@ -59,6 +69,9 @@
     }
     .login-error_msg {
       color: red;
+    }
+    .login-submit {
+      display: flex;
     }
   }
 </style>
