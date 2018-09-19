@@ -25,7 +25,19 @@
             </sui-dropdown-menu>
           </sui-dropdown>
         </sui-menu-menu>
-        <sui-menu-menu position="right">
+        <sui-menu-menu position="right"
+                       v-if='currentUser'>
+          <p>{{currentUser.displayName}}</p>
+          <sui-dropdown text='Welcome'>
+            <sui-dropdown-menu>
+              <sui-dropdown-item @click='logout'>
+                Logout
+              </sui-dropdown-item>
+            </sui-dropdown-menu>
+          </sui-dropdown>
+        </sui-menu-menu>
+        <sui-menu-menu position="right"
+                       v-else>
           <a
           is="sui-menu-item"
           :active="isActive('Login')"
@@ -40,7 +52,6 @@
 
 <script>
   import { mapActions, mapGetters } from 'vuex'
-  import firebase from 'firebase'
 
   export default {
     name: 'navbar',
@@ -48,23 +59,19 @@
       return {
         active: 'Home',
         items: ['Home', 'About', 'Treatments'],
+        // msg: `Welcome ${this.currentUser.displayName}`
       };
     },
     computed: {
-      ...mapGetters(['therapies'])
+      ...mapGetters(['therapies', 'currentUser'])
     },
     methods: {
-      ...mapActions(['fetchTherapies']),
+      ...mapActions(['fetchTherapies', 'logout']),
       isActive(name) {
         return this.active === name;
       },
       select(name) {
         this.active = name;
-      },
-      logout() {
-        firebase
-          .auth()
-          .signOut()
       },
       router(path) {
         this.$router.push(path)
