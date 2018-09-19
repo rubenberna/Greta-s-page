@@ -3,11 +3,12 @@ import router from '../router'
 
 const state = {
   currentUser: window.localStorage.getItem('current_user'),
-  userProfile: {}
+  errorMsg: null,
 }
 
 const getters = {
-  currentUser: state => state.currentUser
+  currentUser: state => state.currentUser,
+  errorMsg: state => state.errorMsg
 }
 
 const actions = {
@@ -23,9 +24,12 @@ const actions = {
   },
   async logout({ commit }) {
     db.logout()
-    commit('setCurrentUser', null)
     window.localStorage.removeItem('currentUser')
+    commit('setCurrentUser', null)
     router.push('/')
+  },
+  recordError({ commit }, msg) {
+    commit('setError', msg)
   }
 }
 
@@ -33,6 +37,9 @@ const mutations = {
   setCurrentUser: (state, user) => {
     state.currentUser = user
   },
+  setError: (state, msg) => {
+    state.errorMsg = msg
+  }
 }
 
 export default {

@@ -25,14 +25,15 @@
                     type="submit">
                     Sign-up
         </sui-button>
-                    <span>Or go back to the <router-link to="/" style="font-weight:bold">Homepage</router-link></span>
+          <p class="signUp-error_msg">{{ errorMsg }}</p>
+          <span class="signUp-nav">Or go back to the <router-link to="/" style="font-weight:bold">Homepage</router-link></span>
       </sui-form-field>
     </sui-form>
   </div>
 </template>
 
 <script>
-  import { mapActions } from 'vuex'
+  import { mapActions, mapGetters } from 'vuex'
 
   export default {
     name: 'signUp',
@@ -45,7 +46,8 @@
         }
       }
     },
-    methods: mapActions(['signUp'])
+    methods: mapActions(['signUp']),
+    computed: mapGetters(['errorMsg'])
   }
 </script>
 
@@ -61,14 +63,9 @@
       margin-bottom: 20px;
       font-weight: bold;
     }
-    span {
-      margin-left: 10px;
+    .signUp-error_msg {
+      color: red;
+      padding-top: 10px;
     }
   }
 </style>
-
-<!--
-firebase.auth().currentUser
-if(user) {
-  user.updateProfile({
-    displayname: this.user.name -->

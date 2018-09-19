@@ -95,7 +95,7 @@ export default {
           router.push('/');
         },
         err => {
-          alert(err.message);
+          store.dispatch('recordError', err.message)
         });
   },
   signUp(doc) {
@@ -105,20 +105,13 @@ export default {
       .then(
         user => {
           console.log(`Account created for ${user.user.email}`);
-          this.setProfile(user.user, doc.name)
           store.dispatch('assignUser', user.user)
           router.push('/');
         },
         err => {
-        alert(err.message);
+        store.dispatch('recordError', err.message)
       });
     },
-  setProfile(user, name) {
-    user.updateProfile({
-      displayName: name
-    })
-    console.log(user.displayName);
-  },
   logout() {
     firebase
       .auth()
