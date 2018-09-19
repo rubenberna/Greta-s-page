@@ -16,6 +16,7 @@
                v-model='user.password'>
       </sui-form-field>
       <sui-form-field>
+        <p class="login-error_msg">{{ errorMsg }}</p>
         <span>No account yet? You can <router-link to="/sign-up" style="font-weight:bold">create one</router-link></span>
       </sui-form-field>
         <sui-button @click.prevent='login(user)'
@@ -27,7 +28,7 @@
 </template>
 
 <script>
-  import { mapActions } from 'vuex'
+  import { mapActions, mapGetters } from 'vuex'
 
   export default {
     name: 'login',
@@ -39,7 +40,8 @@
         }
       }
     },
-    methods: mapActions(['login'])
+    methods: mapActions(['login']),
+    computed: mapGetters(['errorMsg'])
   }
 </script>
 
@@ -54,6 +56,9 @@
       text-align: center;
       margin-bottom: 20px;
       font-weight: bold;
+    }
+    .login-error_msg {
+      color: red;
     }
   }
 </style>

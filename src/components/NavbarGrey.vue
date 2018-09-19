@@ -57,7 +57,7 @@
     name: 'navbarGrey',
     data() {
       return {
-        active: 'Home',
+        active: 'About',
         items: ['Home', 'About', 'Treatments'],
       };
     },
