@@ -1,7 +1,7 @@
 <template>
   <div class="intro-text container">
     <p>
-      "Greta was able to solve my apendicitis with a single touch on my ankle. After that, I can ride the horse again and play polo with my mates."
+      "Greta was able to solve my apendicitis with a single touch on my ankle. After that, I can ride the horse and play polo with my mates again."
     </p>
     <p>Albert II</p>
   </div>

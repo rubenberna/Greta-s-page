@@ -1,6 +1,7 @@
 import firebase from 'firebase'
 import db from '../../db/firebaseInit'
 import router from '../router'
+import store from '../store';
 
 let imageURL = ''
 
@@ -84,44 +85,43 @@ export default {
       })
   },
   login(user) {
-    let profile = null
     firebase
       .auth()
       .signInWithEmailAndPassword(user.email, user.password)
       .then(
         user => {
           console.log(`You are logged in as ${user.user.email}`);
-          // this.fetchUserProfile(user.user)
-          profile = user.user
+          store.dispatch('assignUser', user.user)
           router.push('/');
         },
         err => {
           alert(err.message);
         });
-        return profile
   },
-  signUp(user) {
+  signUp(doc) {
      firebase
       .auth()
-      .createUserWithEmailAndPassword(user.email, user.password)
+      .createUserWithEmailAndPassword(doc.email, doc.password)
       .then(
         user => {
           console.log(`Account created for ${user.user.email}`);
+          this.setProfile(user.user, doc.name)
+          store.dispatch('assignUser', user.user)
           router.push('/');
         },
         err => {
         alert(err.message);
       });
     },
-  fetchUserProfile(user) {
-    const person = firebase.auth().currentUser;
-    let name, email;
-
-    if (person != null) {
-      name = user.displayName;
-      email = user.email;
-    }
-
-    // console.log(email);
+  setProfile(user, name) {
+    user.updateProfile({
+      displayName: name
+    })
+    console.log(user.displayName);
+  },
+  logout() {
+    firebase
+      .auth()
+      .signOut()
   }
 }

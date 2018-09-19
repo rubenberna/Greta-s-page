@@ -25,7 +25,19 @@
             </sui-dropdown-menu>
           </sui-dropdown>
         </sui-menu-menu>
-        <sui-menu-menu position="right">
+        <sui-menu-menu position="right"
+                       v-if='currentUser'
+                       class='profile-menu'>
+          <sui-dropdown :text='currentUser.displayName'>
+            <sui-dropdown-menu>
+              <sui-dropdown-item @click='logout'>
+                Logout
+              </sui-dropdown-item>
+            </sui-dropdown-menu>
+          </sui-dropdown>
+        </sui-menu-menu>
+        <sui-menu-menu position="right"
+                       v-else>
           <a
           is="sui-menu-item"
           :active="isActive('Login')"
@@ -40,10 +52,9 @@
 
 <script>
   import { mapActions, mapGetters } from 'vuex'
-  import firebase from 'firebase'
 
   export default {
-    name: 'navbar',
+    name: 'navbarWhite',
     data() {
       return {
         active: 'Home',
@@ -51,20 +62,15 @@
       };
     },
     computed: {
-      ...mapGetters(['therapies'])
+      ...mapGetters(['therapies', 'currentUser'])
     },
     methods: {
-      ...mapActions(['fetchTherapies']),
+      ...mapActions(['fetchTherapies', 'logout']),
       isActive(name) {
         return this.active === name;
       },
       select(name) {
         this.active = name;
-      },
-      logout() {
-        firebase
-          .auth()
-          .signOut()
       },
       router(path) {
         this.$router.push(path)
@@ -77,6 +83,8 @@
 </script>
 
 <style lang="scss" scoped>
+  @import '../../style/main.scss';
+
   .navbar {
     padding-left: 30px;
     .navbar-menu {
@@ -118,6 +126,9 @@
             border-color: white;
           }
         }
+      }
+      .profile-menu {
+        padding-left: 25px;
       }
     }
   }
