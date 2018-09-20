@@ -104,13 +104,27 @@ export default {
       .then(
         user => {
           console.log(`Account created for ${user.user.email}`);
-          router.push('/');
+          this.setProfile(user.user, doc.name)
+          setTimeout(() => router.push('/'), 1000)
         },
         err => {
-        alert(err.message)
         store.dispatch('recordError', err.message)
       });
     },
+  setProfile(user, name) {
+    let array = name.split(' ')
+    let capitalised = []
+
+    for (let n in array) {
+      let cap = array[n].replace(/^\w/, c => c.toUpperCase());
+      capitalised.push(cap)
+    }
+    const fullName = capitalised.join(' ')
+
+    user.updateProfile({
+      displayName: fullName
+    })
+  },
   logout() {
     firebase
       .auth()

@@ -33,7 +33,6 @@ const actions = {
   },
   async getProfile({ commit }) {
     const response = await db.getProfile()
-    console.log(response);
     commit('setProfile', response)
   },
   async logout({ commit }) {
