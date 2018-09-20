@@ -24,6 +24,7 @@ const actions = {
     db.login(user)
   },
   signUp({ commit }, user) {
+    console.log(user);
     db.signUp(user)
   },
   async loggedIn({ commit, dispatch }) {
@@ -72,8 +73,9 @@ const mutations = {
     state.isLoggedIn = boolean
   },
   setProfile: (state, user) => {
+    let name = user.displayName.replace(/^\w/, c => c.toUpperCase());
     state.profile = {
-      name: user.displayName,
+      name,
       email: user.email
     }
   }

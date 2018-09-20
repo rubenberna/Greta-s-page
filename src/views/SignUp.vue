@@ -21,11 +21,11 @@
                placeholder="Password" >
       </sui-form-field>
       <sui-form-field>
-        <sui-button @click.prevent='signUp(user)'
+        <sui-button @click.prevent='checkSignUp'
                     type="submit">
                     Sign-up
         </sui-button>
-          <p class="signUp-error_msg">{{ errorMsg }}</p>
+          <p class="signUp-error_msg">{{ errorMsg }} {{err}}</p>
           <span class="signUp-nav">Or go back to the <router-link to="/" style="font-weight:bold">Homepage</router-link></span>
       </sui-form-field>
     </sui-form>
@@ -43,11 +43,25 @@
           name: null,
           email: null,
           password: null
+        },
+        err: null
+      }
+    },
+    computed: mapGetters(['errorMsg', 'successMsg']),
+    methods: {
+      ...mapActions(['signUp', 'clearMsgs']),
+      checkSignUp() {
+        if (!this.user.name || !this.user.email || !this.user.password) {
+          this.err = "Please complete all fields first"
+        } else {
+          this.err = null
+          this.signUp(this.user)
         }
       }
     },
-    methods: mapActions(['signUp']),
-    computed: mapGetters(['errorMsg', 'successMsg'])
+    created() {
+      this.clearMsgs()
+    }
   }
 </script>
 

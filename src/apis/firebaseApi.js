@@ -104,13 +104,18 @@ export default {
       .then(
         user => {
           console.log(`Account created for ${user.user.email}`);
-          router.push('/');
+          this.setProfile(user.user, doc.name)
+          setTimeout(() => router.push('/'), 500)
         },
         err => {
-        alert(err.message)
         store.dispatch('recordError', err.message)
       });
     },
+  setProfile(user, name) {
+    user.updateProfile({
+      displayName: name
+    })
+  },
   logout() {
     firebase
       .auth()

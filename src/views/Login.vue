@@ -68,6 +68,9 @@
           this.resetPassword(this.user.email)
         }
       }
+    },
+    created() {
+      this.clearMsgs()
     }
   }
 </script>
