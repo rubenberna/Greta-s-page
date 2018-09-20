@@ -105,15 +105,24 @@ export default {
         user => {
           console.log(`Account created for ${user.user.email}`);
           this.setProfile(user.user, doc.name)
-          setTimeout(() => router.push('/'), 500)
+          setTimeout(() => router.push('/'), 1000)
         },
         err => {
         store.dispatch('recordError', err.message)
       });
     },
   setProfile(user, name) {
+    let array = name.split(' ')
+    let capitalised = []
+
+    for (let n in array) {
+      let cap = array[n].replace(/^\w/, c => c.toUpperCase());
+      capitalised.push(cap)
+    }
+    const fullName = capitalised.join(' ')
+
     user.updateProfile({
-      displayName: name
+      displayName: fullName
     })
   },
   logout() {
