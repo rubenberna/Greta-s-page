@@ -116,9 +116,10 @@ export default {
 
           db.usersCollection.doc(user.user.uid).set({
             name: fullName,
-            email: doc.email
+            email: doc.email,
+            isAdmin: false
           }).then(() => {
-            setTimeout(() => router.push('/'), 700)
+            setTimeout(() => router.push('/'), 1000)
           }).catch(err => {
             store.dispatch('recordError', err.message)
           })

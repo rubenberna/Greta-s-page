@@ -5,7 +5,8 @@ const state = {
   currentUser: null,
   profile: {
     name: null,
-    email: null
+    email: null,
+    isAdmin: false
   },
   errorMsg: null,
   successMsg: null
