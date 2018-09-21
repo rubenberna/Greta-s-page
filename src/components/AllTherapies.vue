@@ -1,33 +1,39 @@
 <template>
   <div class="all-therapies container">
+    <div v-for="therapy in therapies"
+         :key="therapy.id">
     <div class="all-therapies-label">
       <h5>Treatments</h5>
     </div>
     <div class="all-therapies-card">
       <div class="all-therapies-card-image">
-        <sui-image src="http://res.cloudinary.com/megslist/image/upload/v1536062052/jenn-evelyn-ann-112980-unsplash.jpg" size="large" />
+        <sui-image :src='therapy.image' size="large" />
       </div>
       <div class="all-therapies-card-description">
-        <h1>Polarity Healing lets you enjoy the outdoors again</h1>
+        <h1>{{therapy.teaser}}</h1>
         <div class="all-therapies-card-description-availability">
           <span>Make appointment</span>
-          <span>Every Friday</span>
+          <span>{{therapy.availability}}</span>
         </div>
       </div>
     </div>
     <p class="all-therapies-card-text">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo...
+      {{therapy.indications}}.
     </p>
     <span style="font-weight:bold">Read More <font-awesome-icon icon="coffee" /> </span>
     <br>
     <br>
+    </div>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'allTherapies'
-}
+  import { mapGetters } from 'vuex'
+
+  export default {
+    name: 'allTherapies',
+    computed: mapGetters(['therapies'])
+  }
 </script>
 
 <style lang="scss" scoped>
