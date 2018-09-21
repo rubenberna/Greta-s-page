@@ -2,21 +2,20 @@ import db from '../apis/firebaseApi'
 import router from '../router'
 
 const state = {
-  currentUser: window.localStorage.getItem('current_user'),
-  errorMsg: null,
-  successMsg: null,
-  isLoggedIn: null,
+  currentUser: null,
   profile: {
     name: null,
     email: null
-  }
+  },
+  errorMsg: null,
+  successMsg: null
 }
 
 const getters = {
+  currentUser: state => state.currentUser,
+  profile: state => state.profile,
   errorMsg: state => state.errorMsg,
-  successMsg: state => state.successMsg,
-  isLoggedIn: state => state.isLoggedIn,
-  profile: state => state.profile
+  successMsg: state => state.successMsg
 }
 
 const actions = {
@@ -26,19 +25,14 @@ const actions = {
   signUp({ commit }, user) {
     db.signUp(user)
   },
-  async loggedIn({ commit, dispatch }) {
+  async loggedIn({ commit }) {
     const response = await db.loggedIn()
-    if (response) dispatch('getProfile')
-    commit('setLoggin', response)
-  },
-  async getProfile({ commit }) {
-    const response = await db.getProfile()
-    commit('setProfile', response)
+    commit('setCurrentUser', response)
+    if (response) db.getProfile(response)
   },
   async logout({ commit }) {
-    db.logout()
-    window.localStorage.removeItem('currentUser')
-    commit('setLoggin', false)
+    await db.logout()
+    commit('setCurrentUser', null)
     router.push('/')
   },
   resetPassword({ commit }, email) {
@@ -67,14 +61,11 @@ const mutations = {
   setSucc: (state, msg) => {
     state.successMsg = msg
   },
-  setLoggin: (state, boolean) => {
-    state.isLoggedIn = boolean
+  setCurrentUser: (state, user) => {
+    state.currentUser = user
   },
   setProfile: (state, user) => {
-    state.profile = {
-      name: user.displayName,
-      email: user.email
-    }
+    state.profile = user
   }
 }
 

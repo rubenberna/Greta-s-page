@@ -26,7 +26,7 @@
           </sui-dropdown>
         </sui-menu-menu>
         <sui-menu-menu position="right"
-                       v-if='isLoggedIn'
+                       v-if='currentUser'
                        class='profile-menu'>
           <sui-dropdown :text='profile.name'>
             <sui-dropdown-menu>
@@ -62,7 +62,7 @@
       };
     },
     computed: {
-      ...mapGetters(['therapies', 'isLoggedIn', 'profile'])
+      ...mapGetters(['therapies', 'currentUser', 'profile'])
     },
     methods: {
       ...mapActions(['fetchTherapies', 'logout', 'loggedIn', 'getProfile']),
