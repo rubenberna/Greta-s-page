@@ -103,26 +103,29 @@ export default {
       .createUserWithEmailAndPassword(doc.email, doc.password)
       .then(
         user => {
-          console.log(`Account created for ${user.user.email}`);
-          this.setProfile(user.user, doc.name)
-          setTimeout(() => router.push('/'), 1000)
+          // set object in usersCollection with capitalised name
+
+          let array = doc.name.split(' ')
+          let capitalised = []
+
+          for (let n in array) {
+            let cap = array[n].replace(/^\w/, c => c.toUpperCase());
+            capitalised.push(cap)
+          }
+          const fullName = capitalised.join(' ')
+
+          db.usersCollection.doc(user.user.uid).set({
+            name: fullName,
+            email: doc.email,
+            isAdmin: false
+          }).then(() => {
+            setTimeout(() => router.push('/'), 1000)
+          }).catch(err => {
+            store.dispatch('recordError', err.message)
+          })
         },
         err => {
         store.dispatch('recordError', err.message)
-      });
-    },
-  setProfile(user, name) {
-    let array = name.split(' ')
-    let capitalised = []
-
-    for (let n in array) {
-      let cap = array[n].replace(/^\w/, c => c.toUpperCase());
-      capitalised.push(cap)
-    }
-    const fullName = capitalised.join(' ')
-
-    user.updateProfile({
-      displayName: fullName
     })
   },
   logout() {
@@ -141,9 +144,14 @@ export default {
       })
   },
   loggedIn() {
-    return !!firebase.auth().currentUser
-  },
-  getProfile() {
     return firebase.auth().currentUser
+  },
+  getProfile(user) {
+    db.usersCollection.doc(user.uid).get()
+    .then((res) => {
+      store.commit('setProfile', res.data())
+    }).catch((err) => {
+      store.dispatch('recordError', err.message)
+    })
   }
 }
