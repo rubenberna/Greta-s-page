@@ -2,7 +2,7 @@ import db from '../apis/firebaseApi'
 import router from '../router'
 
 const state = {
-  therapies: null
+  therapies: []
 }
 
 const getters = {
