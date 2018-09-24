@@ -44,8 +44,9 @@
   @import '../../style/main.scss';
 
   .booking-button {
+    height: 38px;
     padding: 9px 15px;
-    font-size: 12px;
+    font-size: 11px;
     letter-spacing: .10rem;
     text-transform: uppercase;
     border-right: 1px solid #e5e5e5;

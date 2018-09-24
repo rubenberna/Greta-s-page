@@ -1,28 +1,26 @@
 <template>
   <div class="all-therapies container">
-    <div class="all-therapies-label">
-      <h5>Treatments</h5>
-    </div>
-    <div v-for="therapy in therapies"
+    <h5 class="all-therapies-label">Treatments</h5>
+    <div class="all-therapies-group"
+         v-for="therapy in therapies"
          :key="therapy.id">
-    <div class="all-therapies-card">
-      <div class="all-therapies-card-image">
-        <sui-image :src='therapy.image' size="large" />
-      </div>
-      <div class="all-therapies-card-description">
-        <h1>{{therapy.teaser}}</h1>
+      <div class="all-therapies-card">
+        <h1 class="all-therapies-card-teaser">{{therapy.teaser}}</h1>
+        <div class="all-therapies-card-image">
+          <sui-image :src='therapy.image' size="large"/>
+        </div>
         <div class="all-therapies-card-description-availability">
           <Booking :therapy='therapy'></Booking>
-          <span>{{therapy.availability}}</span>
+          <sui-button>
+            {{therapy.availability}}
+          </sui-button>
         </div>
       </div>
-    </div>
-    <!-- <p class="all-therapies-card-text">
-      {{therapy.indications}}.
-    </p>
-    <span style="font-weight:bold">Read More <font-awesome-icon icon="coffee" /> </span>
-    <br>
-    <br> -->
+      <div class="all-therapies-description">
+        <p class="all-therapies-card-text">
+          {{therapy.description}}.
+        </p>
+      </div>
     </div>
   </div>
 </template>
@@ -52,83 +50,83 @@
     letter-spacing: .24rem;
     line-height: 1.8;
     font-style: normal;
-    h5 {
-      font-size: 1rem;
-    }
+    font-size: 14px;
   }
-  .all-therapies-card {
+
+  .all-therapies-group {
     display: flex;
-    max-width: 750px;
-    height: 350px;
+    max-width: 735px;
+    height: 375px;
     justify-content: space-between;
+    box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
+    background: white;
+    transition: all 0.3s ease;
     margin-bottom: 78px;
-
-    .all-therapies-card-image {
-     width: 50%;
-     height: inherit;
-     margin-right: 1px;
-     position: relative;
-     overflow: hidden;
-     display: inline-block;
-     // background-position: center center;
-     // background-repeat: no-repeat;
-     // overflow: hidden;
-     // object-fit: cover;
-     // object-position: center;
-     // background-size: cover;
-     img {
-       position: absolute;
-       left: 50%;
-       top: 50%;
-       width: 90%;
-       height: auto;
-       -webkit-transform: translate(-50%,-50%);
-           -ms-transform: translate(-50%,-50%);
-               transform: translate(-50%,-50%);
-       // width: 100%;
-       // height: auto;
-     }
-    }
-
-    .all-therapies-card-description {
+    padding: 9px;
+    .all-therapies-card {
       display: flex;
       flex-direction: column;
-      max-width: 45%;
-      max-height: 250px;
       justify-content: space-around;
       align-items: center;
-      text-align: center;
-      font-family: 'Raleway', sans-serif;
-      line-height: 1.2;
-      font-weight: 400px;
-      h1 {
-        font-size: 2.2rem;
+      width: 50%;
+      height: 100%;
+      margin-right: 1px;
+      .all-therapies-card-teaser {
+        text-align: center;
+        justify-content: center;
+        width: 80%;
+        font-family: 'Raleway', sans-serif;
+        line-height: 1.2;
+        font-weight: 400px;
       }
-
-      .all-therapies-card-description-availability {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        span {
-          padding: 9px 15px;
-          font-size: 12px;
-          letter-spacing: .10rem;
-          text-transform: uppercase;
-          border-right: 1px solid $light-grey;
-          border-bottom: 1px solid $light-grey;
-        }
+      .all-therapies-card-image {
+      position: relative;
+      overflow: hidden;
+      display: inline-block;
+      margin: 0 auto;
+      width: 55%;
+      height: 50%;
+      img {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 100%;
+        height: auto;
+        -webkit-transform: translate(-50%,-50%);
+        -ms-transform: translate(-50%,-50%);
+        transform: translate(-50%,-50%);
+      }
+    }
+    .all-therapies-card-description-availability {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 300px;
+      button {
+        height: 38px;
+        padding: 9px 15px;
+        font-size: 11px;
+        letter-spacing: .10rem;
+        text-transform: uppercase;
+        border-right: 1px solid $light-grey;
+        border-bottom: 1px solid $light-grey;
+        border-radius: 0px;
+        background-color: white;
+        font-family: $font-family-p;
+        font-weight: $font-weight-p;
+        cursor: inherit;
       }
     }
   }
-
-  .all-therapies-card-text {
-    max-width: 750px;
-    margin-top: -40px;
-    line-height: 1;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    font-family: $font-family-p;
-    font-weight: $font-weight-p;
+    .all-therapies-description {
+      width: 50%;
+      display: flex;
+      align-items: center;
+    }
   }
+
+  h1{
+    font-size: 2.4rem;
+  }
+
 </style>
