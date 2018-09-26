@@ -15,13 +15,12 @@ const actions = {
     const response = await db.fetchTherapies();
     commit('setTherapies', response)
   },
-  createTherapy({ state, commit }, therapy) {
+  createTherapy({ commit }, therapy) {
     db.createTherapy(therapy);
     router.push('/management');
   },
-  async uploadImage({ commit }, image) {
-    console.log(image);
-    const response = await db.uploadImage(image);
+  uploadImage({ commit }, image) {
+    db.uploadImage(image);
   }
 }
 

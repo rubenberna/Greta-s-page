@@ -6,9 +6,9 @@ import store from '../store';
 let imageURL = ''
 
 export default {
-  fetchTherapies() {
+  async fetchTherapies() {
     const result = []
-    db.therapiesCollection.get()
+    await db.therapiesCollection.get()
     .then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         const data = {
