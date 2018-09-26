@@ -5,8 +5,13 @@
 </template>
 
 <style lang="scss">
-  body {
-    color: rgba(0,0,0,0.75);
+  @import '../style/main.scss';
+  @import url('https://fonts.googleapis.com/css?family=Noto+Serif+KR|PT+Sans|Roboto+Mono');
+
+  p {
+    color: $dark-grey;
     font-size: 1.2rem;
+    font-family: 'PT Sans', sans-serif;
+    letter-spacing: .10rem;
   }
 </style>
