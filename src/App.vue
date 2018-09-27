@@ -9,7 +9,7 @@
   @import url('https://fonts.googleapis.com/css?family=Noto+Serif+KR|PT+Sans|Roboto+Mono');
 
   body {
-    color: rgba(73, 73, 73, 0.75)
+    color: rgba(73, 73, 73, 0.80)
   }
 
   p {
