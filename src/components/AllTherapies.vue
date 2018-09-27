@@ -15,6 +15,8 @@
            <p class="all-therapies-card-text">
              {{therapy.description}}
            </p>
+           <font-awesome-icon icon="arrow-right"
+           class="icon"/>
          </div>
        </div>
 
@@ -112,9 +114,11 @@
         display: flex;
         padding-right: 16px;
         height: 80%;
+        display: inline-block; /* Fallback for non-webkit */
+        display: -webkit-inline-box;
         p {
-          display: block; /* Fallback for non-webkit */
-          display: -webkit-box;
+          display: inline-block; /* Fallback for non-webkit */
+          display: -webkit-inline-box;
           height: $font-size*$line-height*$lines-to-show; /* Fallback for non-webkit */
           margin: 0 auto;
           font-size: $font-size;
