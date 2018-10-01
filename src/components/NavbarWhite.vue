@@ -13,7 +13,12 @@
         <sui-menu-menu position="right">
           <sui-dropdown text="Treatments">
             <sui-dropdown-menu>
-              <sui-dropdown-item v-for='therapy in therapies' :key='therapy.id'>{{therapy.name}}</sui-dropdown-item>
+               <sui-dropdown-item v-for='therapy in therapies' :key='therapy.id'>
+                 <router-link :to="{ name: 'showTherapy', params: {therapy_id: therapy.id} }"
+                              class="therapy-item">
+                   {{therapy.name}}
+                 </router-link>
+               </sui-dropdown-item>
             </sui-dropdown-menu>
           </sui-dropdown>
         </sui-menu-menu>
@@ -99,12 +104,16 @@
         display: flex;
         align-items: center;
         font-size: 17px;
+        margin-left: 3px;
         &:hover {
           color: white !important;
           opacity: 0.8;
         }
-        .menu>.item:hover {
-          color: black !important;
+        .menu>.item {
+          color: $dark-grey !important;
+          &:hover {
+            color: black !important;
+          }
         }
       }
 
@@ -133,4 +142,9 @@
       }
     }
   }
+  .therapy-item {
+    color: $dark-grey;
+    text-decoration: none;
+  }
+
 </style>

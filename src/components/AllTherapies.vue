@@ -5,26 +5,29 @@
       <div class="all-therapies-group col-xs-6"
       v-for="therapy in therapies"
       :key="therapy.id">
-      <h1 class="all-therapies-card-teaser">{{therapy.teaser}}</h1>
-      <div class="all-therapies-card_container">
-        <div class="all-therapies-card-image">
-          <sui-image :src='therapy.image' size="large"/>
-        </div>
-        <div class="all-therapies-description">
-          <p class="all-therapies-card-text">
-            {{therapy.description}}
-          </p>
-          <p class="all-therapies-card-text_more">Read more ></p >
+          <h1 class="all-therapies-card-teaser">{{therapy.teaser}}</h1>
+          <div class="all-therapies-card_container">
+            <div class="all-therapies-card-image">
+            <router-link :to="{ name: 'showTherapy', params: {therapy_id: therapy.id} }">
+               <sui-image :src='therapy.image' size="large"/>
+            </router-link>
+            </div>
+            <div class="all-therapies-description">
+              <p class="all-therapies-card-text">
+                {{therapy.description}}
+              </p>
+              <router-link :to="{ name: 'showTherapy', params: {therapy_id: therapy.id} }">
+                <p class="all-therapies-card-text_more">
+                                             Read more
+                  <i class="fas fa-book-open" style="color: grey"/>
+               </p >
+              </router-link>
+            </div>
+            </div>
+            <div class="all-therapies-card-availability">
+              <Booking :therapy='therapy'></Booking>
           </div>
         </div>
-        <div class="all-therapies-card-availability">
-          <Booking :therapy='therapy'></Booking>
-          <!-- <sui-button>
-          {{therapy.availability}}
-        </sui-button> -->
-      </div>
-    </div>
-
     </div>
   </div>
 </template>
@@ -48,7 +51,6 @@
   .all-therapies {
     margin-top: 122px;
     display: grid;
-    // justify-content: space-around;
     .all-therapies-label {
       text-transform: uppercase;
       font-family: "Open Sans";
@@ -135,6 +137,9 @@
               font-size: 15px;
             }
           }
+          .all-therapies-card-text_more {
+            color: $dark-grey;
+          }
         }
       }
       .all-therapies-card-availability {
@@ -143,20 +148,6 @@
         align-items: flex-start;
         text-align: right;
         width: 91%;
-        button {
-          height: 38px;
-          padding: 9px 15px;
-          font-size: 11px;
-          letter-spacing: .10rem;
-          text-transform: uppercase;
-          border-right: 1px solid $light-grey;
-          border-bottom: 1px solid $light-grey;
-          border-radius: 0px;
-          background-color: white;
-          font-family: $font-family-p;
-          font-weight: $font-weight-p;
-          cursor: inherit;
-        }
       }
     }
   }
