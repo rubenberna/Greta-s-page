@@ -3,27 +3,23 @@
     <h5 class="all-therapies-label">Treatments</h5>
     <div class="row">
       <div class="all-therapies-group col-xs-6"
-      v-for="therapy in therapies"
-      :key="therapy.id">
+           v-for="therapy in therapies"
+           :key="therapy.id">
           <h1 class="all-therapies-card-teaser">{{therapy.teaser}}</h1>
           <div class="all-therapies-card_container">
-            <div class="all-therapies-card-image">
-            <router-link :to="{ name: 'showTherapy', params: {therapy_id: therapy.id} }">
+            <div class="all-therapies-card-image"
+                 @click.prevent="storeTherapy(therapy); router(`/therapy/${therapy.id}`)">
                <sui-image :src='therapy.image' size="large"/>
-            </router-link>
             </div>
             <div class="all-therapies-description">
-              <p class="all-therapies-card-text">
-                {{therapy.description}}
-              </p>
-              <router-link :to="{ name: 'showTherapy', params: {therapy_id: therapy.id} }">
-                <p class="all-therapies-card-text_more">
-                                             Read more
+              <p class="all-therapies-card-text">{{therapy.description}}</p>
+                <p class="all-therapies-card-text_more"
+                  @click.prevent="storeTherapy(therapy); router(`/therapy/${therapy.id}`)">
+                  Read more
                   <i class="fas fa-book-open" style="color: grey"/>
                </p >
-              </router-link>
             </div>
-            </div>
+          </div>
             <div class="all-therapies-card-availability">
               <Booking :therapy='therapy'></Booking>
           </div>
@@ -33,7 +29,7 @@
 </template>
 
 <script>
-  import { mapGetters } from 'vuex'
+  import { mapGetters, mapActions } from 'vuex'
   import Booking from '@/components/Booking'
 
   export default {
@@ -41,6 +37,12 @@
     computed: mapGetters(['therapies']),
     components: {
       Booking
+    },
+    methods: {
+      ...mapActions(['storeTherapy']),
+      router(path) {
+        this.$router.push(path)
+      }
     }
   }
 </script>
@@ -96,6 +98,7 @@
           overflow: hidden;
           margin-right: 1px;
           width: 35%;
+          cursor: pointer;
           img {
             position: absolute;
             left: 50%;
@@ -139,6 +142,7 @@
           }
           .all-therapies-card-text_more {
             color: $dark-grey;
+            cursor: pointer;
           }
         }
       }

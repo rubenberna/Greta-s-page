@@ -14,10 +14,10 @@
           <sui-dropdown text="Treatments">
             <sui-dropdown-menu>
                <sui-dropdown-item v-for='therapy in therapies' :key='therapy.id'>
-                 <router-link :to="{ name: 'showTherapy', params: {therapy_id: therapy.id} }"
-                              class="therapy-item">
-                   {{therapy.name}}
-                 </router-link>
+                 <a
+                  @click.prevent="storeTherapy(therapy); router(`/therapy/${therapy.id}`)">
+                  {{therapy.name}}
+                </a>
                </sui-dropdown-item>
             </sui-dropdown-menu>
           </sui-dropdown>
@@ -70,7 +70,7 @@
       ...mapGetters(['therapies', 'currentUser', 'profile'])
     },
     methods: {
-      ...mapActions(['fetchTherapies', 'logout', 'loggedIn', 'getProfile']),
+      ...mapActions(['fetchTherapies', 'logout', 'loggedIn', 'getProfile', 'storeTherapy']),
       isActive(name) {
         return this.active === name;
       },
