@@ -19,8 +19,6 @@
     margin-top: 85px;
     margin-bottom: 120px;
     text-align: center;
-    font-size: 18px;
-    font-family: "Cormorant";
     p:first-child {
       font-size: 26px;
       font-style: italic;

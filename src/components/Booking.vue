@@ -55,8 +55,9 @@
     background-color: white;
     font-family: $font-family-p;
     font-weight: $font-weight-p;
+    transition: all 1s;
     &:hover{
-      background-color: $light-grey;
+      background-color: $green;
     }
   }
 </style>
