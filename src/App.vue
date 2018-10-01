@@ -6,7 +6,7 @@
 
 <style lang="scss">
   @import '../style/main.scss';
-  @import url('https://fonts.googleapis.com/css?family=Noto+Serif+KR|PT+Sans|Roboto+Mono|Raleway');
+  @import url('https://fonts.googleapis.com/css?family=Noto+Serif+KR|PT+Sans|Roboto+Mono|Raleway|Charmonman');
 
   body {
     color: #231f20;

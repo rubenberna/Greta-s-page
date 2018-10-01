@@ -4,7 +4,7 @@
     <div class="about">
       <div class="about container">
         <h4 class="title">Welcome</h4>
-        <p>by Greta Lowel</p>
+        <p class="signature">by Greta Lowel</p>
         <div class="about-frame">
           <div class="about-bio">
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
@@ -17,16 +17,11 @@
           <div class="about-contacts_details">
             <p>0485 649 035</p>
             <p>greta.lowel@hotmail.com</p>
-            <br>
             <p>13 Kwaenijkstraat, 3191 Boortmeerbeek</p>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <p>Connect</p>
-            <br>
-            <p>Facebook</p>
+            <div class="about-contacts_details_links">
+              <p>Connect</p>
+              <i class="fab fa-facebook-square"></i>
+            </div>
           </div>
           <div class="about-contacts_image">
             <img src="https://firebasestorage.googleapis.com/v0/b/greta-f481d.appspot.com/o/corinne-kutz-157292-unsplash.jpg?alt=media&token=7a99d373-8f4d-49d9-af28-db4b9bf4fcb7">
@@ -54,7 +49,7 @@
   @import '../../style/main.scss';
 
   .about {
-    background: #e3dfdb;
+    background: $about-background;
     margin-bottom: 30px;
     padding: 1px;
     margin-top: 95px;
@@ -68,6 +63,10 @@
         letter-spacing: .135em;
         padding-bottom: .125em;
         text-transform: uppercase;
+      }
+      .signature {
+        font-family: 'Charmonman', cursive;
+        font-size: 24px;
       }
       .about-frame {
         display: flex;
@@ -115,6 +114,16 @@
           text-transform: uppercase;
           height: 386px;
           width: 360px;
+          .about-contacts_details_links {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: flex-start;
+            height: 180px;
+            i {
+              font-size: 20px;
+            }
+          }
           p {
             display: inline-block;
             border-bottom: 3px solid #231f20;
@@ -147,5 +156,4 @@
       }
     }
   }
-
 </style>
