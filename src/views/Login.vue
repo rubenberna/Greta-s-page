@@ -27,10 +27,13 @@
         <sui-button type="submit"
                     @click.prevent='login(user)'>
                     Enter
-      </sui-button>
-      <sui-button basic negative
-                  @click.prevent='home'>
-                  Back</sui-button>
+        </sui-button>
+        <sui-button basic negative
+                    @click.prevent='home'>
+                    Back
+       </sui-button>
+       <clip-loader :loading='loading'
+                    class='loader'/>
       </div>
     </sui-form>
   </div>
@@ -38,6 +41,8 @@
 
 <script>
   import { mapActions, mapGetters } from 'vuex'
+  import ClipLoader from 'vue-spinner/src/ClipLoader.vue';
+  // import Loader from '@/components/Loader'
 
   export default {
     name: 'login',
@@ -53,7 +58,10 @@
         }
       }
     },
-    computed: mapGetters(['errorMsg', 'successMsg']),
+    components: {
+      ClipLoader
+    },
+    computed: mapGetters(['errorMsg', 'successMsg', 'loading']),
     methods: {
       ...mapActions(['login', 'resetPassword', 'clearMsgs']),
       home() {
@@ -95,13 +103,13 @@
     .login-reset-password_success {
       color: $success;
     }
-    .login-options {
-      display: flex;
-      flex-direction: column;
-      .login-error_msg {
-        color: $danger;
-      }
-    }
+    // .login-options {
+    //   display: flex;
+    //   flex-direction: column;
+    //   .login-error_msg {
+    //     color: $danger;
+    //   }
+    // }
     .login-password {
       width: 350px;
       display: flex;
@@ -117,8 +125,13 @@
           &:hover {
             color: $dark-grey;
           }
-
         }
+      }
+    }
+    .login-submit {
+      display: flex;
+      .loader {
+        margin-left: 14px;
       }
     }
   }

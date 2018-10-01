@@ -54,7 +54,7 @@ export default {
     const uploadTask = imageRef.put(image, metadata);
     uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
       snapshot => {
-        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        // const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         console.log('Upload is ' + '% done');
         switch (snapshot.case) {
           case firebase.storage.TaskState.PAUSED:
@@ -119,7 +119,7 @@ export default {
             email: doc.email,
             isAdmin: false
           }).then(() => {
-            setTimeout(() => router.push('/'), 1000)
+            setTimeout(() => router.push('/'), 1500)
           }).catch(err => {
             store.dispatch('recordError', err.message)
           })

@@ -15,8 +15,7 @@
            <p class="all-therapies-card-text">
              {{therapy.description}}
            </p>
-           <font-awesome-icon icon="arrow-right"
-           class="icon"/>
+           <p class="all-therapies-card-text_more">Read more</p >
          </div>
        </div>
 
@@ -68,7 +67,7 @@
     margin-bottom: 78px;
     padding: 9px;
     &:hover {
-      box-shadow: 2px 2px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
+      box-shadow: 2px 4px 7px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
     }
 
     .all-therapies-card-teaser {
@@ -127,6 +126,10 @@
           -webkit-box-orient: vertical;
           overflow: hidden;
           text-overflow: ellipsis;
+          &:last-child {
+            font-weight: 600;
+            font-size: 15px;
+          }
         }
       }
     }
