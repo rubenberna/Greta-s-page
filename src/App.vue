@@ -9,14 +9,15 @@
   @import url('https://fonts.googleapis.com/css?family=Noto+Serif+KR|PT+Sans|Roboto+Mono|Raleway');
 
   body {
-    color: $dark-grey;
+    color: #231f20;
   }
   h1, h2, h3, h4, h5 {
     font-family: 'Raleway', sans-serif;
   }
   p {
-    font-size: 1.2rem;
-    font-family: 'PT Sans', sans-serif;
-    letter-spacing: .10rem;
+    font-size: 19px;
+    line-height: 1.368em;
+    letter-spacing: .05em;
+    font-family: "proxima-nova","helvetica","arial","sans";
   }
 </style>
