@@ -11,19 +11,19 @@
           />
         </sui-menu-menu>
         <sui-menu-menu position="right">
+          <sui-dropdown text="Treatments">
+            <sui-dropdown-menu>
+              <sui-dropdown-item v-for='therapy in therapies' :key='therapy.id'>{{therapy.name}}</sui-dropdown-item>
+            </sui-dropdown-menu>
+          </sui-dropdown>
+        </sui-menu-menu>
+        <sui-menu-menu position="right">
           <a
           is="sui-menu-item"
           :active="isActive('About')"
           content="About"
           @click.prevent="select('About'); router('/about');"
           />
-        </sui-menu-menu>
-        <sui-menu-menu position="right">
-          <sui-dropdown text="Treatments">
-            <sui-dropdown-menu>
-              <sui-dropdown-item v-for='therapy in therapies' :key='therapy.id'>{{therapy.name}}</sui-dropdown-item>
-            </sui-dropdown-menu>
-          </sui-dropdown>
         </sui-menu-menu>
         <sui-menu-menu position="right"
                        v-if='currentUser'

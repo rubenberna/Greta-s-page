@@ -9,22 +9,28 @@ const state = {
     isAdmin: false
   },
   errorMsg: null,
-  successMsg: null
+  successMsg: null,
+  loading: false
 }
 
 const getters = {
   currentUser: state => state.currentUser,
   profile: state => state.profile,
   errorMsg: state => state.errorMsg,
-  successMsg: state => state.successMsg
+  successMsg: state => state.successMsg,
+  loading: state => state.loading
 }
 
 const actions = {
-  login({ commit }, user) {
-    db.login(user)
+  async login({ commit }, user) {
+    commit('setLoadding', true)
+    const log = await db.login(user)
+    commit ('setLoadding', false)
   },
-  signUp({ commit }, user) {
-    db.signUp(user)
+  async signUp({ commit }, user) {
+    commit('setLoadding', true)
+    const sign = await db.signUp(user)
+    commit ('setLoadding', false)
   },
   async loggedIn({ commit }) {
     const response = await db.loggedIn()
@@ -67,6 +73,9 @@ const mutations = {
   },
   setProfile: (state, user) => {
     state.profile = user
+  },
+  setLoadding: (state, boolean) => {
+    state.loading = boolean
   }
 }
 

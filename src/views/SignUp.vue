@@ -25,8 +25,9 @@
                     type="submit">
                     Sign-up
         </sui-button>
-          <p class="signUp-error_msg">{{ errorMsg }} {{err}}</p>
-          <span class="signUp-nav">Or go back to the <router-link to="/" style="font-weight:bold">Homepage</router-link></span>
+        <clip-loader :loading='loading' />
+        <p class="signUp-error_msg">{{ errorMsg }} {{err}}</p>
+        <span class="signUp-nav">Or go back to the <router-link to="/" style="font-weight:bold">Homepage</router-link></span>
       </sui-form-field>
     </sui-form>
   </div>
@@ -34,6 +35,7 @@
 
 <script>
   import { mapActions, mapGetters } from 'vuex'
+  import ClipLoader from 'vue-spinner/src/ClipLoader.vue';
 
   export default {
     name: 'signUp',
@@ -47,7 +49,10 @@
         err: null
       }
     },
-    computed: mapGetters(['errorMsg', 'successMsg']),
+    components: {
+      ClipLoader
+    },
+    computed: mapGetters(['errorMsg', 'successMsg', 'loading']),
     methods: {
       ...mapActions(['signUp', 'clearMsgs']),
       checkSignUp() {
