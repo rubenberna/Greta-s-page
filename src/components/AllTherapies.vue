@@ -44,7 +44,6 @@
 
 <style lang="scss" scoped>
   @import '../../style/main.scss';
-  @import url('https://fonts.googleapis.com/css?family=Raleway');
 
   .all-therapies {
     margin-top: 122px;
