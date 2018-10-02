@@ -16,11 +16,13 @@
     "axios": "^0.18.0",
     "firebase": "^5.4.2",
     "semantic-ui-vue": "^0.3.3",
+    "velocity-animate": "^2.0.5",
     "vue": "^2.5.17",
     "vue-flash-message": "^0.6.2",
     "vue-router": "^3.0.1",
     "vue-spinner": "^1.0.3",
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
+    "vuex-persistedstate": "^2.5.4"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.0.1",

@@ -8,13 +8,13 @@
           <h1 class="all-therapies-card-teaser">{{therapy.teaser}}</h1>
           <div class="all-therapies-card_container">
             <div class="all-therapies-card-image"
-                 @click.prevent="storeTherapy(therapy); router(`/therapy/${therapy.id}`)">
+                 @click.prevent="storeTherapy(therapy); router(`/therapy/${therapy.name}`)">
                <sui-image :src='therapy.image' size="large"/>
             </div>
             <div class="all-therapies-description">
               <p class="all-therapies-card-text">{{therapy.description}}</p>
                 <p class="all-therapies-card-text_more"
-                  @click.prevent="storeTherapy(therapy); router(`/therapy/${therapy.id}`)">
+                  @click.prevent="storeTherapy(therapy); router(`/therapy/${therapy.name}`)">
                   Read more
                   <i class="fas fa-book-open" style="color: grey"/>
                </p >

@@ -67,7 +67,7 @@ let router = new Router({
       component: About
     },
     {
-      path: '/therapy/:id',
+      path: '/therapy/:name',
       name: 'showTherapy',
       component: ShowTherapy
     },

@@ -15,7 +15,7 @@
             <sui-dropdown-menu>
                <sui-dropdown-item v-for='therapy in therapies' :key='therapy.id'>
                  <a
-                  @click.prevent="storeTherapy(therapy); router(`/therapy/${therapy.id}`)">
+                  @click.prevent="storeTherapy(therapy); router(`/therapy/${therapy.name}`)">
                   {{therapy.name}}
                 </a>
                </sui-dropdown-item>
