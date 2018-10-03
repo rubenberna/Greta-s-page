@@ -62,6 +62,7 @@
   .show {
     margin-top: 95px;
     margin-bottom: 95px;
+    padding-bottom: 40px;
     height: 140vh;
     background-size: cover !important;
     width: 100%;
