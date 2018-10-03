@@ -3,34 +3,33 @@
     <h5 class="all-therapies-label">Treatments</h5>
     <div class="row">
       <div class="all-therapies-group col-xs-6"
-      v-for="therapy in therapies"
-      :key="therapy.id">
-      <h1 class="all-therapies-card-teaser">{{therapy.teaser}}</h1>
-      <div class="all-therapies-card_container">
-        <div class="all-therapies-card-image">
-          <sui-image :src='therapy.image' size="large"/>
-        </div>
-        <div class="all-therapies-description">
-          <p class="all-therapies-card-text">
-            {{therapy.description}}
-          </p>
-          <p class="all-therapies-card-text_more">Read more ></p >
+           v-for="therapy in therapies"
+           :key="therapy.id">
+          <h1 class="all-therapies-card-teaser">{{therapy.teaser}}</h1>
+          <div class="all-therapies-card_container">
+            <div class="all-therapies-card-image"
+                 @click.prevent="storeTherapy(therapy); router(`/therapy/${therapy.name}`)">
+               <sui-image :src='therapy.image' size="large"/>
+            </div>
+            <div class="all-therapies-description">
+              <p class="all-therapies-card-text">{{therapy.description}}</p>
+                <p class="all-therapies-card-text_more"
+                  @click.prevent="storeTherapy(therapy); router(`/therapy/${therapy.name}`)">
+                  Read more
+                  <i class="fas fa-book-open" style="color: grey"/>
+               </p >
+            </div>
+          </div>
+            <div class="all-therapies-card-availability">
+              <Booking :therapy='therapy'></Booking>
           </div>
         </div>
-        <div class="all-therapies-card-availability">
-          <Booking :therapy='therapy'></Booking>
-          <!-- <sui-button>
-          {{therapy.availability}}
-        </sui-button> -->
-      </div>
-    </div>
-
     </div>
   </div>
 </template>
 
 <script>
-  import { mapGetters } from 'vuex'
+  import { mapGetters, mapActions } from 'vuex'
   import Booking from '@/components/Booking'
 
   export default {
@@ -38,6 +37,12 @@
     computed: mapGetters(['therapies']),
     components: {
       Booking
+    },
+    methods: {
+      ...mapActions(['storeTherapy']),
+      router(path) {
+        this.$router.push(path)
+      }
     }
   }
 </script>
@@ -48,7 +53,6 @@
   .all-therapies {
     margin-top: 122px;
     display: grid;
-    // justify-content: space-around;
     .all-therapies-label {
       text-transform: uppercase;
       font-family: "Open Sans";
@@ -94,6 +98,7 @@
           overflow: hidden;
           margin-right: 1px;
           width: 35%;
+          cursor: pointer;
           img {
             position: absolute;
             left: 50%;
@@ -135,6 +140,10 @@
               font-size: 15px;
             }
           }
+          .all-therapies-card-text_more {
+            color: $dark-grey;
+            cursor: pointer;
+          }
         }
       }
       .all-therapies-card-availability {
@@ -143,20 +152,6 @@
         align-items: flex-start;
         text-align: right;
         width: 91%;
-        button {
-          height: 38px;
-          padding: 9px 15px;
-          font-size: 11px;
-          letter-spacing: .10rem;
-          text-transform: uppercase;
-          border-right: 1px solid $light-grey;
-          border-bottom: 1px solid $light-grey;
-          border-radius: 0px;
-          background-color: white;
-          font-family: $font-family-p;
-          font-weight: $font-weight-p;
-          cursor: inherit;
-        }
       }
     }
   }

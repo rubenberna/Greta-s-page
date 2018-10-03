@@ -35,7 +35,6 @@
     justify-content: space-between;
     height: 120px;
     padding: 0px 50px;
-    // padding-top: 35px;
     color: $footer-font;
   }
   .footer-contacts {
@@ -51,17 +50,4 @@
       font-size: 10px;
     }
   }
-  // .footer-links a {
-  //   color: black;
-  //   opacity: 0.15;
-  //   text-decoration: none;
-  //   font-size: 24px;
-  //   padding: 0px 10px;
-  // }
-  // .footer-links a:hover {
-  //   opacity: 1;
-  // }
-  // .footer .fa-heart {
-  //   color: #D23333;
-  // }
 </style>

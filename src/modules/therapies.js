@@ -2,11 +2,13 @@ import db from '../apis/firebaseApi'
 import router from '../router'
 
 const state = {
-  therapies: []
+  therapies: [],
+  therapy: null
 }
 
 const getters = {
-  therapies: state => state.therapies
+  therapies: state => state.therapies,
+  therapy: state => state.therapy
 }
 
 const actions = {
@@ -21,12 +23,19 @@ const actions = {
   },
   uploadImage({ commit }, image) {
     db.uploadImage(image);
+  },
+  storeTherapy({ commit }, therapy) {
+    console.log(therapy);
+    commit('setTherapy', therapy)
   }
 }
 
 const mutations = {
   setTherapies: (state, therapies) => {
     state.therapies = therapies
+  },
+  setTherapy: (state, therapy) => {
+    state.therapy = therapy
   }
 }
 

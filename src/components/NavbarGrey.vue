@@ -13,7 +13,12 @@
         <sui-menu-menu position="right">
           <sui-dropdown text="Treatments">
             <sui-dropdown-menu>
-              <sui-dropdown-item v-for='therapy in therapies' :key='therapy.id'>{{therapy.name}}</sui-dropdown-item>
+               <sui-dropdown-item v-for='therapy in therapies' :key='therapy.id'>
+                 <a
+                  @click.prevent="storeTherapy(therapy); router(`/therapy/${therapy.name}`)">
+                  {{therapy.name}}
+                </a>
+               </sui-dropdown-item>
             </sui-dropdown-menu>
           </sui-dropdown>
         </sui-menu-menu>
@@ -65,7 +70,7 @@
       ...mapGetters(['therapies', 'currentUser', 'profile'])
     },
     methods: {
-      ...mapActions(['fetchTherapies', 'logout', 'loggedIn', 'getProfile']),
+      ...mapActions(['fetchTherapies', 'logout', 'loggedIn', 'getProfile', 'storeTherapy']),
       isActive(name) {
         return this.active === name;
       },
@@ -99,6 +104,7 @@
         display: flex;
         align-items: center;
         font-size: 17px;
+        margin-left: 3px;
         &:hover {
           color: $dark-grey !important;
           opacity: 0.8;
@@ -133,4 +139,9 @@
       }
     }
   }
+  .therapy-item {
+    color: $dark-grey;
+    text-decoration: none;
+  }
+
 </style>

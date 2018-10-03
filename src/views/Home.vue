@@ -1,7 +1,6 @@
 <template>
   <div id="home">
     <banner/>
-    <!-- <intro/> -->
     <allTherapies/>
   </div>
 </template>

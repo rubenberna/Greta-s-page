@@ -4,15 +4,16 @@ import router from './router'
 import firebase from 'firebase'
 import '../db/firebaseInit'
 import store from './store'
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCoffee } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-
-library.add(faCoffee)
-
-Vue.component('font-awesome-icon', FontAwesomeIcon)
+import * as VueGoogleMaps from "vue2-google-maps";
 
 Vue.config.productionTip = false
+
+Vue.use(VueGoogleMaps, {
+  load: {
+    key: process.env.VUE_APP_GOOGLE_KEY,
+    libraries: "places" // necessary for places input
+  }
+});
 
 let app
 

@@ -23,7 +23,7 @@ export default {
 
   .banner {
     color: white;
-    height: 75vh;
+    height: 100vh;
     background-size: cover !important;
     .banner-title {
       height: 100%;
