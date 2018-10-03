@@ -31,14 +31,12 @@
         </div>
         <div class="show-knobs_item">
           <i class="far fa-check-square"></i>
-          <span>Schedule and appointment!</span>
+          <span>Schedule an appointment!</span>
         </div>
       </div>
-
-      <div class="show-map">
-
-      </div>
-
+    </div>
+    <div class="show-map">
+      <google-map/>
     </div>
   </div>
 </template>
@@ -46,11 +44,13 @@
 <script>
   import NavbarGrey from '@/components/NavbarGrey'
   import { mapGetters } from 'vuex'
+  import GoogleMap from '@/components/GoogleMap'
 
   export default {
     name: 'about',
     components: {
-      NavbarGrey
+      NavbarGrey,
+      GoogleMap
     },
     computed: mapGetters(['therapy'])
   }
@@ -62,7 +62,7 @@
   .show {
     margin-top: 95px;
     margin-bottom: 95px;
-    height: 160vh;
+    height: 140vh;
     background-size: cover !important;
     width: 100%;
     background-repeat: no-repeat;
@@ -114,33 +114,50 @@
       margin-top: 50px;
       .show-knobs_item {
         color: white;
-        font-size: 17px;
+        font-size: 19px;
         font-weight: bolder;
-        margin-left: 60px;
+        transition: all 0.5s;
+        width: 265px;
+        height: 100px;
+        &:hover {
+          opacity: 0.8;
+        }
         &:first-of-type {
-          margin-left: 90px;
+          margin-left: 88px;
+          display: flex;
+          align-items: center;
+          font-size: 20px;
           img {
             filter: brightness(0) invert(1);
+            margin-right: 5px;
+            width: 27%;
+            height: auto;
           }
         }
         &:nth-of-type(2) {
-          margin-left: 95px;
+          margin-left: -70px;
+          display: flex;
+          align-items: center;
           img {
             filter: brightness(0) invert(1);
-            width: 23%;
+            width: 27%;
           }
         }
         &:nth-of-type(3){
           display: flex;
           align-items: center;
-          margin-left: -15px;
+          margin-left: 50px;
+          cursor: pointer;
           i {
-            font-size: 40px;
+            font-size: 70px;
             margin-right: 10px;
           }
         }
       }
     }
+  }
+  .show-map {
+    margin-bottom: 95px;
   }
 
 

@@ -50,15 +50,6 @@
           <input id="availability" type="text" class="validate" v-model='therapy.availability'>
           <label for="availability">Availability</label>
         </div>
-        <div class="input-field col s4">
-          <select v-model='therapy.therapist'>
-            <option value="" disabled selected>Please select </option>
-            <option value="1">Greta Lowel</option>
-            <option value="2">Option 2</option>
-            <option value="3">Option 3</option>
-          </select>
-          <label>Therapist</label>
-        </div>
       </div>
       <a class="waves-effect waves-light btn" style="color:white" @click='createTherapy(therapy)'>create</a>
     </form>
