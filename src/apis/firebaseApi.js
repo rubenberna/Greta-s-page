@@ -153,5 +153,33 @@ export default {
     }).catch((err) => {
       store.dispatch('recordError', err.message)
     })
-  }
+  },
+  async fetchEvents() {
+    const result = []
+    await db.eventsCollection.get()
+    .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        const data = {
+          'id': doc.id,
+          'name': doc.data().name,
+          'address': doc.data().address,
+          'description': doc.data().description,
+          'date': doc.data().date,
+        }
+        result.push(data)
+      })
+    })
+    return result;
+  },
+  createEvent(newEvent) {
+   db.eventsCollection.add({
+     name: newEvent.name,
+     description: newEvent.description,
+     date: newEvent.date,
+     address: newEvent.address
+   })
+     .then(ref => {
+       console.log('Added document with ID: ', ref.id);
+     })
+ },
 }

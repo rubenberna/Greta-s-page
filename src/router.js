@@ -5,7 +5,9 @@ import Home from './views/Home.vue'
 import About from './views/About.vue'
 import Manage from './views/Manage.vue'
 import NewTherapy from './views/NewTherapy.vue'
+import NewEvent from './views/NewEvent.vue'
 import EditTherapy from './views/EditTherapy.vue'
+import EditEvent from './views/EditEvent.vue'
 import ShowTherapy from './views/ShowTherapy.vue'
 import Login from './views/Login.vue'
 import SignUp from './views/SignUp.vue'
@@ -38,7 +40,7 @@ let router = new Router({
       }
     },
     {
-      path: '/new',
+      path: '/newtherapy',
       name: 'newTherapy',
       component: NewTherapy,
       meta: {
@@ -49,6 +51,22 @@ let router = new Router({
       path: '/edit/:therapy_id',
       name: 'editTherapy',
       component: EditTherapy,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/newevent',
+      name: 'newEvent',
+      component: NewEvent,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/edit/:event_id',
+      name: 'editEvent',
+      component: EditEvent,
       meta: {
         requiresAuth: true
       }
