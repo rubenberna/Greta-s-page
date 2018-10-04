@@ -5,17 +5,18 @@
            v-for="therapy in therapies"
            :key="therapy.id">
           <h1 class="all-therapies-card-teaser">{{therapy.name}}</h1>
-          <div class="all-therapies-card_container">
-            <div class="all-therapies-card-image"
-                 @click.prevent="storeTherapy(therapy); router(`/therapy/${therapy.name}`)">
+          <div class="all-therapies-card_container"
+                @click.prevent="storeTherapy(therapy); router(`/therapy/${therapy.name}`)">
+            <div class="all-therapies-card-image">
                <sui-image :src='therapy.image' size="large"/>
             </div>
             <div class="all-therapies-description">
-              <p class="all-therapies-card-text">{{therapy.description}}</p>
-                <p class="all-therapies-card-text_more"
-                  @click.prevent="storeTherapy(therapy); router(`/therapy/${therapy.name}`)">
-                  Read more
-               </p >
+              <p class="all-therapies-card-text">
+                  {{therapy.description}}
+              </p>
+              <p class="all-therapies-card-text_more">
+                Read more
+             </p >
             </div>
           </div>
             <div class="all-therapies-card-availability">
@@ -60,13 +61,14 @@
       width: 600px;
       height: 400px;
       box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
-      background: $white;
+      background: rgba(177, 209, 197, 0.4);
       margin-bottom: 78px;
       padding: 9px;
       margin: 11px;
       transition: all 1s;
       &:hover {
         box-shadow: 2px 6px 9px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
+        background: rgba(177, 209, 197, 0.8);
       }
 
       .all-therapies-card-teaser {
@@ -86,13 +88,13 @@
         padding-top: 16px;
         padding-bottom: 16px;
         height: 65%;
+        cursor: pointer;
 
         .all-therapies-card-image {
           position: relative;
           overflow: hidden;
           margin-right: 1px;
           width: 35%;
-          cursor: pointer;
           img {
             position: absolute;
             left: 50%;
@@ -137,7 +139,6 @@
           }
           .all-therapies-card-text_more {
             color: $color-text;
-            cursor: pointer;
           }
         }
       }

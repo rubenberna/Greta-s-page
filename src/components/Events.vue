@@ -15,6 +15,9 @@
           </div>
         </div>
       </div>
+      <div class="separation">
+        <span/>
+      </div>
   </div>
   </div>
 </template>
@@ -40,10 +43,9 @@
 
   .events-frame {
     display: flex;
-    height: 605px;
+    height: 546px;
     justify-content: space-around;
     align-items: flex-start;
-    margin-bottom: 50px;
 
     .events-frame-image {
       height: 100%;
@@ -96,6 +98,14 @@
         }
       }
     }
+  }
+
+  .separation {
+    width: 50%;
+    height: 100px;
+    display: flex;
+    border-right: 7px solid black;
+    margin: 30px 0 30px 0;
   }
 
 </style>
