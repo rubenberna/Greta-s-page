@@ -1,4 +1,4 @@
-import db from '../apis/firebaseApi'
+import db from '../apis/firebaseApiTherapies'
 import router from '../router'
 
 const state = {
@@ -21,7 +21,7 @@ const actions = {
     db.createTherapy(therapy);
     router.push('/management');
   },
-  uploadImage({ commit }, image) {
+  uploadImageTherapy({ commit }, image) {
     db.uploadImage(image);
   },
   storeTherapy({ commit }, therapy) {

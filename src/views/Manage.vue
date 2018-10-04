@@ -28,7 +28,7 @@
         </sui-table-body>
       </sui-table>
       <div class="fixed-action-btn">
-        <router-link to='/new' class="btn-floating btn-large green">
+        <router-link to='/newtherapy' class="btn-floating btn-large green">
           <i class="fa fa-plus"></i>
         </router-link>
       </div>

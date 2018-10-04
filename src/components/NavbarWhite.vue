@@ -35,6 +35,10 @@
                        class='profile-menu'>
           <sui-dropdown :text='profile.name'>
             <sui-dropdown-menu>
+              <sui-dropdown-item v-if='profile.isAdmin'
+                                 @click.prevent="router('/management');">
+                Manage
+              </sui-dropdown-item>
               <sui-dropdown-item @click='logout'>
                 Logout
               </sui-dropdown-item>
@@ -95,7 +99,7 @@
     padding-left: 30px;
     .navbar-menu {
       height: 65px;
-      color: white;
+      color: $white;
       display: flex;
       justify-content: flex-end;
       align-items: flex-end;
@@ -106,11 +110,11 @@
         font-size: 17px;
         margin-left: 3px;
         &:hover {
-          color: white !important;
+          color: $white !important;
           opacity: 0.8;
         }
         .menu>.item {
-          color: $dark-grey !important;
+          color: $color-heading !important;
           &:hover {
             color: black !important;
           }
@@ -121,29 +125,29 @@
         border-bottom: 0px;
         .item {
           font-size: 17px;
-          color: white;
+          color: $white;
           &:hover {
-            color: white !important;
+            color: $white !important;
             opacity: 0.8;
             }
         }
         .active.item {
-          color: white;
-          border-bottom: 2px solid white;
+          color: $white;
+          border-bottom: 2px solid $white;
           &:hover {
-            color: white;
+            color: $white;
             opacity: 0.8;
             border-color: white;
           }
         }
       }
       .profile-menu {
-        padding-left: 25px;
+
       }
     }
   }
   .therapy-item {
-    color: $dark-grey;
+    color: $color-text;
     text-decoration: none;
   }
 

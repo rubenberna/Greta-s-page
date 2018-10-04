@@ -19,11 +19,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import url('https://fonts.googleapis.com/css?family=Raleway');
+  @import '../../style/main.scss';
 
   .banner {
-    color: white;
-    height: 100vh;
+    color: $white;
+    height: 70vh;
     background-size: cover !important;
     .banner-title {
       height: 100%;
@@ -32,7 +32,7 @@ export default {
       align-items: center;
       h1 {
         margin-bottom: 300px;
-        font-family: 'Raleway', sans-serif;
+        font-family: $font-banner;
         font-size: 60px;
         font-weight: bolder;
       }

@@ -1,23 +1,22 @@
 <template>
   <div class="all-therapies container">
-    <h5 class="all-therapies-label">Treatments</h5>
     <div class="row">
       <div class="all-therapies-group col-xs-6"
            v-for="therapy in therapies"
            :key="therapy.id">
-          <h1 class="all-therapies-card-teaser">{{therapy.teaser}}</h1>
-          <div class="all-therapies-card_container">
-            <div class="all-therapies-card-image"
-                 @click.prevent="storeTherapy(therapy); router(`/therapy/${therapy.name}`)">
+          <h1 class="all-therapies-card-teaser">{{therapy.name}}</h1>
+          <div class="all-therapies-card_container"
+                @click.prevent="storeTherapy(therapy); router(`/therapy/${therapy.name}`)">
+            <div class="all-therapies-card-image">
                <sui-image :src='therapy.image' size="large"/>
             </div>
             <div class="all-therapies-description">
-              <p class="all-therapies-card-text">{{therapy.description}}</p>
-                <p class="all-therapies-card-text_more"
-                  @click.prevent="storeTherapy(therapy); router(`/therapy/${therapy.name}`)">
-                  Read more
-                  <i class="fas fa-book-open" style="color: grey"/>
-               </p >
+              <p class="all-therapies-card-text">
+                  {{therapy.description}}
+              </p>
+              <p class="all-therapies-card-text_more">
+                Read more
+             </p >
             </div>
           </div>
             <div class="all-therapies-card-availability">
@@ -31,12 +30,16 @@
 <script>
   import { mapGetters, mapActions } from 'vuex'
   import Booking from '@/components/Booking'
+  import Heading from '@/components/typography/Heading';
+  import BodyText from '@/components/typography/BodyText';
 
   export default {
     name: 'allTherapies',
     computed: mapGetters(['therapies']),
     components: {
-      Booking
+      Booking,
+      Heading,
+      BodyText
     },
     methods: {
       ...mapActions(['storeTherapy']),
@@ -53,38 +56,31 @@
   .all-therapies {
     margin-top: 122px;
     display: grid;
-    .all-therapies-label {
-      text-transform: uppercase;
-      font-family: "Open Sans";
-      margin-bottom: 20px;
-      font-weight: $font-weight-p;
-      letter-spacing: .24rem;
-      line-height: 1.8;
-      font-style: normal;
-      font-size: 18px;
-      margin-left: 11px;
-    }
 
     .all-therapies-group {
       width: 600px;
       height: 400px;
       box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
-      background: white;
+      background: rgba(177, 209, 197, 0.4);
       margin-bottom: 78px;
       padding: 9px;
       margin: 11px;
       transition: all 1s;
       &:hover {
-        box-shadow: 2px 4px 7px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
+        box-shadow: 2px 6px 9px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
+        background: rgba(177, 209, 197, 0.8);
       }
 
       .all-therapies-card-teaser {
         justify-content: center;
         width: 100%;
         line-height: 1.2;
-        font-weight: 400px;
+        font-weight: $semibold;
         padding-left: 16px;
         padding-top: 16px;
+        font-family: $font-family-h;
+        font-size: $heading-size-m;
+        opacity: 0.8;
       }
       .all-therapies-card_container {
         display: flex;
@@ -92,13 +88,13 @@
         padding-top: 16px;
         padding-bottom: 16px;
         height: 65%;
+        cursor: pointer;
 
         .all-therapies-card-image {
           position: relative;
           overflow: hidden;
           margin-right: 1px;
           width: 35%;
-          cursor: pointer;
           img {
             position: absolute;
             left: 50%;
@@ -123,8 +119,9 @@
           height: 80%;
           display: inline-block; /* Fallback for non-webkit */
           display: -webkit-inline-box;
-          color: grey;
+          color: $color-text-light;
           p {
+            font-family: $font-family-p;
             display: inline-block; /* Fallback for non-webkit */
             display: -webkit-inline-box;
             height: $font-size*$line-height*$lines-to-show; /* Fallback for non-webkit */
@@ -141,8 +138,7 @@
             }
           }
           .all-therapies-card-text_more {
-            color: $dark-grey;
-            cursor: pointer;
+            color: $color-text;
           }
         }
       }
@@ -154,10 +150,6 @@
         width: 91%;
       }
     }
-  }
-
-  h1 {
-    font-size: 2.4rem;
   }
 
 </style>

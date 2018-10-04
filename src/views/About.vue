@@ -85,6 +85,7 @@
           align-items: center;
           background: white;
           padding: 80px;
+          font-size: $font-size-xl;
         }
         .about-image {
           width: 50%;

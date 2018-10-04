@@ -14,7 +14,6 @@ export default {
         const data = {
           'id': doc.id,
           'name': doc.data().name,
-          'teaser': doc.data().teaser,
           'description': doc.data().description,
           'method': doc.data().method,
           'indications': doc.data().indications,
@@ -31,7 +30,6 @@ export default {
    createTherapy(therapy) {
     db.therapiesCollection.add({
       name: therapy.name,
-      teaser: therapy.teaser,
       description: therapy.description,
       method: therapy.method,
       indications: therapy.indications,
@@ -54,7 +52,6 @@ export default {
     const uploadTask = imageRef.put(image, metadata);
     uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
       snapshot => {
-        // const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         console.log('Upload is ' + '% done');
         switch (snapshot.case) {
           case firebase.storage.TaskState.PAUSED:
@@ -153,5 +150,33 @@ export default {
     }).catch((err) => {
       store.dispatch('recordError', err.message)
     })
-  }
+  },
+  async fetchEvents() {
+    const result = []
+    await db.eventsCollection.get()
+    .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        const data = {
+          'id': doc.id,
+          'name': doc.data().name,
+          'address': doc.data().address,
+          'description': doc.data().description,
+          'date': doc.data().date,
+        }
+        result.push(data)
+      })
+    })
+    return result;
+  },
+  createEvent(newEvent) {
+   db.eventsCollection.add({
+     name: newEvent.name,
+     description: newEvent.description,
+     date: newEvent.date,
+     address: newEvent.address
+   })
+     .then(ref => {
+       console.log('Added document with ID: ', ref.id);
+     })
+ },
 }

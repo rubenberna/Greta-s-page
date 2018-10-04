@@ -54,10 +54,11 @@
     border-radius: 0px;
     background-color: white;
     font-family: $font-family-p;
-    font-weight: $font-weight-p;
+    font-weight: $normal;
     transition: all 1s;
     &:hover{
-      background-color: $green;
+      background-color: $white;
+      border-radius: 4px;
     }
   }
 </style>
