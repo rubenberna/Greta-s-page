@@ -8,6 +8,16 @@
           <input id="name" type="text" class="validate" v-model='event.name'>
           <label for="name">Name of event</label>
         </div>
+        <div class="file-field input-field col s4">
+          <div class="btn">
+            <span>Image</span>
+            <input type="file"
+            @change='onFileSelect($event.target.files[0])'>
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text">
+          </div>
+        </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
@@ -42,11 +52,17 @@
           name: null,
           description: null,
           date: null,
-          address: null
+          address: null,
+          image: null
         }
       }
     },
-    methods: mapActions(['createEvent'])
+    methods: {
+      ...mapActions(['createEvent', 'uploadImageEvent']),
+      onFileSelect(image) {
+        this.uploadImageEvent(image)
+      }
+    }
   }
 </script>
 

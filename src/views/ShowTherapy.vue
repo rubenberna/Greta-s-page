@@ -10,7 +10,7 @@
           <p class="show-board-item_text">{{ therapy.description }}</p>
         </div>
         <div class="show-board-item">
-          <h5 class="show-board-item_title">How does it work?</h5>
+          <h5 class="show-board-item_title">How it works</h5>
           <p class="show-board-item_text">{{ therapy.method }}</p>
         </div>
         <div class="show-board-item">
@@ -93,6 +93,7 @@
         align-items: center;
         background: white;
         padding: 60px;
+        overflow-y: scroll;
         .show-board-item_title {
           display: inline-block;
           border-bottom: 3px solid #231f20;
@@ -136,7 +137,7 @@
           }
         }
         &:nth-of-type(2) {
-          margin-left: -70px;
+          margin-left: -35px;
           display: flex;
           align-items: center;
           img {

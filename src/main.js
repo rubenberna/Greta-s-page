@@ -6,6 +6,13 @@ import '../db/firebaseInit'
 import store from './store'
 import * as VueGoogleMaps from "vue2-google-maps";
 
+const moment = require('moment')
+require('moment/locale/nl')
+
+Vue.use(require('vue-moment'), {
+    moment
+})
+
 Vue.config.productionTip = false
 
 Vue.use(VueGoogleMaps, {

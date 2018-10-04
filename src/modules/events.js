@@ -1,4 +1,4 @@
-import db from '../apis/firebaseApi'
+import db from '../apis/firebaseApiEvents'
 import router from '../router'
 
 const state = {
@@ -19,7 +19,10 @@ const actions = {
   createEvent({ commit }, newEvent) {
     db.createEvent(newEvent);
     router.push('/management');
-  }
+  },
+  uploadImageEvent({ commit }, image) {
+    db.uploadImage(image);
+  },
 }
 
 const mutations = {

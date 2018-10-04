@@ -35,6 +35,10 @@
                        class='profile-menu'>
           <sui-dropdown :text='profile.name'>
             <sui-dropdown-menu>
+              <sui-dropdown-item v-if='profile.isAdmin'
+                                 @click.prevent="router('/management');">
+                Manage
+              </sui-dropdown-item>
               <sui-dropdown-item @click='logout'>
                 Logout
               </sui-dropdown-item>
@@ -95,7 +99,7 @@
     padding-left: 30px;
     .navbar-menu {
       height: 65px;
-      color: $dark-grey;
+      color: $color-heading;
       display: flex;
       justify-content: flex-end;
       align-items: flex-end;
@@ -106,7 +110,7 @@
         font-size: 17px;
         margin-left: 3px;
         &:hover {
-          color: $dark-grey !important;
+          color: $color-heading !important;
           opacity: 0.8;
         }
         .menu>.item:hover {
@@ -118,29 +122,29 @@
         border-bottom: 0px;
         .item {
           font-size: 17px;
-          color: $dark-grey;
+          color: $color-heading;
           &:hover {
-            color: $dark-grey !important;
+            color: $color-heading !important;
             opacity: 0.8;
             }
         }
         .active.item {
-          color: $dark-grey;
-          border-bottom: 2px solid $dark-grey;
+          color: $color-heading;
+          border-bottom: 2px solid $color-heading;
           &:hover {
-            color: $dark-grey;
+            color: $color-heading;
             opacity: 0.8;
-            border-color: $dark-grey;
+            border-color: $color-heading;
           }
         }
       }
       .profile-menu {
-        padding-left: 25px;
+
       }
     }
   }
   .therapy-item {
-    color: $dark-grey;
+    color: $color-heading;
     text-decoration: none;
   }
 

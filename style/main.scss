@@ -1,5 +1,4 @@
 // Media Query Ranges
-
 $small-screen-up: 601px !default;
 $medium-screen-up: 993px !default;
 $large-screen-up: 1201px !default;
@@ -14,24 +13,59 @@ $small-and-down: "only screen and (max-width : #{$small-screen})" !default;
 $medium-and-down: "only screen and (max-width : #{$medium-screen})" !default;
 $medium-only: "only screen and (min-width : #{$small-screen-up}) and (max-width : #{$medium-screen})" !default;
 
-// Colors
-
-$dark-grey: #494949;
+// Primary Colors
 $success: #16AB39;
-$danger: #D01919;
-$light-grey: rgba(0,0,0,0.3);
-$text-color: rgba(73, 73, 73, 0.80);
+$watermelon: #FF4961;
+$white: #FFFFFF;
+$charcoal-grey: #353745;
+$steel: #898EA2;
+$pale-grey: #E4E5EC;
 $green: #b1d1c5;
+$flower: #7C264D;
+$flower-light: #F6B9D3;
+$bush: #747357;
 $about-background: #e3dfdb;
 $footer-background: #343434;
 $footer-font: #828386;
 
-// 3. Fonts
+// Font-colors
+$color-heading: $charcoal-grey;
+$color-heading-secondary: $pale-grey;
+$color-text-danger: $watermelon;
+$color-text: $charcoal-grey;
+$color-text-light: $steel;
+$color-text-lighter: $white;
 
-// Paragraph
+// Fonts-sizes
+$heading-size-xs: 0.9rem;
+$heading-size-s: 1.2rem;
+$heading-size-m: 1.9rem;
+$heading-size-l: 2.5rem;
+$heading-size-xl: 3rem;
+$font-size-xs: 0.65rem;
+$font-size-s: 0.75rem;
+$font-size-m: 0.9rem;
+$font-size-l: 1rem;
+$font-size-xl: 1.1rem;
 
-$font-family-p: 'Open sans', 'Helvetica';
-$font-size-p: 1.4rem;
-$font-weight-p: 300;
-$line-height-p: 2.8;
-$color-p: rgba(0,0,0,0.75);
+
+// Font-family
+@import url("https://fonts.googleapis.com/css?family=Archivo|Great+Vibes|Homemade+Apple|La+Belle+Aurore|Mr+Dafoe|Montserrat");
+
+$font-family-p: 'Archivo', sans-serif;
+$font-family-h: 'Circular',sans-serif;
+$font-banner: 'Homemade Apple', cursive;
+
+// Font weight
+$normal: 400;
+$semibold: 600;
+$bold: 700;
+
+// Font spacing
+$line-height-diff: 0.5rem;
+$line-height-xs: $font-size-xs + $line-height-diff;
+$line-height-s: $font-size-s + $line-height-diff;
+$line-height-m: $font-size-m + $line-height-diff;
+$line-height-l: $font-size-l + $line-height-diff;
+$line-height-xl: $font-size-xl + $line-height-diff;
+$letter-spacing: 0.008rem;

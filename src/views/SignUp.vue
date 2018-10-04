@@ -85,7 +85,7 @@
       font-weight: bold;
     }
     .signUp-error_msg {
-      color: $danger;
+      color: $color-text-danger;
       padding-top: 10px;
     }
   }

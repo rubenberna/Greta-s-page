@@ -1,4 +1,4 @@
-import db from '../apis/firebaseApi'
+import db from '../apis/firebaseApiAuth'
 import router from '../router'
 
 const state = {
@@ -24,12 +24,12 @@ const getters = {
 const actions = {
   async login({ commit }, user) {
     commit('setLoadding', true)
-    const log = await db.login(user)
+    db.login(user)
     commit ('setLoadding', false)
   },
   async signUp({ commit }, user) {
     commit('setLoadding', true)
-    const sign = await db.signUp(user)
+    db.signUp(user)
     commit ('setLoadding', false)
   },
   async loggedIn({ commit }) {

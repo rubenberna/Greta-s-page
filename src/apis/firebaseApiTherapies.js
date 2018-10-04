@@ -14,7 +14,6 @@ export default {
         const data = {
           'id': doc.id,
           'name': doc.data().name,
-          'teaser': doc.data().teaser,
           'description': doc.data().description,
           'method': doc.data().method,
           'indications': doc.data().indications,
@@ -31,7 +30,6 @@ export default {
    createTherapy(therapy) {
     db.therapiesCollection.add({
       name: therapy.name,
-      teaser: therapy.teaser,
       description: therapy.description,
       method: therapy.method,
       indications: therapy.indications,
@@ -54,7 +52,6 @@ export default {
     const uploadTask = imageRef.put(image, metadata);
     uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
       snapshot => {
-        // const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         console.log('Upload is ' + '% done');
         switch (snapshot.case) {
           case firebase.storage.TaskState.PAUSED:

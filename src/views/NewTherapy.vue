@@ -8,10 +8,6 @@
           <input id="name" type="text" class="validate" v-model='therapy.name'>
           <label for="name">Name of therapy</label>
         </div>
-        <div class="input-field col s4">
-          <input id="input_text" type="text" class="validate" data-length="25" v-model='therapy.teaser'>
-          <label for="input_text">Teaser</label>
-        </div>
         <div class="file-field input-field col s4">
           <div class="btn">
             <span>Image</span>
@@ -77,9 +73,9 @@
       }
     },
     methods: {
-      ...mapActions(['createTherapy', 'uploadImage']),
+      ...mapActions(['createTherapy', 'uploadImageTherapy']),
       onFileSelect(image) {
-        this.uploadImage(image)
+        this.uploadImageTherapy(image)
       }
     }
   }

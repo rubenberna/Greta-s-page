@@ -98,7 +98,7 @@
       font-weight: bold;
     }
     .login-reset-password_error {
-      color: $danger;
+      color: $color-text-danger;
     }
     .login-reset-password_success {
       color: $success;
@@ -118,12 +118,12 @@
       label {
         color: black;
         &:last-child {
-          color: #bbbbbb;
+          color: $color-text-light;
           align-self: flex-end;
           font-weight: lighter;
           cursor: pointer;
           &:hover {
-            color: $dark-grey;
+            color: $color-text;
           }
         }
       }
