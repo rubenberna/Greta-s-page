@@ -74,7 +74,7 @@
       ...mapGetters(['therapies', 'currentUser', 'profile'])
     },
     methods: {
-      ...mapActions(['fetchTherapies', 'logout', 'loggedIn', 'getProfile', 'storeTherapy']),
+      ...mapActions(['logout', 'loggedIn', 'getProfile', 'storeTherapy']),
       isActive(name) {
         return this.active === name;
       },
@@ -86,7 +86,6 @@
       }
     },
     created() {
-      this.fetchTherapies();
       this.loggedIn();
     }
   }

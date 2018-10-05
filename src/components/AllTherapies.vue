@@ -1,5 +1,14 @@
 <template>
   <div class="all-therapies container">
+    <div class="all-therapies-intro">
+      <heading weight='bold'
+               size='l'>
+        A catching phrase about the therapies
+      </heading>
+      <body size='xl'>
+          A segment to make an introduction to your therapies
+      </body>
+    </div>
     <div class="row">
       <div class="all-therapies-group col-xs-6"
            v-for="therapy in therapies"
@@ -34,7 +43,7 @@
   import { mapGetters, mapActions } from 'vuex'
   import Booking from '@/components/Booking'
   import Heading from '@/components/typography/Heading';
-  import BodyText from '@/components/typography/BodyText';
+  import Body from '@/components/typography/Body';
 
   export default {
     name: 'allTherapies',
@@ -42,7 +51,7 @@
     components: {
       Booking,
       Heading,
-      BodyText
+      Body
     },
     methods: {
       ...mapActions(['storeTherapy']),

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="events container" v-for="ev in events" :key="ev.id">
+    <div class="events container" v-for="ev in futureEvents" :key="ev.id">
       <div class="events-frame">
         <div class="events-frame-image">
           <img :src='ev.image'>
@@ -36,10 +36,8 @@
       ...mapGetters(['events', 'futureEvents']),
     },
     methods: {
-      ...mapActions(['fetchEvents'])
     },
     created() {
-      this.fetchEvents()
     }
   }
 </script>

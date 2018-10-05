@@ -1,5 +1,5 @@
 <template>
-  <p class='body-text'
+  <p class='body'
      :class='objectClass'>
     <slot/>
   </p>
@@ -7,7 +7,7 @@
 
 <script>
   export default {
-    name: 'heading',
+    name: 'body',
     props: {
       size: {
         type: String,
@@ -72,30 +72,30 @@
 <style lang='scss' scoped>
   @import '../../../style/main';
 
-  .heading {
+  .body {
     font-weight: $normal;
     font-family: $font-family-p;
     $color: $color-text;
 
     &.xs {
-      font-size: $heading-size-xs;
-      line-height: $heading-size-xs + $line-height-diff;
+      font-size: $font-size-xs;
+      line-height: $font-size-xs + $line-height-diff;
     }
     &.s {
-      font-size: $heading-size-s;
-      line-height: $heading-size-s + $line-height-diff;
+      font-size: $font-size-s;
+      line-height: $font-size-s + $line-height-diff;
     }
     &.m {
-      font-size: $heading-size-m;
-      line-height: $heading-size-m + $line-height-diff;
+      font-size: $font-size-m;
+      line-height: $font-size-m + $line-height-diff;
     }
     &.l {
-      font-size: $heading-size-l;
-      line-height: $heading-size-l + $line-height-diff;
+      font-size: $font-size-l;
+      line-height: $font-size-l + $line-height-diff;
     }
     &.xl {
-      font-size: $heading-size-xl;
-      line-height: $heading-size-xl + $line-height-diff;
+      font-size: $font-size-xl;
+      line-height: $font-size-xl + $line-height-diff;
     }
     &.uppercase {
       text-transform: uppercase;
