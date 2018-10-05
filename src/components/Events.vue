@@ -65,6 +65,7 @@
       justify-content: space-around;
       align-items: flex-start;
       margin-left: 23px;
+      margin-top: 15px;
 
       .events-frame-image {
         height: 100%;

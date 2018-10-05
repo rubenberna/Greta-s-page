@@ -9,7 +9,14 @@ const getters = {
 }
 
 const actions = {
-
+  register({ commit }, newsletterData) {
+    db.register(newsletterData)
+  },
+  async fetchNewsletter({ commit }) {
+    commit('setNewsletterUsers', null)
+    const response = await db.fetchNewsletter()
+    console.log(response);
+  }
 }
 
 const mutations = {

@@ -46,10 +46,11 @@
       ...mapGetters(['therapies'])
     },
     methods: {
-      ...mapActions(['fetchTherapies'])
+      ...mapActions(['fetchTherapies', 'fetchNewsletter'])
     },
     created() {
       this.fetchTherapies()
+      this.fetchNewsletter()
     },
     components: {
       NavbarGrey
