@@ -55,6 +55,7 @@
     margin-top: 95px;
     margin-bottom: 95px;
     color: black;
+    cursor: default;
     .about.container {
       .title {
         display: inline-block;

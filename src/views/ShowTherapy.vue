@@ -94,6 +94,7 @@
         background: white;
         padding: 60px;
         overflow-y: scroll;
+        cursor: default;
         .show-board-item_title {
           display: inline-block;
           border-bottom: 3px solid #231f20;
@@ -129,6 +130,7 @@
           display: flex;
           align-items: center;
           font-size: 20px;
+          cursor: default;
           img {
             filter: brightness(0) invert(1);
             margin-right: 5px;
@@ -140,6 +142,7 @@
           margin-left: -35px;
           display: flex;
           align-items: center;
+          cursor: default;
           img {
             filter: brightness(0) invert(1);
             width: 27%;

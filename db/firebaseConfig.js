@@ -1,5 +1,5 @@
 export default {
-  apiKey: "AIzaSyCAt6lTrrjUIEyhIUXxsu4ecg90TaMTWhw",
+  apiKey: `${process.env.VUE_APP_FIREBASE_KEY}`,
   authDomain: "greta-f481d.firebaseapp.com",
   databaseURL: "https://greta-f481d.firebaseio.com",
   projectId: "greta-f481d",
