@@ -1,13 +1,13 @@
 <template>
-  <div class="all-therapies container">
+  <div class="all-therapies">
     <div class="all-therapies-intro">
       <heading weight='bold'
                size='l'>
         A catching phrase about the therapies
       </heading>
-      <body size='xl'>
-          A segment to make an introduction to your therapies
-      </body>
+      <paragraph size='xl'>
+          A text to make an introduction to your therapies
+      </paragraph>
     </div>
     <div class="row">
       <div class="all-therapies-group col-xs-6"
@@ -43,7 +43,7 @@
   import { mapGetters, mapActions } from 'vuex'
   import Booking from '@/components/Booking'
   import Heading from '@/components/typography/Heading';
-  import Body from '@/components/typography/Body';
+  import Paragraph from '@/components/typography/Paragraph';
 
   export default {
     name: 'allTherapies',
@@ -51,7 +51,7 @@
     components: {
       Booking,
       Heading,
-      Body
+      Paragraph
     },
     methods: {
       ...mapActions(['storeTherapy']),
@@ -66,18 +66,23 @@
   @import '../../style/main.scss';
 
   .all-therapies {
-    margin-top: 122px;
+    margin: 95px 0 0 95px;
     display: grid;
+
+    .all-therapies-intro {
+      padding: 20px;
+    }
 
     .all-therapies-group {
       width: 600px;
       height: 400px;
       box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
       background: rgba(177, 209, 197, 0.3);
+      // background: $white;
       margin-bottom: 78px;
       padding: 9px;
-      margin: 11px;
-      transition: all 1s;
+      margin: 18px;
+      transition: all 0.5s;
       &:hover {
         box-shadow: 2px 6px 9px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
       }

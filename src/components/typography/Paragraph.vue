@@ -1,5 +1,5 @@
 <template>
-  <p class='body'
+  <p class='paragraph'
      :class='objectClass'>
     <slot/>
   </p>
@@ -7,7 +7,7 @@
 
 <script>
   export default {
-    name: 'body',
+    name: 'paragraph',
     props: {
       size: {
         type: String,
@@ -31,19 +31,16 @@
           return ['normal', 'semibold', 'bold'].includes(value)
         }
       },
-      maxWidth: {
-        type: String
-      },
-      primary: {
-        type: Boolean,
-        default: false
-      },
       type: {
         type: String,
         default: 'none',
         validator: value => {
           return ['none', 'danger'].includes(value)
         }
+      },
+      padding: {
+        type: Boolean,
+        default: false
       }
     },
     data() {
@@ -62,7 +59,8 @@
           'semibold': this.weight === 'semibold',
           'bold': this.weight === 'bold',
           'primary': this.primary,
-          'danger': this.type === 'danger'
+          'danger': this.type === 'danger',
+          'padding': this.type === 'padding'
         }
       }
     }
@@ -72,7 +70,7 @@
 <style lang='scss' scoped>
   @import '../../../style/main';
 
-  .body {
+  .paragraph {
     font-weight: $normal;
     font-family: $font-family-p;
     $color: $color-text;
@@ -122,6 +120,9 @@
     }
     &.danger {
       color: $color-text-danger;
+    }
+    &.padding {
+      padding: 20px;
     }
   }
 

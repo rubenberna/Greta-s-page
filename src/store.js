@@ -4,6 +4,7 @@ import SuiVue from 'semantic-ui-vue'
 import therapies from '@/modules/therapies.js'
 import auth from '@/modules/auth.js'
 import events from '@/modules/events.js'
+import newsletter from '@/modules/newsletter.js'
 import createPersistedState from 'vuex-persistedstate'
 
 Vue.use(Vuex)
@@ -13,7 +14,8 @@ export default new Vuex.Store({
   modules: {
     therapies,
     auth,
-    events
+    events,
+    newsletter
   },
   //persist state for page reload
   plugins: [createPersistedState({

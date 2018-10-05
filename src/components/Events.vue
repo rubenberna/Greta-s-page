@@ -1,6 +1,15 @@
 <template>
-  <div>
-    <div class="events container" v-for="ev in futureEvents" :key="ev.id">
+  <div class="events">
+    <div class="events-intro">
+      <heading weight='bold'
+               size='l'>
+        A catching phrase about upcoming events
+      </heading>
+      <paragraph size='xl'>
+          A text to make an introduction to your events
+      </paragraph>
+    </div>
+    <div v-for="ev in futureEvents" :key="ev.id">
       <div class="events-frame">
         <div class="events-frame-image">
           <img :src='ev.image'>
@@ -23,93 +32,101 @@
 </template>
 
 <script>
-  import { mapGetters, mapActions } from 'vuex'
+  import { mapGetters } from 'vuex'
+  import Heading from './typography/Heading'
+  import Paragraph from './typography/Paragraph'
 
   export default {
     name: 'events',
-    data () {
-      return {
-      dateAsc: []
-      }
+    components: {
+      Heading,
+      Paragraph
     },
     computed: {
       ...mapGetters(['events', 'futureEvents']),
     },
-    methods: {
-    },
-    created() {
-    }
   }
 </script>
 
 <style lang="scss" scoped>
   @import '../../style/main.scss';
 
-  .events-frame {
-    display: flex;
-    height: 546px;
-    justify-content: space-around;
-    align-items: flex-start;
+  .events {
+    margin: 50px 0 95px 95px;
 
-    .events-frame-image {
-      height: 100%;
-      width: 50%;
-      position: relative;
-      overflow: hidden;
-      img {
-        position: absolute;
-        left: 50%;
-        top: 33%;
-        width: 100%;
-        height: auto;
-        -webkit-transform: translate(-50%,-50%);
-        -ms-transform: translate(-50%,-50%);
-        transform: translate(-50%,-50%);
-      }
+    .events-intro {
+      padding: 20px;
     }
 
-    .events-frame-description {
-      width: 50%;
-      height: 89%;
+    .events-frame {
       display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 38px;
-      .title {
-        font-size: 3.125rem;
-        font-weight: $semibold;
-        height: 15%;
+      height: 546px;
+      width: 70%;
+      justify-content: space-around;
+      align-items: flex-start;
+      margin-left: 23px;
+
+      .events-frame-image {
+        height: 100%;
+        width: 50%;
+        position: relative;
+        overflow: hidden;
+        img {
+          position: absolute;
+          left: 50%;
+          top: 33%;
+          width: 100%;
+          height: auto;
+          -webkit-transform: translate(-50%,-50%);
+          -ms-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);
+        }
       }
-      .small-border {
-        width: 10%;
-        display: inline-block;
-        border-bottom: 4px solid black;
-      }
-      .description {
-        margin-top: 8%;
-      }
-      .coordinates {
-        height: 118px;
+
+      .events-frame-description {
+        width: 50%;
+        height: 89%;
         display: flex;
         flex-direction: column;
-        justify-content: flex-end;
-        color: $color-text-light;
-        font-weight: $semibold;
-        font-style: italic;
-        .date {
-          margin-bottom: -2px;
-          text-transform: uppercase;
+        justify-content: center;
+        padding: 38px;
+        .title {
+          font-size: 3.125rem;
+          font-weight: $semibold;
+          height: 15%;
+        }
+        .small-border {
+          width: 10%;
+          display: inline-block;
+          border-bottom: 4px solid black;
+        }
+        .description {
+          margin-top: 8%;
+        }
+        .coordinates {
+          height: 118px;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          color: $color-text-light;
+          font-weight: $semibold;
+          font-style: italic;
+          .date {
+            margin-bottom: -2px;
+            text-transform: uppercase;
+          }
         }
       }
     }
+
+    .separation {
+      width: 36.5%;
+      height: 100px;
+      display: flex;
+      border-right: 7px solid black;
+      margin: 30px 0 30px 0;
+    }
   }
 
-  .separation {
-    width: 50%;
-    height: 100px;
-    display: flex;
-    border-right: 7px solid black;
-    margin: 30px 0 30px 0;
-  }
 
 </style>
