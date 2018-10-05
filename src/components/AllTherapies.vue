@@ -1,12 +1,24 @@
 <template>
   <div class="all-therapies container">
+    <div class="all-therapies-intro">
+      <heading weight='bold'
+               size='l'>
+        A catching phrase about the therapies
+      </heading>
+      <body size='xl'>
+          A segment to make an introduction to your therapies
+      </body>
+    </div>
     <div class="row">
       <div class="all-therapies-group col-xs-6"
            v-for="therapy in therapies"
            :key="therapy.id">
-          <h1 class="all-therapies-card-teaser">{{therapy.name}}</h1>
+          <h1 class="all-therapies-card-teaser"
+              @click.prevent="storeTherapy(therapy); router(`/therapy/${therapy.name}`)">
+              {{therapy.name}}
+          </h1>
           <div class="all-therapies-card_container"
-                @click.prevent="storeTherapy(therapy); router(`/therapy/${therapy.name}`)">
+               @click.prevent="storeTherapy(therapy); router(`/therapy/${therapy.name}`)">
             <div class="all-therapies-card-image">
                <sui-image :src='therapy.image' size="large"/>
             </div>
@@ -31,7 +43,7 @@
   import { mapGetters, mapActions } from 'vuex'
   import Booking from '@/components/Booking'
   import Heading from '@/components/typography/Heading';
-  import BodyText from '@/components/typography/BodyText';
+  import Body from '@/components/typography/Body';
 
   export default {
     name: 'allTherapies',
@@ -39,7 +51,7 @@
     components: {
       Booking,
       Heading,
-      BodyText
+      Body
     },
     methods: {
       ...mapActions(['storeTherapy']),
@@ -61,14 +73,13 @@
       width: 600px;
       height: 400px;
       box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
-      background: rgba(177, 209, 197, 0.4);
+      background: rgba(177, 209, 197, 0.3);
       margin-bottom: 78px;
       padding: 9px;
       margin: 11px;
       transition: all 1s;
       &:hover {
         box-shadow: 2px 6px 9px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
-        background: rgba(177, 209, 197, 0.8);
       }
 
       .all-therapies-card-teaser {
@@ -81,6 +92,7 @@
         font-family: $font-family-h;
         font-size: $heading-size-m;
         opacity: 0.8;
+        cursor: pointer;
       }
       .all-therapies-card_container {
         display: flex;

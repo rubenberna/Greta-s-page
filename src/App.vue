@@ -7,10 +7,16 @@
 
 <script>
   import Footer from '@/components/Footer'
+  import { mapActions } from 'vuex'
 
   export default {
     components: {
       Footer
+    },
+    methods: mapActions(['fetchTherapies', 'fetchEvents']),
+    created() {
+      this.fetchTherapies()
+      this.fetchEvents()
     }
   }
 </script>

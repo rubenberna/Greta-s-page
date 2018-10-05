@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="events container" v-for="ev in events" :key="ev.id">
+    <div class="events container" v-for="ev in futureEvents" :key="ev.id">
       <div class="events-frame">
         <div class="events-frame-image">
           <img :src='ev.image'>
@@ -24,16 +24,20 @@
 
 <script>
   import { mapGetters, mapActions } from 'vuex'
-  import moment from 'moment';
 
   export default {
     name: 'events',
-    computed: {
-      ...mapGetters(['events']),
+    data () {
+      return {
+      dateAsc: []
+      }
     },
-    methods: mapActions(['fetchEvents']),
+    computed: {
+      ...mapGetters(['events', 'futureEvents']),
+    },
+    methods: {
+    },
     created() {
-      this.fetchEvents()
     }
   }
 </script>
