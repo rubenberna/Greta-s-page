@@ -4,9 +4,12 @@
       <div class="all-therapies-group col-xs-6"
            v-for="therapy in therapies"
            :key="therapy.id">
-          <h1 class="all-therapies-card-teaser">{{therapy.name}}</h1>
+          <h1 class="all-therapies-card-teaser"
+              @click.prevent="storeTherapy(therapy); router(`/therapy/${therapy.name}`)">
+              {{therapy.name}}
+          </h1>
           <div class="all-therapies-card_container"
-                @click.prevent="storeTherapy(therapy); router(`/therapy/${therapy.name}`)">
+               @click.prevent="storeTherapy(therapy); router(`/therapy/${therapy.name}`)">
             <div class="all-therapies-card-image">
                <sui-image :src='therapy.image' size="large"/>
             </div>
@@ -61,14 +64,13 @@
       width: 600px;
       height: 400px;
       box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
-      background: rgba(177, 209, 197, 0.4);
+      background: rgba(177, 209, 197, 0.3);
       margin-bottom: 78px;
       padding: 9px;
       margin: 11px;
       transition: all 1s;
       &:hover {
         box-shadow: 2px 6px 9px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
-        background: rgba(177, 209, 197, 0.8);
       }
 
       .all-therapies-card-teaser {
@@ -81,6 +83,7 @@
         font-family: $font-family-h;
         font-size: $heading-size-m;
         opacity: 0.8;
+        cursor: pointer;
       }
       .all-therapies-card_container {
         display: flex;

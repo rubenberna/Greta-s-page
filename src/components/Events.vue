@@ -24,14 +24,20 @@
 
 <script>
   import { mapGetters, mapActions } from 'vuex'
-  import moment from 'moment';
 
   export default {
     name: 'events',
-    computed: {
-      ...mapGetters(['events']),
+    data () {
+      return {
+      dateAsc: []
+      }
     },
-    methods: mapActions(['fetchEvents']),
+    computed: {
+      ...mapGetters(['events', 'futureEvents']),
+    },
+    methods: {
+      ...mapActions(['fetchEvents'])
+    },
     created() {
       this.fetchEvents()
     }

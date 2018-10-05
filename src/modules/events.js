@@ -2,11 +2,14 @@ import db from '../apis/firebaseApiEvents'
 import router from '../router'
 
 const state = {
-  events: []
+  events: [],
 }
 
 const getters = {
-  events: state => state.events
+  events: state => state.events,
+  futureEvents: state => {
+    return state.events.filter(ev => ev.date > new Date ())
+  },
 }
 
 const actions = {

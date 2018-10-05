@@ -22,7 +22,20 @@ export default {
         result.push(data)
       })
     })
-    return result;
+    return result.sort(this.compare);
+  },
+  // sort by date
+  compare(a, b) {
+    const dateA = a.date
+    const dateB = b.date
+
+    let comparison = 0;
+    if (dateA > dateB) {
+      comparison = 1;
+    } else if (dateA < dateB) {
+      comparison = -1;
+    }
+    return comparison
   },
   createEvent(newEvent) {
    db.eventsCollection.add({
