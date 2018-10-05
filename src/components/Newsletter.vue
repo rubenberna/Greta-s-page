@@ -1,36 +1,42 @@
 <template>
   <div class="newsletter container">
-    <div class="newsletter-intro">
-      <heading weight='bold'
-               size='m'>
-        I'll keep you posted for more events :)
-      </heading>
-    </div>
-
     <div v-if='!outcome.success'
          class="newsletter-unfinished">
-      <div class="newsletter-action">
-        <sui-input placeholder="you@email.com"
-        class="input"
-        v-model="newsletterData.email"/>
-        <sui-button primary
-        class="submit"
-        @click.prevent='submit'>Newsletter
-        </sui-button>
-      </div>
-      <paragraph v-if='outcome.error'
-                 size='l'
-                 type='danger'>
-                 {{ outcome.error }}
-      </paragraph>
+         <div class="newsletter-intro">
+           <heading weight='bold'
+                    size='m'>
+                    Don't miss our next events!
+           </heading>
+         </div>
+         <div class="newsletter-data">
+           <div class="newsletter-action">
+             <sui-input placeholder="you@email.com"
+                        class="input"
+                        v-model="newsletterData.email"/>
+             <sui-button primary
+                         class="submit"
+                         @click.prevent='submit'>Newsletter
+             </sui-button>
+           </div>
+           <paragraph v-if='outcome.error'
+                      size='l'
+                      type='danger'>
+                      {{ outcome.error }}
+          </paragraph>
+        </div>
     </div>
 
     <div v-else
          class="newsletter-sucess">
-         <paragraph size='l'>
-            Thank you for joining our newsletter!
-         </paragraph>
-         <div style="width:100%;height:0;padding-bottom:100%;position:relative;"><iframe src="https://giphy.com/embed/l3mZfIZ6ZFlkIUH8A" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/cute-dogs-high-five-l3mZfIZ6ZFlkIUH8A">via GIPHY</a></p>
+      <div class="newsletter-sucess-intro">
+       <heading weight='bold'
+                size='m'>
+                Thank you for joining our newsletter :)
+       </heading>
+      </div>
+      <div class="newsletter-sucess-giff">
+       <iframe src="https://giphy.com/embed/l3mZfIZ6ZFlkIUH8A" width="300" height="300" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+      </div>
     </div>
   </div>
 </template>
@@ -77,18 +83,25 @@
   @import '../../style/main.scss';
 
   .newsletter {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
     margin-bottom: 95px;
-    .newsletter-action {
+    transition: all 2s;
+    .newsletter-unfinished {
       display: flex;
-      transition: all 1s;
-      .submit {
-        width: 170px;
-        padding-left: 45px;
-        background: #005792;
+      justify-content: space-evenly;
+      align-items: center;
+      .newsletter-action {
+        display: flex;
+        .submit {
+          width: 170px;
+          padding-left: 45px;
+          background: #005792;
+        }
       }
+    }
+    .newsletter-sucess {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
     }
   }
 </style>

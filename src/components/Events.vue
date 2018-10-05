@@ -91,6 +91,7 @@
         flex-direction: column;
         justify-content: center;
         padding: 38px;
+        cursor: default;
         .title {
           font-size: 3.125rem;
           font-weight: $semibold;
