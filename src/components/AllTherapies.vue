@@ -32,7 +32,7 @@
             </div>
           </div>
             <div class="all-therapies-card-availability">
-              <Booking :therapy='therapy'></Booking>
+              <booking :therapy='therapy' />
           </div>
         </div>
     </div>
@@ -41,7 +41,7 @@
 
 <script>
   import { mapGetters, mapActions } from 'vuex'
-  import Booking from '@/components/Booking'
+  import Booking from '@/components/buttons/BookingHome'
   import Heading from '@/components/typography/Heading';
   import Paragraph from '@/components/typography/Paragraph';
 
@@ -161,10 +161,8 @@
       }
       .all-therapies-card-availability {
         display: flex;
-        justify-content: flex-start;
-        align-items: flex-start;
-        text-align: right;
-        width: 91%;
+        justify-content: flex-end;
+        width: 76%;
       }
     }
   }

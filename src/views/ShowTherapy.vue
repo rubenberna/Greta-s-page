@@ -31,7 +31,8 @@
         </div>
         <div class="show-knobs_item">
           <i class="far fa-check-square"></i>
-          <span>Schedule an appointment!</span>
+          <booking :therapy='therapy' />
+          <!-- <span>Schedule an appointment!</span> -->
         </div>
       </div>
     </div>
@@ -45,12 +46,14 @@
   import NavbarGrey from '@/components/NavbarGrey'
   import { mapGetters } from 'vuex'
   import GoogleMap from '@/components/GoogleMap'
+  import Booking from '@/components/buttons/BookingShow';
 
   export default {
     name: 'about',
     components: {
       NavbarGrey,
-      GoogleMap
+      GoogleMap,
+      Booking
     },
     computed: mapGetters(['therapy'])
   }
