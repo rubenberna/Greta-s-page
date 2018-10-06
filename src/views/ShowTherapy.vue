@@ -66,7 +66,7 @@
     margin-top: 95px;
     margin-bottom: 95px;
     padding-bottom: 40px;
-    height: 140vh;
+    height: 120vh;
     background-size: cover !important;
     width: 100%;
     background-repeat: no-repeat;
@@ -86,16 +86,16 @@
     .show-board {
       display: flex;
       justify-content: center;
-      height: 700px;
+      height: 600px;
       .show-board-item {
         display: flex;
         flex-direction: column;
         margin: 20px;
         width: 18%;
-        height: 100%;
+        height: 90%;
         align-items: center;
         background: white;
-        padding: 60px;
+        padding: 50px;
         overflow-y: scroll;
         cursor: default;
         .show-board-item_title {
@@ -106,6 +106,7 @@
           letter-spacing: .135em;
           padding-bottom: .125em;
           text-transform: uppercase;
+          text-align: center;
         }
         .show-board-item_text {
           color: grey;
@@ -117,7 +118,7 @@
       display: flex;
       justify-content: space-evenly;
       align-items: center;
-      margin-top: 50px;
+      // margin-top: 50px;
       .show-knobs_item {
         color: white;
         font-size: 19px;
