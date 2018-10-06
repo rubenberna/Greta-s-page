@@ -36,6 +36,7 @@
     height: 120px;
     padding: 0px 50px;
     color: $footer-font;
+    width: 100%;
   }
   .footer-contacts {
     display: flex;
