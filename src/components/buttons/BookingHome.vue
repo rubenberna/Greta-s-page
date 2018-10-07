@@ -22,8 +22,6 @@
 </template>
 
 <script>
-  import { mapGetters } from 'vuex'
-
   export default {
     name: 'BookingHome',
     data() {
@@ -35,9 +33,9 @@
     methods: {
       toggle() {
         this.open = !this.open;
-      },
-    },
-  };
+      }
+    }
+  }
 </script>
 
 <style lang="scss" scoped>

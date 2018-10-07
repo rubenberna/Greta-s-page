@@ -32,7 +32,6 @@
         <div class="show-knobs_item">
           <i class="far fa-check-square"></i>
           <booking :therapy='therapy' />
-          <!-- <span>Schedule an appointment!</span> -->
         </div>
       </div>
     </div>
@@ -82,6 +81,7 @@
       color: white;
       font-weight: 600;
       letter-spacing: .135em;
+      font-family: $font-family-h;
     }
     .show-board {
       display: flex;
@@ -118,7 +118,6 @@
       display: flex;
       justify-content: space-evenly;
       align-items: center;
-      // margin-top: 50px;
       .show-knobs_item {
         color: white;
         font-size: 19px;
@@ -126,9 +125,6 @@
         transition: all 0.5s;
         width: 265px;
         height: 100px;
-        &:hover {
-          opacity: 0.8;
-        }
         &:first-of-type {
           margin-left: 88px;
           display: flex;
