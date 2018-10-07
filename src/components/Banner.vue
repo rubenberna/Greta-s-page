@@ -33,7 +33,7 @@ export default {
       h1 {
         margin-bottom: 300px;
         font-family: $font-banner;
-        font-size: 70px;
+        font-size: 74px;
         font-weight: bolder;
       }
     }

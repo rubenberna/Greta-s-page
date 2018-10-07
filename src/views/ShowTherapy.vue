@@ -31,7 +31,7 @@
         </div>
         <div class="show-knobs_item">
           <i class="far fa-check-square"></i>
-          <span>Schedule an appointment!</span>
+          <booking :therapy='therapy' />
         </div>
       </div>
     </div>
@@ -45,12 +45,14 @@
   import NavbarGrey from '@/components/NavbarGrey'
   import { mapGetters } from 'vuex'
   import GoogleMap from '@/components/GoogleMap'
+  import Booking from '@/components/buttons/BookingShow';
 
   export default {
     name: 'about',
     components: {
       NavbarGrey,
-      GoogleMap
+      GoogleMap,
+      Booking
     },
     computed: mapGetters(['therapy'])
   }
@@ -63,7 +65,7 @@
     margin-top: 95px;
     margin-bottom: 95px;
     padding-bottom: 40px;
-    height: 140vh;
+    height: 120vh;
     background-size: cover !important;
     width: 100%;
     background-repeat: no-repeat;
@@ -79,20 +81,21 @@
       color: white;
       font-weight: 600;
       letter-spacing: .135em;
+      font-family: $font-family-h;
     }
     .show-board {
       display: flex;
       justify-content: center;
-      height: 700px;
+      height: 600px;
       .show-board-item {
         display: flex;
         flex-direction: column;
         margin: 20px;
         width: 18%;
-        height: 100%;
+        height: 90%;
         align-items: center;
         background: white;
-        padding: 60px;
+        padding: 50px;
         overflow-y: scroll;
         cursor: default;
         .show-board-item_title {
@@ -103,6 +106,7 @@
           letter-spacing: .135em;
           padding-bottom: .125em;
           text-transform: uppercase;
+          text-align: center;
         }
         .show-board-item_text {
           color: grey;
@@ -114,7 +118,6 @@
       display: flex;
       justify-content: space-evenly;
       align-items: center;
-      margin-top: 50px;
       .show-knobs_item {
         color: white;
         font-size: 19px;
@@ -122,9 +125,6 @@
         transition: all 0.5s;
         width: 265px;
         height: 100px;
-        &:hover {
-          opacity: 0.8;
-        }
         &:first-of-type {
           margin-left: 88px;
           display: flex;

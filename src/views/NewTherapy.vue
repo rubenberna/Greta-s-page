@@ -47,7 +47,10 @@
           <label for="availability">Availability</label>
         </div>
       </div>
-      <a class="waves-effect waves-light btn" style="color:white" @click='createTherapy(therapy)'>create</a>
+      <div class="action-buttons">
+        <router-link :to="{ name: 'manage'}"><sui-button>Back</sui-button></router-link>
+        <a class="waves-effect waves-light btn" style="color:white" @click='createTherapy(therapy)'>create</a>
+      </div>
     </form>
   </div>
   </div>
@@ -88,9 +91,15 @@
     align-items: center;
     flex-direction: column;
     max-width: 811px;
+    height: 100vh;
     .new-therapy-title {
       padding: 20px 0px;
       align-self: flex-start;
+    }
+    .action-buttons {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
   }
 </style>

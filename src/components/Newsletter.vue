@@ -102,6 +102,9 @@
       display: flex;
       justify-content: space-evenly;
       align-items: center;
+      a {
+        top: -9%;
+      }
     }
   }
 </style>
