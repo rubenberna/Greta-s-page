@@ -1,5 +1,5 @@
 <template>
-  <div class="events">
+  <div id="events">
     <div class="events-intro">
       <heading weight='bold'
                size='l'>
@@ -51,7 +51,7 @@
 <style lang="scss" scoped>
   @import '../../style/main.scss';
 
-  .events {
+  #events {
     margin: 50px 0 95px 95px;
 
     .events-intro {

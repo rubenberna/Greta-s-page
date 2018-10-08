@@ -15,7 +15,7 @@
             <sui-dropdown-menu>
                <sui-dropdown-item v-for='therapy in therapies' :key='therapy.id'>
                  <a
-                  @click.prevent="storeTherapy(therapy); router(`/therapy/${therapy.name}`)">
+                  @click.prevent="storeTherapy(therapy); router(`/therapy/${therapy.name}`);">
                   {{therapy.name}}
                 </a>
                </sui-dropdown-item>
@@ -61,6 +61,7 @@
 
 <script>
   import { mapActions, mapGetters } from 'vuex'
+  import qs from 'qs'
 
   export default {
     name: 'navbarWhite',
@@ -76,17 +77,23 @@
     methods: {
       ...mapActions(['logout', 'loggedIn', 'getProfile', 'storeTherapy']),
       isActive(name) {
-        return this.active === name;
+        return this.active === name
       },
       select(name) {
-        this.active = name;
+        this.active = name
       },
       router(path) {
         this.$router.push(path)
+      },
+      setActive() {
+        const path = window.location.pathname
+        if (path === '/about') this.active = 'About'
+        else this.active = 'Treatments'
       }
     },
     created() {
-      this.loggedIn();
+      this.loggedIn()
+      this.setActive()
     }
   }
 </script>
@@ -108,6 +115,7 @@
         align-items: center;
         font-size: 17px;
         margin-left: 3px;
+        margin-right: 3px;
         &:hover {
           color: $color-heading !important;
           opacity: 0.8;
@@ -119,6 +127,7 @@
 
       .ui.secondary.pointing.menu {
         border-bottom: 0px;
+        margin-left: -13px;
         .item {
           font-size: 17px;
           color: $color-heading;

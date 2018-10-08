@@ -15,12 +15,20 @@
             <sui-dropdown-menu>
                <sui-dropdown-item v-for='therapy in therapies' :key='therapy.id'>
                  <a
-                  @click.prevent="storeTherapy(therapy); router(`/therapy/${therapy.name}`)">
+                  @click.prevent="storeTherapy(therapy); router(`/therapy/${therapy.name}`);">
                   {{therapy.name}}
                 </a>
                </sui-dropdown-item>
             </sui-dropdown-menu>
           </sui-dropdown>
+        </sui-menu-menu>
+        <sui-menu-menu position="right">
+          <a
+          is="sui-menu-item"
+          :active="isActive('Events')"
+          content="Events"
+          @click.prevent="select('Events'); scrollEvents()"
+          />
         </sui-menu-menu>
         <sui-menu-menu position="right">
           <a
@@ -67,7 +75,7 @@
     data() {
       return {
         active: 'Home',
-        items: ['Home', 'About', 'Treatments'],
+        items: ['Home', 'About', 'Treatments', 'Events'],
       };
     },
     computed: {
@@ -83,6 +91,11 @@
       },
       router(path) {
         this.$router.push(path)
+      },
+      scrollEvents() {
+        document.querySelector('#events').scrollIntoView({
+          behavior: 'smooth'
+        });
       }
     },
     created() {
@@ -108,6 +121,7 @@
         align-items: center;
         font-size: 17px;
         margin-left: 3px;
+        margin-right: 3px;
         &:hover {
           color: $white !important;
           opacity: 0.8;
@@ -122,6 +136,7 @@
 
       .ui.secondary.pointing.menu {
         border-bottom: 0px;
+        margin-left: -13px;
         .item {
           font-size: 17px;
           color: $white;
