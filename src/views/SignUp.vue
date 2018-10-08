@@ -20,13 +20,17 @@
                type="password"
                placeholder="Password" >
       </sui-form-field>
+      <sui-label v-if='errorMsg || err'
+                 basic color="red" pointing='above'
+                 class="notification">
+                 {{err}} {{errorMsg}}
+      </sui-label>
       <sui-form-field>
         <sui-button @click.prevent='checkSignUp'
                     type="submit">
                     Sign-up
         </sui-button>
         <clip-loader :loading='loading' />
-        <p class="signUp-error_msg">{{ errorMsg }} {{err}}</p>
         <span class="signUp-nav">Or go back to the <router-link to="/" style="font-weight:bold">Homepage</router-link></span>
       </sui-form-field>
     </sui-form>
@@ -84,9 +88,8 @@
       margin-bottom: 20px;
       font-weight: bold;
     }
-    .signUp-error_msg {
-      color: $color-text-danger;
-      padding-top: 10px;
+    .notification {
+      margin-bottom: 12px;
     }
   }
 </style>

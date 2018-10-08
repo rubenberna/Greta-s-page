@@ -8,8 +8,16 @@
         <label>Email address</label>
         <input placeholder="Email address"
                v-model='user.email'>
-          <p class="login-reset-password_error">{{resetPass.error}} {{errorMsg}}</p>
-          <p class="login-reset-password_success">{{successMsg}}</p>
+          <sui-label v-if='errorMsg || resetPass.error'
+                     basic color="red" pointing='above'
+                     class="notification">
+                     {{resetPass.error}} {{errorMsg}}
+          </sui-label>
+          <sui-label v-if='successMsg'
+                     basic color="green" pointing='above'
+                     class="notification">
+                     {{successMsg}}
+          </sui-label>
       </sui-form-field>
       <sui-form-field>
         <section class='login-password'>
@@ -97,19 +105,6 @@
       margin-bottom: 20px;
       font-weight: bold;
     }
-    .login-reset-password_error {
-      color: $color-text-danger;
-    }
-    .login-reset-password_success {
-      color: $success;
-    }
-    // .login-options {
-    //   display: flex;
-    //   flex-direction: column;
-    //   .login-error_msg {
-    //     color: $danger;
-    //   }
-    // }
     .login-password {
       width: 350px;
       display: flex;
