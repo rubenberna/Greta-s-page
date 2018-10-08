@@ -42,7 +42,7 @@
 </template>
 
 <script>
-  import NavbarGrey from '@/components/NavbarGrey'
+  import NavbarGrey from '@/components/navbars/NavbarGrey'
   import { mapGetters } from 'vuex'
   import GoogleMap from '@/components/GoogleMap'
   import Booking from '@/components/buttons/BookingShow';

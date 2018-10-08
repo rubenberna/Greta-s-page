@@ -34,7 +34,7 @@
 </template>
 
 <script>
-  import NavbarGrey from '@/components/NavbarGrey'
+  import NavbarGrey from '@/components/navbars/NavbarGrey'
 
   export default {
     name: 'about',

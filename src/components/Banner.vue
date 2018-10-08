@@ -1,6 +1,6 @@
 <template>
   <div class="banner" style="background-image: url('http://res.cloudinary.com/megslist/image/upload/v1535983801/karl-fredrickson-15871-unsplash.jpg')">
-  <NavbarWhite />
+  <navbar-white />
     <section class="banner-title">
       <h1>Terug in balans</h1>
     </section>
@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import NavbarWhite from './NavbarWhite'
+import NavbarWhite from './navbars/NavbarWhite'
 
 export default {
   name: 'banner',

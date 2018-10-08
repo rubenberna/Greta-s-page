@@ -105,7 +105,7 @@
 </script>
 
 <style lang="scss" scoped>
-  @import '../../style/main.scss';
+  @import '../../../style/main.scss';
 
   .navbar {
     padding-left: 30px;
@@ -120,8 +120,7 @@
         display: flex;
         align-items: center;
         font-size: 17px;
-        margin-left: 3px;
-        margin-right: 3px;
+        margin-left: 20px;
         &:hover {
           color: $white !important;
           opacity: 0.8;
@@ -136,7 +135,6 @@
 
       .ui.secondary.pointing.menu {
         border-bottom: 0px;
-        margin-left: -13px;
         .item {
           font-size: 17px;
           color: $white;
@@ -156,7 +154,6 @@
         }
       }
       .profile-menu {
-
       }
     }
   }

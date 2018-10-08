@@ -99,7 +99,7 @@
 </script>
 
 <style lang="scss" scoped>
-  @import '../../style/main.scss';
+  @import '../../../style/main.scss';
 
   .navbar {
     padding-left: 30px;
