@@ -3,14 +3,14 @@
     <div class="currentUser"
          v-if="currentUser">
          <sui-button  class="booking-button"
-         @click.native="toggle">
-         Make appointment
+                      @click.native="toggle">
+                      Make appointment
        </sui-button>
     </div>
     <div v-else>
       <sui-button  class="booking-button"
-      @click="login">
-      Make appointment
+                   @click="login">
+                  Make appointment
     </sui-button>
     </div>
     <sui-modal v-model="open">
@@ -23,7 +23,7 @@
               <p>{{ therapy.name }}</p>
               <span class="booking-header_close"
                     @click='toggle'>
-                    X
+                    x
               </span>
             </sui-header>
             <div class="booking-description">
@@ -134,7 +134,7 @@
 
   .booking-image {
     display: flex !important;
-    align-items: center;
+    align-items: flex-end;
   }
 
   .booking-header {
@@ -144,15 +144,21 @@
     justify-content: space-between;
     width: 510px;
     .booking-header_close {
-      color: white;
-      width: 26px;
       border: 1px solid grey;
+      background: $white;
+      color: $charcoal-grey;
+      width: 26px;
       border-radius: 50%;
       text-align: center;
       height: 26px;
-      background: grey;
       font-size: 13px;
       cursor: pointer;
+      transition: all 0.5s;
+      padding-left: 0.5px;
+      &:hover {
+        color: $white;
+        background: grey;
+      }
     }
   }
 
@@ -178,5 +184,12 @@
     left: 353px;
     // bottom: 82px;
     // left: 353px;
+  }
+
+  .ui.primary.button {
+    background: rgba(0, 173, 181, 0.7);
+    &:hover {
+    background: rgba(0, 173, 181, 1)
+    }
   }
 </style>

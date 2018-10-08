@@ -120,7 +120,8 @@
         display: flex;
         align-items: center;
         font-size: 17px;
-        margin-left: 20px;
+        margin-left: 13px;
+        margin-right: 13px;
         &:hover {
           color: $white !important;
           opacity: 0.8;
@@ -138,6 +139,8 @@
         .item {
           font-size: 17px;
           color: $white;
+          margin-left: -8px;
+          margin-right: -8px;
           &:hover {
             color: $white !important;
             opacity: 0.8;
