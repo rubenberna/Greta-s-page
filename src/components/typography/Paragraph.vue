@@ -36,7 +36,6 @@
         default: 'none',
         validator: value => {
           return ['none', 'danger', 'success'].includes(value)
-          return ['none', 'danger', 'success'].includes(value)
         }
       },
       padding: {
