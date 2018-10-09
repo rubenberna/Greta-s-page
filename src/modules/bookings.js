@@ -1,7 +1,9 @@
 import db from '../apis/firebaseApiBookings'
+import sendgrid from '../apis/sendgrid'
 
 const state = {
-  bookings: []
+  bookings: [],
+  bookingId: null
 }
 
 const getters = {
@@ -9,8 +11,12 @@ const getters = {
 }
 
 const actions = {
-  createBooking({ commit }, booking) {
-    db.createBooking(booking)
+  async createBooking({ commit }, booking) {
+    commit('setBooking', null)
+    const appointmentId = await db.createBooking(booking)
+    sendgrid.emailAppointment(appointmentId)
+
+    console.log(appointmentId);
   },
   async fetchBookings({ commit }) {
     commit('setBookings', null)
@@ -23,6 +29,9 @@ const actions = {
 const mutations = {
   setBookings: (state, list) => {
     state.bookings = list
+  },
+  setBooking: (state, booking) => {
+    state.booking = booking
   }
 }
 

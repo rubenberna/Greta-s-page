@@ -65,7 +65,6 @@
           </sui-modal-description>
       </sui-modal-content>
     </sui-modal>
-
   </div>
 </template>
 
@@ -134,7 +133,7 @@
         this.booking.therapyName = this.therapy.name
         this.createBooking(this.booking);
         setTimeout(() => this.toggle(), 3300)
-      },
+      }
     }
   }
 </script>
@@ -260,7 +259,6 @@
       // text-align: center;
       transition: all 3s;
       color: $marine;
-      letter-spacing: .1em;
     }
   }
 
