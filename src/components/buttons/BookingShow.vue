@@ -1,39 +1,76 @@
 <template lang="html">
   <div class="booking">
-    <sui-button  class="booking-button"
-                 @click.native="toggle">Schedule an appointment!</sui-button>
-    <sui-modal v-model="open"
-               class="booking-modal">
-      <sui-modal-header>Select a Photo</sui-modal-header>
+    <div class="currentUser"
+         v-if="currentUser">
+         <sui-button  class="booking-button"
+                      @click.native="toggle">
+                      Make appointment
+       </sui-button>
+    </div>
+    <div v-else>
+      <sui-button  class="booking-button"
+                   @click="login">
+                  Make appointment
+    </sui-button>
+    </div>
+    <sui-modal v-model="open">
       <sui-modal-content image>
-        <sui-image wrapped size="medium" :src='therapy.image' />
-        <sui-modal-description>
-          <sui-header>Default Profile Image</sui-header>
-          <p>We've found the following gravatar image associated with your e-mail address.</p>
-          <p>Is it okay to use this photo?</p>
-        </sui-modal-description>
+        <sui-image wrapped size="medium"
+                   class="booking-image"
+                  :src='therapy.image' />
+          <sui-modal-description>
+            <sui-header class="booking-header">
+              <p>{{ therapy.name }}</p>
+              <span class="booking-header_close"
+                    @click='toggle'>
+                    x
+              </span>
+            </sui-header>
+            <div class="booking-description">
+              <p>Thank you for your interest in the {{ therapy.name }} therapy!</p>
+              <p>This treatment is available {{ therapy.availability.toLowerCase() }} with a price of {{ therapy.price }} per session.</p>
+              <p>Would you like to schedule an appointment?</p>
+            </div>
+            <sui-form class="booking-details">
+              <sui-form-field>
+                <label>Preferred date</label>
+                <input placeholder="18.11.2018">
+              </sui-form-field>
+              <sui-form-field>
+                <label>Phone number</label>
+                <input placeholder="0489 555 555">
+              </sui-form-field>
+            </sui-form>
+          </sui-modal-description>
+          <sui-button primary
+                      class="booking-submit">
+                      Schedule appointment
+         </sui-button>
       </sui-modal-content>
-      <sui-modal-actions>
-        <sui-button positive @click.native="toggle">
-          OK
-        </sui-button>
-      </sui-modal-actions>
     </sui-modal>
+
   </div>
 </template>
 
 <script>
+  import { mapGetters } from 'vuex'
+  import router from '../../router';
+
   export default {
-    name: 'BookingShow',
+    name: 'BookingHome',
     data() {
       return { open: false };
     },
     props: {
       therapy: Object
     },
+    computed: mapGetters(['currentUser']),
     methods: {
       toggle() {
         this.open = !this.open;
+      },
+      login() {
+        router.push('/login')
       }
     }
   }
@@ -41,6 +78,40 @@
 
 <style lang="scss" scoped>
   @import '../../../style/main.scss';
+
+  .modal.active {
+    max-height: 59% !important;
+    left: 27%;
+    top: 25%;
+  }
+
+  .modal.visible.active {
+    max-height: 59% !important;
+    left: 27%;
+    top: 25%;
+  }
+  .ui.modal.visible.active {
+    max-height: 59% !important;
+    left: 27%;
+    top: 25%;
+  }
+
+  .modal.ui.modal.visible.transition.ui.active.modal {
+    max-height: 59% !important;
+    left: 27%;
+    top: 25%;
+  }
+
+  div.ui.modal.visible.active {
+    max-height: 59% !important;
+    left: 27%;
+    top: 25%;
+  }
+  div.ui.standart.modal.transition.visible.active {
+    max-height: 59% !important;
+    left: 27%;
+    top: 25%;
+  }
 
   .booking-button {
     color: white;
@@ -57,7 +128,64 @@
     }
   }
 
-  .booking-modal {
-    opacity: 1;
+  .booking-image {
+    display: flex !important;
+    align-items: flex-end;
+  }
+
+  .booking-header {
+    font-weight: 700;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    width: 510px;
+    .booking-header_close {
+      border: 1px solid grey;
+      background: $white;
+      color: $charcoal-grey;
+      width: 26px;
+      border-radius: 50%;
+      text-align: center;
+      height: 26px;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.5s;
+      padding-left: 0.5px;
+      &:hover {
+        color: $white;
+        background: grey;
+      }
+    }
+  }
+
+  .booking-description {
+    margin-top: 23px;
+    font-family: $font-family-p;
+    color: $color-text;
+    font-weight: 300;
+  }
+  .booking-details {
+    max-width: 55%;
+    margin-top: 37px;
+    display: flex;
+    flex-direction: column;
+    input {
+      height: 23px;
+    }
+  }
+
+  .booking-submit {
+    position: absolute;
+    bottom: 240px;
+    left: 353px;
+    // bottom: 82px;
+    // left: 353px;
+  }
+
+  .ui.primary.button {
+    background: rgba(0, 173, 181, 0.7);
+    &:hover {
+    background: rgba(0, 173, 181, 1)
+    }
   }
 </style>

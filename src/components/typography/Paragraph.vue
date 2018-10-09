@@ -35,7 +35,7 @@
         type: String,
         default: 'none',
         validator: value => {
-          return ['none', 'danger'].includes(value)
+          return ['none', 'danger', 'success'].includes(value)
         }
       },
       padding: {
@@ -60,6 +60,7 @@
           'bold': this.weight === 'bold',
           'primary': this.primary,
           'danger': this.type === 'danger',
+          'success': this.type === 'success',
           'padding': this.type === 'padding'
         }
       }
@@ -120,6 +121,9 @@
     }
     &.danger {
       color: $color-text-danger;
+    }
+    &.success {
+      color: $success;
     }
     &.padding {
       padding: 20px;

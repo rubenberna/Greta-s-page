@@ -1,6 +1,6 @@
 <template>
   <div>
-    <NavbarGrey/>
+    <navbar-admin />
     <div class="manage container">
       <sui-table basic="very" celled collapsing size='large'>
         <sui-table-header>
@@ -38,10 +38,13 @@
 
 <script>
   import { mapActions, mapGetters } from 'vuex'
-  import NavbarGrey from '@/components/NavbarGrey'
+  import NavbarAdmin from '@/components/navbars/NavbarAdmin'
 
   export default {
     name: 'manage',
+    components: {
+      NavbarAdmin
+    },
     computed: {
       ...mapGetters(['therapies'])
     },
@@ -51,9 +54,6 @@
     created() {
       this.fetchTherapies()
       this.fetchNewsletter()
-    },
-    components: {
-      NavbarGrey
     }
   }
 </script>

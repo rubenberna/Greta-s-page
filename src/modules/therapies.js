@@ -25,7 +25,6 @@ const actions = {
     db.uploadImage(image);
   },
   storeTherapy({ commit }, therapy) {
-    console.log(therapy);
     commit('setTherapy', therapy)
   }
 }

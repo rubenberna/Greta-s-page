@@ -13,22 +13,22 @@
       <div class="all-therapies-group col-xs-6"
            v-for="therapy in therapies"
            :key="therapy.id">
-          <h1 class="all-therapies-card-teaser"
+          <heading class="all-therapies-card-teaser"
               @click.prevent="storeTherapy(therapy); router(`/therapy/${therapy.name}`)">
               {{therapy.name}}
-          </h1>
+          </heading>
           <div class="all-therapies-card_container"
                @click.prevent="storeTherapy(therapy); router(`/therapy/${therapy.name}`)">
             <div class="all-therapies-card-image">
                <sui-image :src='therapy.image' size="large"/>
             </div>
             <div class="all-therapies-description">
-              <p class="all-therapies-card-text">
+              <paragraph class="all-therapies-card-text">
                   {{therapy.description}}
-              </p>
-              <p class="all-therapies-card-text_more">
+              </paragraph>
+              <paragraph class="all-therapies-card-text_more">
                 Read more
-             </p >
+             </paragraph >
             </div>
           </div>
             <div class="all-therapies-card-availability">
@@ -78,7 +78,6 @@
       height: 400px;
       box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
       background: rgba(177, 209, 197, 0.3);
-      // background: $white;
       margin-bottom: 78px;
       padding: 9px;
       margin: 18px;
@@ -92,9 +91,7 @@
         width: 100%;
         line-height: 1.2;
         font-weight: $semibold;
-        padding-left: 16px;
-        padding-top: 16px;
-        font-family: $font-family-h;
+        padding: 16px;
         font-size: $heading-size-m;
         opacity: 0.8;
         cursor: pointer;

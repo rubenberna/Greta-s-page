@@ -11,6 +11,8 @@ import EditEvent from './views/EditEvent.vue'
 import ShowTherapy from './views/ShowTherapy.vue'
 import Login from './views/Login.vue'
 import SignUp from './views/SignUp.vue'
+import NotFound from './views/NotFound.vue'
+import BookingHome from '@/components/buttons/BookingHome.vue'
 
 Vue.use(Router)
 
@@ -89,6 +91,11 @@ let router = new Router({
       name: 'showTherapy',
       component: ShowTherapy
     },
+    {
+      path: '*',
+      name: 'NotFound',
+      component: NotFound
+    }
   ]
 })
 
