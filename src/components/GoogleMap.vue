@@ -23,7 +23,7 @@
   }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   #map {
     display: flex;
     justify-content: center;

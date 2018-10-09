@@ -5,6 +5,7 @@ import therapies from '@/modules/therapies.js'
 import auth from '@/modules/auth.js'
 import events from '@/modules/events.js'
 import newsletter from '@/modules/newsletter.js'
+import bookings from '@/modules/bookings.js'
 import createPersistedState from 'vuex-persistedstate'
 
 Vue.use(Vuex)
@@ -15,7 +16,8 @@ export default new Vuex.Store({
     therapies,
     auth,
     events,
-    newsletter
+    newsletter,
+    bookings
   },
   //persist state for page reload
   plugins: [createPersistedState({

@@ -21,3 +21,4 @@
      ClipLoader
     }
 }
+</script>

@@ -105,6 +105,9 @@
       margin-bottom: 20px;
       font-weight: bold;
     }
+    .notification {
+      margin-bottom: 12px;
+    }
     .login-password {
       width: 350px;
       display: flex;
