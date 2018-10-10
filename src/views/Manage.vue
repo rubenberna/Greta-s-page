@@ -1,36 +1,19 @@
 <template>
   <div>
-    <navbar-admin />
-    <div class="manage container">
-      <sui-table basic="very" celled collapsing size='large'>
-        <sui-table-header>
-          <sui-table-row>
-            <sui-table-header-cell>Therapy</sui-table-header-cell>
-            <sui-table-header-cell>Nr. Appointments</sui-table-header-cell>
-          </sui-table-row>
-        </sui-table-header>
-
-        <sui-table-body>
-          <sui-table-row v-for='therapy in therapies' :key='therapy.id'>
-            <sui-table-cell>
-              <h4 is="sui-header" image>
-                <sui-image :src='therapy.image' shape="rounded" size="mini" />
-                <sui-header-content>
-                  {{therapy.name}}
-                  <sui-header-subheader>{{therapy.therapist}}</sui-header-subheader>
-                </sui-header-content>
-              </h4>
-            </sui-table-cell>
-            <sui-table-cell>
-              0
-            </sui-table-cell>
-          </sui-table-row>
-        </sui-table-body>
-      </sui-table>
-      <div class="fixed-action-btn">
-        <router-link to='/newtherapy' class="btn-floating btn-large green">
-          <i class="fa fa-plus"></i>
-        </router-link>
+    <div class="manage-wrapper">
+      <div class="manage-menu">
+        <heading class="manage-menu_item home"
+                 size='s'
+                 weight='semibold'
+                 @click.native='goHome'> Home </heading>
+        <heading class="manage-menu_item"
+                 size='s'> Therapies </heading>
+        <heading class="manage-menu_item"
+                 size='s'> Events </heading>
+        <heading class="manage-menu_item"
+                 size='s'> Bookings </heading>
+        <heading class="manage-menu_item"
+                 size='s'> Users & Newsletter </heading>
       </div>
     </div>
   </div>
@@ -38,18 +21,30 @@
 
 <script>
   import { mapActions, mapGetters } from 'vuex'
-  import NavbarAdmin from '@/components/navbars/NavbarAdmin'
+  import Heading from '@/components/typography/Heading';
+  import Bookings from '@/components/dashboardItems/BookingsDashboard'
+  import Events from '@/components/dashboardItems/EventsDashboard'
+  import Therapies from '@/components/dashboardItems/TherapiesDashboard'
+  import UsersNewsletter from '@/components/dashboardItems/Users&NewsletterDashboard'
+  import router from '../router'
 
   export default {
     name: 'manage',
     components: {
-      NavbarAdmin
+      Heading,
+      Bookings,
+      Events,
+      Therapies,
+      UsersNewsletter
     },
     computed: {
       ...mapGetters(['therapies'])
     },
     methods: {
-      ...mapActions(['fetchTherapies', 'fetchNewsletter'])
+      ...mapActions(['fetchTherapies', 'fetchNewsletter']),
+      goHome() {
+        router.push('/')
+      }
     },
     created() {
       this.fetchTherapies()
@@ -59,18 +54,31 @@
 </script>
 
 <style lang="scss" scoped>
-  .manage {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    th:first-child {
-      width: 300px;
-    }
+  @import '../../style/main.scss';
 
-    .ui.basic.table tbody tr:hover {
-        background-color: #f7f7f7;
+  .manage-wrapper {
+    height: 100vh;
+    width: 17%;
+    background-color: $green;
+    color: $white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .manage-menu {
+      height: 43%;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      .manage-menu_item {
         cursor: pointer;
+        &:hover {
+          color: orange;
+        }
+      }
+      .manage-menu_item.home {
+        text-transform: uppercase;
+      }
     }
   }
+
 </style>

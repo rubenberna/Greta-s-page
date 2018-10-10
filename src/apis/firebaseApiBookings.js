@@ -22,18 +22,22 @@ export default {
     })
     return result
   },
-  createBooking(booking) {
-   db.bookingsCollection.add({
-     createdOn: booking.createdOn,
-     userId: booking.userId,
-     clientName: booking.clientName,
-     date: booking.date,
-     phone: booking.phone,
-     therapyId: booking.therapyId,
-     therapyName: booking.therapyName,
-   })
-     .then(ref => {
-       console.log('Added document with ID: ', ref.id);
+  async createBooking(booking) {
+    let bookingId = null
+
+    await db.bookingsCollection.add({
+      createdOn: booking.createdOn,
+      userId: booking.userId,
+      clientName: booking.clientName,
+      date: booking.date,
+      phone: booking.phone,
+      therapyId: booking.therapyId,
+      therapyName: booking.therapyName,
      })
-   }
+      .then(ref => {
+        console.log('Added document with ID: ', ref.id);
+        bookingId = ref.id
+       })
+       return bookingId;
+    }
 }

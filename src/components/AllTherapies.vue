@@ -153,6 +153,7 @@
           }
           .all-therapies-card-text_more {
             color: $color-text;
+            height: 15%;
           }
         }
       }
