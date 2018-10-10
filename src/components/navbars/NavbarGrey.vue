@@ -25,6 +25,14 @@
         <sui-menu-menu position="right">
           <a
           is="sui-menu-item"
+          :active="isActive('Events')"
+          content="Events"
+          @click.prevent="select('Events'); router('/')"
+          />
+        </sui-menu-menu>
+        <sui-menu-menu position="right">
+          <a
+          is="sui-menu-item"
           :active="isActive('About')"
           content="About"
           @click.prevent="select('About'); router('/about');"

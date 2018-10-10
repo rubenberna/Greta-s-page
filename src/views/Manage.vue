@@ -1,35 +1,43 @@
 <template>
   <div>
-    <div class="manage-wrapper">
-      <div class="manage-menu">
-        <heading class="manage-menu_item home"
-                 size='s'
-                 weight='semibold'
-                 @click.native='goHome'> Home </heading>
-        <heading class="manage-menu_item"
-                 size='s'
-                 :class="getStatusClass('Therapies')"
-                 @click.native="getCurrentView('Therapies')">
-                 Therapies
-        </heading>
-        <heading class="manage-menu_item"
-                 size='s'
-                 :class="getStatusClass('Events')"
-                 @click.native="getCurrentView('Events')">
-                 Events
-        </heading>
-        <heading class="manage-menu_item"
-                 size='s'
-                 :class="getStatusClass('Bookings')"
-                 @click.native="getCurrentView('Bookings')">
-                 Bookings
-        </heading>
-        <heading class="manage-menu_item"
-                 size='s'
-                 :class="getStatusClass('UsersNewsletter')"
-                 @click.native="getCurrentView('UsersNewsletter')">
-                 Users & Newsletter
-        </heading>
+    <div class="manage-dashboard">
+      <div class="manage-menu-wrapper">
+        <div class="manage-menu">
+          <heading class="manage-menu_item home"
+                   size='s'
+                   weight='semibold'
+                   @click.native='goHome'> Home </heading>
+          <heading class="manage-menu_item"
+                   size='s'
+                   :class="getStatusClass('Therapies')"
+                   @click.native="getCurrentView('Therapies')">
+                   Therapies
+          </heading>
+          <heading class="manage-menu_item"
+                   size='s'
+                   :class="getStatusClass('Events')"
+                   @click.native="getCurrentView('Events')">
+                   Events
+          </heading>
+          <heading class="manage-menu_item"
+                   size='s'
+                   :class="getStatusClass('Bookings')"
+                   @click.native="getCurrentView('Bookings')">
+                   Bookings
+          </heading>
+          <heading class="manage-menu_item"
+                   size='s'
+                   :class="getStatusClass('UsersNewsletter')"
+                   @click.native="getCurrentView('UsersNewsletter')">
+                   Users & Newsletter
+          </heading>
+        </div>
+      </div>
+      <div class="manage-view">
+        <bookings v-if="currentView === 'Bookings'"/>
+        <events v-if="currentView === 'Events'"/>
+        <therapies v-if="currentView === 'Therapies'"/>
+        <users-newsletter v-if="currentView === 'UsersNewsletter'"/>
       </div>
     </div>
   </div>
@@ -48,8 +56,6 @@
     name: 'manage',
     data () {
       return {
-        active: 'Therapies',
-        items: ['Therapies', 'Events', 'Bookings', 'UsersNewsletter'],
         currentView: null
       }
     },
@@ -77,8 +83,8 @@
       }
     },
     created() {
-      this.fetchTherapies()
       this.fetchNewsletter()
+      this.currentView = 'Therapies'
     }
   }
 </script>
@@ -86,25 +92,38 @@
 <style lang="scss" scoped>
   @import '../../style/main.scss';
 
-  .manage-wrapper {
-    height: 100vh;
-    width: 17%;
-    background-color: $green;
-    color: $white;
+  .manage-dashboard {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    .manage-menu {
-      height: 43%;
+    .manage-menu-wrapper {
+      height: 100vh;
+      width: 17%;
+      background-color: $green;
+      color: $white;
       display: flex;
-      justify-content: center;
       flex-direction: column;
-      .manage-menu_item {
-        cursor: pointer;
+      align-items: center;
+      .manage-menu {
+        height: 43%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        .manage-menu_item {
+          cursor: pointer;
+        }
+        .manage-menu_item.home {
+          text-transform: uppercase;
+          &:hover {
+            color: orange;
+          }
+        }
       }
-      .manage-menu_item.home {
-        text-transform: uppercase;
-      }
+    }
+
+    .manage-view {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
     }
   }
 
