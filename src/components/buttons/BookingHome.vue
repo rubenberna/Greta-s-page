@@ -258,7 +258,7 @@
     .booking-success {
       // text-align: center;
       transition: all 3s;
-      color: $marine;
+      color: $success;
     }
   }
 

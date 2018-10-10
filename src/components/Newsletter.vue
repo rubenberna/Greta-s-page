@@ -35,7 +35,7 @@
        </heading>
       </div>
       <div class="newsletter-sucess-giff">
-       <iframe src="https://giphy.com/embed/l3mZfIZ6ZFlkIUH8A" width="300" height="300" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+       <iframe src="https://giphy.com/embed/xT1XGHkP7hqm0JvWrS" width="250" height="250" frameBorder="0" class="giphy-embed"></iframe>
       </div>
     </div>
   </div>
