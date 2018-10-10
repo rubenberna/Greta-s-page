@@ -7,13 +7,29 @@
                  weight='semibold'
                  @click.native='goHome'> Home </heading>
         <heading class="manage-menu_item"
-                 size='s'> Therapies </heading>
+                 size='s'
+                 :class="getStatusClass('Therapies')"
+                 @click.native="getCurrentView('Therapies')">
+                 Therapies
+        </heading>
         <heading class="manage-menu_item"
-                 size='s'> Events </heading>
+                 size='s'
+                 :class="getStatusClass('Events')"
+                 @click.native="getCurrentView('Events')">
+                 Events
+        </heading>
         <heading class="manage-menu_item"
-                 size='s'> Bookings </heading>
+                 size='s'
+                 :class="getStatusClass('Bookings')"
+                 @click.native="getCurrentView('Bookings')">
+                 Bookings
+        </heading>
         <heading class="manage-menu_item"
-                 size='s'> Users & Newsletter </heading>
+                 size='s'
+                 :class="getStatusClass('UsersNewsletter')"
+                 @click.native="getCurrentView('UsersNewsletter')">
+                 Users & Newsletter
+        </heading>
       </div>
     </div>
   </div>
@@ -30,6 +46,13 @@
 
   export default {
     name: 'manage',
+    data () {
+      return {
+        active: 'Therapies',
+        items: ['Therapies', 'Events', 'Bookings', 'UsersNewsletter'],
+        currentView: null
+      }
+    },
     components: {
       Heading,
       Bookings,
@@ -44,6 +67,13 @@
       ...mapActions(['fetchTherapies', 'fetchNewsletter']),
       goHome() {
         router.push('/')
+      },
+      getStatusClass(name) {
+        return this.currentView === name? 'active' : 'inactive';
+      },
+      getCurrentView(name) {
+        this.currentView = name
+        console.log(this.currentView);
       }
     },
     created() {
@@ -71,14 +101,15 @@
       flex-direction: column;
       .manage-menu_item {
         cursor: pointer;
-        &:hover {
-          color: orange;
-        }
       }
       .manage-menu_item.home {
         text-transform: uppercase;
       }
     }
+  }
+
+  .active {
+    color: orange;
   }
 
 </style>
