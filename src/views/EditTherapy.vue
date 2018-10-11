@@ -1,19 +1,27 @@
 <template>
   <div class="edit-therapy">
-    Edit therapy
+    {{ therapy.name }}
   </div>
 </template>
 
 <script>
-export default {
-  name: 'editTherapy',
-  data () {
-    return {
+  import { mapGetters, mapActions } from 'vuex'
 
-    }
+  export default {
+    name: 'editTherapy',
+    data () {
+      return {
+
+      }
+    },
+    computed: mapGetters(['therapy'])
   }
-}
 </script>
 
 <style lang="scss" scoped>
+  @import '../../style/main.scss';
+
+  .edit-therapy {
+    height: 100vh;
+  }
 </style>

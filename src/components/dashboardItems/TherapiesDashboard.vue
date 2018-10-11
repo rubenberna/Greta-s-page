@@ -27,7 +27,7 @@
           </sui-table-cell>
           <sui-table-cell class="therapies-actions">
             <span class="therapies-actions_item" @click.prevent="storeTherapy(therapy); view(therapy.name)">View</span>
-            <span class="therapies-actions_item" @click.prevent='edit'>Edit</span>
+            <span class="therapies-actions_item" @click.prevent="storeTherapy(therapy); edit(therapy)">Edit</span>
             <span class="therapies-actions_item" @click.prevent='deleteTherapy(therapy.id)'>Delete</span>
           </sui-table-cell>
         </sui-table-row>
@@ -53,8 +53,8 @@
       view(therapy) {
         this.$router.push(`/therapy/${therapy}`)
       },
-      edit() {
-        console.log('edit');
+      edit(therapy) {
+        this.$router.push({ name: 'editTherapy', params: { therapy_id: therapy.id}})
       },
       count(a, b) {
         return a + b;
