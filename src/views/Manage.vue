@@ -75,7 +75,7 @@
         router.push('/')
       },
       getStatusClass(name) {
-        return this.currentView === name? 'active' : 'inactive';
+        if (this.currentView === name) return 'active'
       },
       getCurrentView(name) {
         this.currentView = name

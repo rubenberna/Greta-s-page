@@ -37,6 +37,7 @@ let router = new Router({
       path: '/login',
       name: 'login',
       component: Login,
+      props: true,
       meta: {
         requiresGuest: true
       }

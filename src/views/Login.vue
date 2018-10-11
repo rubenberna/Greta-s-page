@@ -1,5 +1,8 @@
 <template>
   <div class="login container">
+    <div class="login-msg">
+      {{ loginMsg }}
+    </div>
     <div class="login-title">
       <h4>Login</h4>
     </div>
@@ -66,6 +69,9 @@
         }
       }
     },
+    props: {
+      loginMsg: String
+    },
     components: {
       ClipLoader
     },
@@ -100,6 +106,11 @@
     justify-content: center;
     height: 100vh;
     width: 350px;
+    .login-msg {
+      text-align: center;
+      height: 50px;
+      color: $steel;
+    }
     .login-title {
       text-align: center;
       margin-bottom: 20px;
