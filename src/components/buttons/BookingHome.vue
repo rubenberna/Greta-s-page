@@ -10,8 +10,8 @@
     <div v-else>
       <sui-button  class="booking-button"
                    @click="loginFirst">
-                  Make appointment
-    </sui-button>
+                   Make appointment
+      </sui-button>
     </div>
     <sui-modal v-model="open">
       <sui-modal-content image>
@@ -23,12 +23,12 @@
               <p>{{ therapy.name }}</p>
               <span class="booking-header_close"
                     @click='toggle'>
-                    x
+                    close
               </span>
             </sui-header>
             <div class="booking-description">
               <p>Thank you for choosing the {{ therapy.name }} therapy!</p>
-              <p>This treatment is available {{ therapy.availability.toLowerCase() }} with a price of {{ therapy.price }} per session.</p>
+              <p>This treatment is available on {{ therapy.availability.toLowerCase() }} with a price of {{ therapy.price }} per session.</p>
               <p>Would you like to schedule an appointment?</p>
             </div>
             <sui-form class="booking-details">
@@ -109,7 +109,7 @@
         this.open = !this.open;
       },
       loginFirst() {
-        router.push('/login')
+        router.push({ name: 'login', params: { loginMsg: 'Please login or create an account first ;)'}})
       },
       validateBooking() {
         if (!this.booking.phone || !this.booking.date) {
@@ -198,9 +198,9 @@
     background-color: white;
     font-family: $font-family-p;
     font-weight: $normal;
-    transition: all 1s;
+    transition: all 0.5s;
     &:hover{
-      background-color: $white;
+      background-color: #f2f3ee;
       border-radius: 4px;
     }
   }
@@ -220,20 +220,12 @@
       letter-spacing: .135em;
     }
     .booking-header_close {
-      border: 1px solid grey;
-      background: $white;
-      color: $charcoal-grey;
-      width: 26px;
-      border-radius: 50%;
-      text-align: center;
-      height: 26px;
+      text-transform: lowercase;
       font-size: 13px;
       cursor: pointer;
-      transition: all 0.5s;
-      padding-left: 0.5px;
+      color: $steel;
       &:hover {
-        color: $white;
-        background: grey;
+        color: $color-text;
       }
     }
   }
@@ -262,21 +254,17 @@
     }
   }
 
-  // .booking-submit {
-  //   position: absolute;
-  //   bottom: 240px;
-  //   left: 353px;
-  //   // bottom: 82px;
-  //   // left: 353px;
-  // }
-
   .ui.primary.button {
-    background: rgba(0, 173, 181, 0.7);
-    width: 111%;
+    background: $white;
+    border: 2px solid $green;
+    border-radius: 4px;
+    color: $color-text;
+    width: 79%;
     height: 45px;
     margin-top: 3px;
     &:hover {
-    background: $marine
+    background: $green;
+    color: $white;
     }
   }
 </style>
