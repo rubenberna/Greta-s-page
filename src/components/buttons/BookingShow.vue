@@ -109,7 +109,7 @@
         this.open = !this.open;
       },
       loginFirst() {
-        router.push('/login')
+        router.push({ name: 'login', params: { loginMsg: 'Please login or create an account first ;)'}})
       },
       validateBooking() {
         if (!this.booking.phone || !this.booking.date) {
