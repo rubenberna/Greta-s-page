@@ -3,11 +3,13 @@ import sendgrid from '../apis/sendgrid'
 
 const state = {
   bookings: [],
-  bookingId: null
+  booking: null,
+  bookingsTherapy: null
 }
 
 const getters = {
-  bookings: state => state.bookings
+  bookings: state => state.bookings,
+  bookingsTherapy: state => state.bookingsTherapy
 }
 
 const actions = {
@@ -15,14 +17,17 @@ const actions = {
     commit('setBooking', null)
     const appointmentId = await db.createBooking(booking)
     sendgrid.emailAppointment(appointmentId)
-
-    console.log(appointmentId);
   },
   async fetchBookings({ commit }) {
     commit('setBookings', null)
     const response = await db.fetchBookings()
-    console.log(response);
     commit('setBookings', response)
+  },
+  async countBookings({ commit }, therapyId) {
+    commit('setBookingsTherapy', null)
+    const response = await db.countBookings(therapyId)
+    console.log(response.length)
+    // return response.length
   }
 }
 
@@ -32,6 +37,9 @@ const mutations = {
   },
   setBooking: (state, booking) => {
     state.booking = booking
+  },
+  setBookingsTherapy: (state, number) => {
+    state.bookingsTherapy = number
   }
 }
 

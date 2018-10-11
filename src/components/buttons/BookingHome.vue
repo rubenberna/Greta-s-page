@@ -2,13 +2,13 @@
   <div class="booking">
     <div class="currentUser"
          v-if="currentUser">
-         <sui-button  class="booking-button"
+         <sui-button  class="booking-home-button"
                       @click.native="toggle">
                       Make appointment
        </sui-button>
     </div>
     <div v-else>
-      <sui-button  class="booking-button"
+      <sui-button  class="booking-home-button"
                    @click="loginFirst">
                    Make appointment
       </sui-button>
@@ -138,7 +138,7 @@
   }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
   @import '../../../style/main.scss';
 
   .modal {
@@ -147,67 +147,31 @@
     top: 25% !important;
   }
 
-  .sui-modal .ui.standart.modal.transition.visible.active {
-    max-height: 59% !important;
-    left: 27%;
-    top: 25%;
-  }
-  .modal.active {
-    max-height: 59% !important;
-    left: 27%;
-    top: 25%;
+  sui-modal.content {
+    background: orange;
   }
 
-  .modal.visible.active {
-    max-height: 59% !important;
-    left: 27%;
-    top: 25%;
-  }
-  .ui.modal.visible.active {
-    max-height: 59% !important;
-    left: 27%;
-    top: 25%;
-  }
-
-  .modal.ui.modal.visible.transition.ui.active.modal {
-    max-height: 59% !important;
-    left: 27%;
-    top: 25%;
-  }
-
-  div.ui.modal.visible.active {
-    max-height: 59% !important;
-    left: 27%;
-    top: 25%;
-  }
-  div.ui.standart.modal.transition.visible.active {
-    max-height: 59% !important;
-    left: 27% !important;
-    top: 25% !important;
-    display: flex !important;
-  }
-
-  .booking-button {
-    padding: 9px 15px;
-    font-size: 11px;
-    letter-spacing: .10rem;
-    text-transform: uppercase;
-    border-right: 1px solid #e5e5e5;
-    border-bottom: 1px solid #e5e5e5;
-    border-radius: 0px;
-    background-color: white;
-    font-family: $font-family-p;
-    font-weight: $normal;
-    transition: all 0.5s;
+  .booking-home-button {
+    padding: 9px 15px !important;
+    font-size: 11px !important;
+    letter-spacing: .10rem !important;
+    text-transform: uppercase !important;
+    border-right: 1px solid #e5e5e5 !important;
+    border-bottom: 1px solid #e5e5e5 !important;
+    border-radius: 0px !important;
+    background-color: $white !important;
+    font-family: $font-family-p !important;
+    font-weight: $normal !important;
+    transition: all 0.5s !important;
     &:hover{
-      background-color: #f2f3ee;
-      border-radius: 4px;
+      background-color: #f2f3ee !important;
+      border-radius: 4px !important;
     }
   }
 
   .booking-image {
     display: flex !important;
-    align-items: flex-end;
+    align-items: center;
   }
 
   .booking-header {

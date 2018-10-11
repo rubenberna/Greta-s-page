@@ -54,6 +54,7 @@ let router = new Router({
       path: '/edit/:therapy_id',
       name: 'editTherapy',
       component: EditTherapy,
+      props: true,
       meta: {
         requiresAuth: true
       }

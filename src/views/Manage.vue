@@ -70,7 +70,7 @@
       ...mapGetters(['therapies'])
     },
     methods: {
-      ...mapActions(['fetchTherapies', 'fetchNewsletter']),
+      ...mapActions(['fetchNewsletter', 'fetchBookings', 'fetchUsers']),
       goHome() {
         router.push('/')
       },
@@ -79,11 +79,12 @@
       },
       getCurrentView(name) {
         this.currentView = name
-        console.log(this.currentView);
       }
     },
     created() {
       this.fetchNewsletter()
+      this.fetchBookings()
+      this.fetchUsers()
       this.currentView = 'Therapies'
     }
   }
@@ -94,8 +95,9 @@
 
   .manage-dashboard {
     display: flex;
+    height: 100vh;
     .manage-menu-wrapper {
-      height: 100vh;
+      // height: 100vh;
       width: 17%;
       background-color: $green;
       color: $white;

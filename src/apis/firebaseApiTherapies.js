@@ -1,7 +1,5 @@
 import firebase from 'firebase'
 import db from '../../db/firebaseInit'
-import router from '../router'
-import store from '../store';
 
 let imageURL = ''
 
@@ -35,7 +33,6 @@ export default {
       indications: therapy.indications,
       availability: therapy.availability,
       price: therapy.price,
-      therapist: therapy.therapist,
       image: imageURL
     })
       .then(ref => {
@@ -81,102 +78,28 @@ export default {
             })
       })
   },
-  login(user) {
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(user.email, user.password)
-      .then(
-        user => {
-          console.log(`You are logged in as ${user.user.email}`);
-          router.push('/');
-        },
-        err => {
-          store.dispatch('recordError', err.message)
-        });
-  },
-  signUp(doc) {
-     firebase
-      .auth()
-      .createUserWithEmailAndPassword(doc.email, doc.password)
-      .then(
-        user => {
-          // set object in usersCollection with capitalised name
-
-          let array = doc.name.split(' ')
-          let capitalised = []
-
-          for (let n in array) {
-            let cap = array[n].replace(/^\w/, c => c.toUpperCase());
-            capitalised.push(cap)
-          }
-          const fullName = capitalised.join(' ')
-
-          db.usersCollection.doc(user.user.uid).set({
-            name: fullName,
-            email: doc.email,
-            isAdmin: false
-          }).then(() => {
-            setTimeout(() => router.push('/'), 1500)
-          }).catch(err => {
-            store.dispatch('recordError', err.message)
-          })
-        },
-        err => {
-        store.dispatch('recordError', err.message)
-    })
-  },
-  logout() {
-    firebase
-      .auth()
-      .signOut()
-  },
-  resetPassword(email) {
-    firebase
-      .auth()
-      .sendPasswordResetEmail(email)
+  deleteTherapy(therapyId) {
+    if(confirm('Are you sure?')) {
+      db.therapiesCollection.doc(therapyId).delete()
       .then(() => {
-        store.dispatch('recordSuccess', `Email sent to ${email}`);
-      }).catch(error => {
-        store.dispatch('recordError', error.message)
+        console.log(therapyId + 'was deleted');
       })
-  },
-  loggedIn() {
-    return firebase.auth().currentUser
-  },
-  getProfile(user) {
-    db.usersCollection.doc(user.uid).get()
-    .then((res) => {
-      store.commit('setProfile', res.data())
-    }).catch((err) => {
-      store.dispatch('recordError', err.message)
-    })
-  },
-  async fetchEvents() {
-    const result = []
-    await db.eventsCollection.get()
-    .then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        const data = {
-          'id': doc.id,
-          'name': doc.data().name,
-          'address': doc.data().address,
-          'description': doc.data().description,
-          'date': doc.data().date,
-        }
-        result.push(data)
+      .catch(err => {
+        console.log("Error removing document: ", err);
       })
-    })
-    return result;
+    }
   },
-  createEvent(newEvent) {
-   db.eventsCollection.add({
-     name: newEvent.name,
-     description: newEvent.description,
-     date: newEvent.date,
-     address: newEvent.address
-   })
-     .then(ref => {
-       console.log('Added document with ID: ', ref.id);
-     })
- },
+  editTherapy(therapy) {
+    const therapyRef = db.therapiesCollection.doc(therapy.id)
+
+    therapyRef.update({
+      name: therapy.name,
+      description: therapy.description,
+      method: therapy.method,
+      indications: therapy.indications,
+      availability: therapy.availability,
+      price: therapy.price,
+      image: therapy.image
+    })
+  }
 }

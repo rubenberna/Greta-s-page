@@ -2,13 +2,13 @@
   <div class="booking">
     <div class="currentUser"
          v-if="currentUser">
-         <sui-button  class="booking-button"
+         <sui-button  class="booking-show-button"
                       @click.native="toggle">
                       Schedule appointment
        </sui-button>
     </div>
     <div v-else>
-      <sui-button  class="booking-button"
+      <sui-button  class="booking-show-button"
                    @click="loginFirst">
                   Make appointment
     </sui-button>
@@ -138,132 +138,22 @@
   }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
   @import '../../../style/main.scss';
 
-  .ui.standart.modal.transition.visible.active {
-    max-height: 59% !important;
-    left: 27%;
-    top: 25%;
-    background: yellow;
-  }
-
-  sui-modal.transition.visible.active {
-    max-height: 59% !important;
-    left: 27%;
-    top: 25%;
-    background: yellow;
-  }
-
-  .modal.active {
-    max-height: 59% !important;
-    left: 27%;
-    top: 25%;
-  }
-
-  .modal.visible.active {
-    max-height: 59% !important;
-    left: 27%;
-    top: 25%;
-  }
-  .ui.modal.visible.active {
-    max-height: 59% !important;
-    left: 27%;
-    top: 25%;
-  }
-
-  .modal.ui.modal.visible.transition.ui.active.modal {
-    max-height: 59% !important;
-    left: 27%;
-    top: 25%;
-  }
-
-  div.ui.modal.visible.active {
-    max-height: 59% !important;
-    left: 27%;
-    top: 25%;
-  }
-  div.ui.modal.transition.visible.active {
-    max-height: 59% !important;
-    left: 27%;
-    top: 25%;
-  }
-
-  .booking-button {
-    color: white;
-    font-size: 19px;
-    font-weight: bolder;
-    transition: all 0.5s;
-    width: 170px;
-    height: 63px;
-    background: no-repeat;
+  .booking-show-button {
+    color: $white !important;
+    font-size: 19px !important;
+    font-weight: bolder !important;
+    transition: all 0.5s !important;
+    width: 170px !important;
+    height: 63px !important;
+    background: no-repeat !important;
     &:hover {
-      opacity: 0.8;
-      background: $white;
-      color: $color-text;
+      opacity: 0.8 !important;
+      background: $white !important;
+      color: $color-text !important;
     }
   }
 
-  .booking-image {
-    display: flex !important;
-    align-items: flex-end;
-  }
-
-  .booking-header {
-    text-transform: uppercase;
-    display: flex;
-    justify-content: space-between;
-    width: 510px;
-    p {
-      font-weight: 700;
-      letter-spacing: .135em;
-    }
-    .booking-header_close {
-      text-transform: lowercase;
-      font-size: 13px;
-      cursor: pointer;
-      color: $steel;
-      &:hover {
-        color: $color-text;
-      }
-    }
-  }
-
-  .booking-description {
-    margin-top: 23px;
-    font-family: $font-family-p;
-    color: $color-text;
-    font-weight: 300;
-  }
-  .booking-details {
-    max-width: 55%;
-    margin-top: 37px;
-    display: flex;
-    flex-direction: column;
-    input {
-      height: 23px;
-    }
-    .notification {
-      margin-bottom: 12px;
-    }
-    .booking-success {
-      // text-align: center;
-      transition: all 3s;
-      color: $success;
-    }
-  }
-
-  .ui.primary.button {
-    background: $white;
-    border: 2px solid $green;
-    border-radius: 4px;
-    color: $color-text;
-    width: 79%;
-    height: 45px;
-    margin-top: 3px;
-    &:hover {
-    background: $green;
-    color: $white;
-    }
-  }
 </style>

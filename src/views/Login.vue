@@ -53,7 +53,6 @@
 <script>
   import { mapActions, mapGetters } from 'vuex'
   import ClipLoader from 'vue-spinner/src/ClipLoader.vue';
-  // import Loader from '@/components/Loader'
 
   export default {
     name: 'login',

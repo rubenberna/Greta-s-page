@@ -1,6 +1,9 @@
 <template>
   <div class="new-therapy container">
-    <h3 class="new-therapy-title">Create new Therapy</h3>
+    <heading size='l'
+             class="new-therapy-title">
+             Create a new Therapy
+    </heading>
     <div class="row">
     <form class="col s12">
       <div class="row">
@@ -58,6 +61,7 @@
 
 <script>
   import { mapActions } from 'vuex'
+  import Heading from '@/components/typography/Heading'
 
   export default {
     name: 'newTherapy',
@@ -71,9 +75,11 @@
           name: null,
           image: null,
           price: null,
-          teaser: null
         }
       }
+    },
+    components: {
+      Heading
     },
     methods: {
       ...mapActions(['createTherapy', 'uploadImageTherapy']),
@@ -93,13 +99,22 @@
     max-width: 811px;
     height: 100vh;
     .new-therapy-title {
-      padding: 20px 0px;
-      align-self: flex-start;
+      padding: 20px;
+      width: 84%;
+      height: 10%;
+      display: inline-block;
+      line-height: 1em;
+      letter-spacing: .135em;
+      padding-bottom: .125em;
+      margin-bottom: 33px;
     }
     .action-buttons {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      button {
+        height: 40px;
+      }
     }
   }
 </style>

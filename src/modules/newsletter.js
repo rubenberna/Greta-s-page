@@ -15,7 +15,7 @@ const actions = {
   async fetchNewsletter({ commit }) {
     commit('setNewsletterUsers', null)
     const response = await db.fetchNewsletter()
-    console.log(response);
+    commit('setNewsletterUsers', response)
   }
 }
 

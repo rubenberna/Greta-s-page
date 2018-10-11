@@ -1,10 +1,9 @@
-import firebase from 'firebase'
 import db from '../../db/firebaseInit'
 
 export default {
   async fetchBookings() {
     const result = []
-    await db.bookingsCollection.get()
+    await db.bookingsCollection.orderBy('date', 'asc').get()
     .then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         const data = {
@@ -39,5 +38,16 @@ export default {
         bookingId = ref.id
        })
        return bookingId;
+    },
+    async countBookings(therapyId) {
+      let bookings = []
+
+      await db.bookingsCollection.where('therapyId', '==', therapyId).get()
+        .then(querySnapshot => {
+          querySnapshot.forEach(doc => {
+            bookings.push(doc.data())
+          })
+        })
+        return bookings
     }
 }
