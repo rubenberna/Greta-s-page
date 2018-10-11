@@ -33,7 +33,6 @@ export default {
       indications: therapy.indications,
       availability: therapy.availability,
       price: therapy.price,
-      therapist: therapy.therapist,
       image: imageURL
     })
       .then(ref => {
@@ -79,11 +78,11 @@ export default {
             })
       })
   },
-  deleteTherapy(therapy) {
+  deleteTherapy(therapyId) {
     if(confirm('Are you sure?')) {
-      db.therapiesCollection.doc(therapy).delete()
+      db.therapiesCollection.doc(therapyId).delete()
       .then(() => {
-        console.log(therapy.name + 'deleted');
+        console.log(therapyId + 'was deleted');
       })
       .catch(err => {
         console.log("Error removing document: ", err);

@@ -28,7 +28,7 @@
           <sui-table-cell class="therapies-actions">
             <span class="therapies-actions_item" @click.prevent="storeTherapy(therapy); view(therapy.name)">View</span>
             <span class="therapies-actions_item" @click.prevent='edit'>Edit</span>
-            <span class="therapies-actions_item" @click.prevent='deleteTherapy(therapy)'>Delete</span>
+            <span class="therapies-actions_item" @click.prevent='deleteTherapy(therapy.id)'>Delete</span>
           </sui-table-cell>
         </sui-table-row>
       </sui-table-body>

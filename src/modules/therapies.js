@@ -17,18 +17,20 @@ const actions = {
     const response = await db.fetchTherapies();
     commit('setTherapies', response)
   },
-  createTherapy({ commit }, therapy) {
-    db.createTherapy(therapy);
-    router.push('/management');
+  createTherapy({ commit, dispatch }, therapy) {
+    db.createTherapy(therapy)
+    dispatch('fetchTherapies')
+    router.push('/management')
   },
   uploadImageTherapy({ commit }, image) {
-    db.uploadImage(image);
+    db.uploadImage(image)
   },
   storeTherapy({ commit }, therapy) {
     commit('setTherapy', therapy)
   },
-  deleteTherapy({ commit }, therapy) {
-    db.deleteTherapy(therapy)
+  deleteTherapy({ commit, dispatch }, therapyId) {
+    db.deleteTherapy(therapyId)
+    dispatch('fetchTherapies')
   }
 }
 
