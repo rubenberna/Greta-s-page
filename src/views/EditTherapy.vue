@@ -59,19 +59,6 @@
 
   export default {
     name: 'editTherapy',
-    data () {
-      return {
-        thetherapy: {
-          availability: null,
-          description: null,
-          indications: null,
-          method: null,
-          name: null,
-          image: null,
-          price: null,
-        }
-      }
-    },
     components: {
       Heading
     },

@@ -86,4 +86,27 @@ export default {
            })
      })
  },
+ deleteEvent(eventId) {
+   if(confirm('Are you sure?')) {
+     db.eventsCollection.doc(eventId).delete()
+     .then(() => {
+       console.log(eventId + 'was deleted');
+     })
+     .catch(err => {
+       console.log("Error removing document: ", err);
+     })
+   }
+ },
+ editEvent(updatedEvent) {
+   const eventRef = db.eventsCollection.doc(updatedEvent.id)
+
+   eventRef.update({
+     name: updatedEvent.name,
+     description: updatedEvent.description,
+     date: updatedEvent.date,
+     address: updatedEvent.address,
+     image: updatedEvent.image,
+   })
+ }
+
 }

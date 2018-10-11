@@ -79,7 +79,6 @@
       },
       getCurrentView(name) {
         this.currentView = name
-        console.log(this.currentView);
       }
     },
     created() {
@@ -94,8 +93,9 @@
 
   .manage-dashboard {
     display: flex;
+    height: 100vh;
     .manage-menu-wrapper {
-      height: 100vh;
+      // height: 100vh;
       width: 17%;
       background-color: $green;
       color: $white;

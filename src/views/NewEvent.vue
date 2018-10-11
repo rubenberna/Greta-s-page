@@ -30,17 +30,17 @@
       </div>
       <div class="row">
         <div class="input-field col s4">
-          <input id="price" type="date" class="validate" v-model='event.date'>
-          <label for="price">Date</label>
+          <input id="date" type="date" class="validate" v-model='event.date'>
+          <label for="date">Date</label>
         </div>
         <div class="input-field col s4">
-          <input id="availability" type="text" class="validate" v-model='event.address'>
-          <label for="availability">Address</label>
+          <input id="address" type="text" class="validate" v-model='event.address'>
+          <label for="address">Address</label>
         </div>
       </div>
       <div class="action-buttons">
         <router-link :to="{ name: 'manage'}"><sui-button>Back</sui-button></router-link>
-        <a class="waves-effect waves-light btn" style="color:white" @click='createTherapy(therapy)'>create</a>
+        <a class="waves-effect waves-light btn" style="color:white" @click='createEvent(event)'>create</a>
       </div>
     </form>
   </div>

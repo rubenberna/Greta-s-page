@@ -73,7 +73,7 @@
       display: flex;
       align-items: center;
       width: 27%;
-      justify-content: space-around;
+      justify-content: space-between;
       .therapies-heading_title {
         display: inline-block;
         line-height: 1em;

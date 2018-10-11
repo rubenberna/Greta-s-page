@@ -17,7 +17,7 @@ const actions = {
     const response = await db.fetchTherapies();
     commit('setTherapies', response)
   },
-  createTherapy({ commit, dispatch }, therapy) {
+  createTherapy({ dispatch }, therapy) {
     db.createTherapy(therapy)
     dispatch('fetchTherapies')
     router.push('/management')
