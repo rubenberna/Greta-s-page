@@ -35,7 +35,7 @@ export default {
         font-family: $font-banner;
         font-size: 74px;
         font-weight: bolder;
-        letter-spacing: .135em;
+        // letter-spacing: .1em;
       }
     }
   }
