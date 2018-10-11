@@ -10,7 +10,8 @@ const state = {
   },
   errorMsg: null,
   successMsg: null,
-  loading: false
+  loading: false,
+  allUsers: []
 }
 
 const getters = {
@@ -18,7 +19,8 @@ const getters = {
   profile: state => state.profile,
   errorMsg: state => state.errorMsg,
   successMsg: state => state.successMsg,
-  loading: state => state.loading
+  loading: state => state.loading,
+  allUsers: state => state.allUsers,
 }
 
 const actions = {
@@ -59,6 +61,11 @@ const actions = {
     commit('setErr', null)
     commit('setSucc', null)
   },
+  async fetchUsers({ commit }) {
+    commit('setUsers', null)
+    const response = await db.fetchUsers()
+    commit('setUsers', response)
+  }
 }
 
 const mutations = {
@@ -76,6 +83,9 @@ const mutations = {
   },
   setLoadding: (state, boolean) => {
     state.loading = boolean
+  },
+  setUsers: (state, list) => {
+    state.allUsers = list
   }
 }
 

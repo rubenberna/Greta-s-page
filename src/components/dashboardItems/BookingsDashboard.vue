@@ -22,7 +22,7 @@
           <sui-table-cell>Archive</sui-table-cell>
         </sui-table-row>
       </sui-table-body>
-  </sui-table>
+    </sui-table>
   </div>
 </template>
 

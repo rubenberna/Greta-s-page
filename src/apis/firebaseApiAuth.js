@@ -73,5 +73,21 @@ export default {
     }).catch((err) => {
       store.dispatch('recordError', err.message)
     })
+  },
+  async fetchUsers() {
+    const result = []
+    await db.usersCollection.orderBy('name', 'asc').get()
+    .then(querySnapshot => {
+      querySnapshot.forEach(doc => {
+        const data = {
+          'id': doc.id,
+          'name': doc.data().name,
+          'email': doc.data().email,
+          'isAdmin': doc.data().isAdmin
+        }
+        result.push(data)
+      })
+    })
+    return result
   }
 }

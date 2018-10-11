@@ -70,7 +70,7 @@
       ...mapGetters(['therapies'])
     },
     methods: {
-      ...mapActions(['fetchNewsletter', 'fetchBookings']),
+      ...mapActions(['fetchNewsletter', 'fetchBookings', 'fetchUsers']),
       goHome() {
         router.push('/')
       },
@@ -84,6 +84,7 @@
     created() {
       this.fetchNewsletter()
       this.fetchBookings()
+      this.fetchUsers()
       this.currentView = 'Therapies'
     }
   }
