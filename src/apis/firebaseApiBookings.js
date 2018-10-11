@@ -1,4 +1,3 @@
-import firebase from 'firebase'
 import db from '../../db/firebaseInit'
 
 export default {
@@ -39,5 +38,16 @@ export default {
         bookingId = ref.id
        })
        return bookingId;
+    },
+    async countBookings(therapyId) {
+      let bookings = []
+
+      await db.bookingsCollection.where('therapyId', '==', therapyId).get()
+        .then(querySnapshot => {
+          querySnapshot.forEach(doc => {
+            bookings.push(doc.data())
+          })
+        })
+        return bookings
     }
 }

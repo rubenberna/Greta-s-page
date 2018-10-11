@@ -26,6 +26,9 @@ const actions = {
   },
   storeTherapy({ commit }, therapy) {
     commit('setTherapy', therapy)
+  },
+  deleteTherapy({ commit }, therapy) {
+    db.deleteTherapy(therapy)
   }
 }
 

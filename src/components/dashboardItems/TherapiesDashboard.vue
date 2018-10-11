@@ -21,14 +21,14 @@
       <sui-table-body v-for="therapy in therapies" :key="therapy.id" selectable>
         <sui-table-row class="therapies-item">
           <sui-table-cell>{{ therapy.name }}</sui-table-cell>
-          <sui-table-cell class="therapies-bookings">0</sui-table-cell>
+          <sui-table-cell class="therapies-bookings"></sui-table-cell>
           <sui-table-cell>
             {{ therapy.description }}
           </sui-table-cell>
           <sui-table-cell class="therapies-actions">
-            <span class="therapies-actions_item" @click.prevent="storeTherapy(therapy); view(therapy.name)">View </span>
-            <span class="therapies-actions_item" @click.prevent='edit'>Edit </span>
-            <span class="therapies-actions_item" @click.prevent='erase'>Delete</span>
+            <span class="therapies-actions_item" @click.prevent="storeTherapy(therapy); view(therapy.name)">View</span>
+            <span class="therapies-actions_item" @click.prevent='edit'>Edit</span>
+            <span class="therapies-actions_item" @click.prevent='deleteTherapy(therapy)'>Delete</span>
           </sui-table-cell>
         </sui-table-row>
       </sui-table-body>
@@ -49,15 +49,15 @@
       ...mapGetters(['therapies']),
     },
     methods: {
-      ...mapActions(['storeTherapy']),
+      ...mapActions(['storeTherapy', 'countBookings', 'deleteTherapy']),
       view(therapy) {
         this.$router.push(`/therapy/${therapy}`)
       },
       edit() {
         console.log('edit');
       },
-      erase() {
-        console.log('erase');
+      count(a, b) {
+        return a + b;
       }
     }
   }
@@ -80,11 +80,9 @@
         letter-spacing: .135em;
       }
     }
-
     th:nth-of-type(3) {
       width: 40%;
     }
-
     th:nth-of-type(4) {
       width: 17%;
       text-align: center;
