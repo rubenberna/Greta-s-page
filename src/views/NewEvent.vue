@@ -1,6 +1,9 @@
 <template>
   <div class="new-event container">
-    <h3 class="new-event-title">Create new Event</h3>
+    <heading size='l'
+             class="new-event-title">
+             Create a new Event
+    </heading>
     <div class="row">
     <form class="col s12">
       <div class="row">
@@ -46,6 +49,7 @@
 
 <script>
   import { mapActions } from 'vuex'
+  import Heading from '@/components/typography/Heading'
 
   export default {
     name: 'newEvent',
@@ -59,6 +63,9 @@
           image: null
         }
       }
+    },
+    components: {
+      Heading
     },
     methods: {
       ...mapActions(['createEvent', 'uploadImageEvent']),
@@ -78,8 +85,14 @@
     max-width: 811px;
     height: 100vh;
     .new-event-title {
-      padding: 20px 0px;
-      align-self: flex-start;
+      padding: 20px;
+      width: 84%;
+      height: 10%;
+      display: inline-block;
+      line-height: 1em;
+      letter-spacing: .135em;
+      padding-bottom: .125em;
+      margin-bottom: 33px;
     }
     .action-buttons {
       display: flex;
