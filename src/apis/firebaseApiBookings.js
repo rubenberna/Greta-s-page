@@ -3,7 +3,7 @@ import db from '../../db/firebaseInit'
 export default {
   async fetchBookings() {
     const result = []
-    await db.bookingsCollection.get()
+    await db.bookingsCollection.orderBy('date', 'asc').get()
     .then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         const data = {

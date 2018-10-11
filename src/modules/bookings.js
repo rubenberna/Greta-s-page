@@ -3,7 +3,7 @@ import sendgrid from '../apis/sendgrid'
 
 const state = {
   bookings: [],
-  bookingId: null,
+  booking: null,
   bookingsTherapy: null
 }
 
