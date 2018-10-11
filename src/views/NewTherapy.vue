@@ -75,7 +75,6 @@
           name: null,
           image: null,
           price: null,
-          teaser: null
         }
       }
     },

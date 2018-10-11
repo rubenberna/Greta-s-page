@@ -88,6 +88,18 @@ export default {
         console.log("Error removing document: ", err);
       })
     }
-  }
+  },
+  editTherapy(therapy) {
+    const therapyRef = db.therapiesCollection.doc(therapy.id)
 
+    const updatedRef = therapyRef.update({
+      name: therapy.name,
+      description: therapy.description,
+      method: therapy.method,
+      indications: therapy.indications,
+      availability: therapy.availability,
+      price: therapy.price,
+      image: therapy.image
+    })
+  }
 }

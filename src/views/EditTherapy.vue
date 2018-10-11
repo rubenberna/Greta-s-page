@@ -1,20 +1,84 @@
 <template>
-  <div class="edit-therapy">
-    {{ therapy.name }}
+  <div class="edit-therapy container">
+    <heading size='l'
+             class="new-therapy-title">
+             Edit Therapy
+    </heading>
+    <div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s4">
+          <input id="name" type="text" class="validate" v-model='therapy.name'>
+        </div>
+        <div class="file-field input-field col s4">
+          <div class="btn">
+            <span>Image</span>
+            <input type="file"
+                   @change='onFileSelect($event.target.files[0])'>
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <textarea id="textarea1" class="materialize-textarea" v-model='therapy.description'/>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <textarea id="textarea1" class="materialize-textarea" v-model='therapy.method' />
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <textarea id="textarea1" class="materialize-textarea" v-model='therapy.indications' />
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s4">
+          <input id="price" type="number" class="validate" v-model='therapy.price'>
+        </div>
+        <div class="input-field col s4">
+          <input id="availability" type="text" class="validate" v-model='therapy.availability'>
+        </div>
+      </div>
+      <div class="action-buttons">
+        <router-link :to="{ name: 'manage'}"><sui-button>Back</sui-button></router-link>
+        <a class="waves-effect waves-light btn" style="color:white" @click='editTherapy(therapy)'>update</a>
+      </div>
+    </form>
+  </div>
   </div>
 </template>
 
 <script>
   import { mapGetters, mapActions } from 'vuex'
+  import Heading from '@/components/typography/Heading'
 
   export default {
     name: 'editTherapy',
     data () {
       return {
-
+        thetherapy: {
+          availability: null,
+          description: null,
+          indications: null,
+          method: null,
+          name: null,
+          image: null,
+          price: null,
+        }
       }
     },
-    computed: mapGetters(['therapy'])
+    components: {
+      Heading
+    },
+    computed: mapGetters(['therapy']),
+    methods: {
+      ...mapActions(['editTherapy'])
+    }
   }
 </script>
 
@@ -22,6 +86,29 @@
   @import '../../style/main.scss';
 
   .edit-therapy {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    max-width: 811px;
     height: 100vh;
+    .new-therapy-title {
+      padding: 20px;
+      width: 84%;
+      height: 10%;
+      display: inline-block;
+      line-height: 1em;
+      letter-spacing: .135em;
+      padding-bottom: .125em;
+      margin-bottom: 33px;
+    }
+    .action-buttons {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      button {
+        height: 40px;
+      }
+    }
   }
 </style>

@@ -28,9 +28,14 @@ const actions = {
   storeTherapy({ commit }, therapy) {
     commit('setTherapy', therapy)
   },
-  deleteTherapy({ commit, dispatch }, therapyId) {
+  deleteTherapy({ dispatch }, therapyId) {
     db.deleteTherapy(therapyId)
     dispatch('fetchTherapies')
+  },
+  async editTherapy({ dispatch }, therapy) {
+    const response = await db.editTherapy(therapy)
+    dispatch('fetchTherapies')
+    router.push('/management')
   }
 }
 
