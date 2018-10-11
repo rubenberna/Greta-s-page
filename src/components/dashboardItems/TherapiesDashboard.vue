@@ -1,6 +1,14 @@
 <template>
   <div class="therapies">
-    <heading> Therapies </heading>
+    <div class="therapies-heading">
+      <heading class="therapies-heading_title"> Therapies </heading>
+      <router-link :to="{ name: 'newTherapy'}">
+        <heading size='s'
+                 uppercase
+                 weight='semibold'> New
+      </heading>
+    </router-link>
+    </div>
     <sui-table fixed single-line>
       <sui-table-header>
         <sui-table-row>
@@ -61,6 +69,18 @@
   .therapies {
     width: 64%;
 
+    .therapies-heading {
+      display: flex;
+      align-items: center;
+      width: 27%;
+      justify-content: space-around;
+      .therapies-heading_title {
+        display: inline-block;
+        line-height: 1em;
+        letter-spacing: .135em;
+      }
+    }
+
     th:nth-of-type(3) {
       width: 40%;
     }
@@ -80,7 +100,7 @@
       }
     }
     .therapies-item:hover {
-      background: rgba(203, 155, 66, 0.3);
+      background: rgba(203, 155, 66, 0.1);
       cursor: default;
     }
   }
