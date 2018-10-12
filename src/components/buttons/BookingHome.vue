@@ -142,7 +142,7 @@
   @import '../../../style/main.scss';
 
   .modal {
-    max-height: 59% !important;
+    max-height: 60% !important;
     left: 27% !important;
     top: 25% !important;
   }
