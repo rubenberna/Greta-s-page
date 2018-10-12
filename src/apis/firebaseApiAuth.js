@@ -8,8 +8,7 @@ export default {
     firebase
       .auth()
       .signInWithEmailAndPassword(user.email, user.password)
-      .then(
-        user => {
+      .then(() => {
           router.push('/');
         },
         err => {

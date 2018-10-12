@@ -4,7 +4,7 @@ import sendgrid from '../apis/sendgrid'
 const state = {
   bookings: [],
   booking: null,
-  bookingsTherapy: null
+  bookingsTherapy: []
 }
 
 const getters = {
@@ -26,8 +26,7 @@ const actions = {
   async countBookings({ commit }, therapyId) {
     commit('setBookingsTherapy', null)
     const response = await db.countBookings(therapyId)
-    // console.log(response.length)
-    // return response.length
+    commit('setBookingsTherapy', response)
   }
 }
 
@@ -38,8 +37,8 @@ const mutations = {
   setBooking: (state, booking) => {
     state.booking = booking
   },
-  setBookingsTherapy: (state, number) => {
-    state.bookingsTherapy = number
+  setBookingsTherapy: (state, list) => {
+    state.bookingsTherapy = list
   }
 }
 
