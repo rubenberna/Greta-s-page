@@ -24,7 +24,7 @@
             </div>
           </div>
           <div class="about-contacts_image">
-            <img src="https://firebasestorage.googleapis.com/v0/b/greta-f481d.appspot.com/o/corinne-kutz-157292-unsplash.jpg?alt=media&token=7a99d373-8f4d-49d9-af28-db4b9bf4fcb7">
+            <img src="https://firebasestorage.googleapis.com/v0/b/greta-f481d.appspot.com/o/about%2Fabout.jpg?alt=media&token=796125c7-1f49-4cbe-8161-b8b0cae605a4">
           </div>
         </div>
       </div>
