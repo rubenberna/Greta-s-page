@@ -95,7 +95,7 @@
           padding-left: 45px;
           background: $green;
           color: $white;
-          border-radius: 3px;
+          border-radius: 4px;
         }
       }
     }
