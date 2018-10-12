@@ -12,7 +12,6 @@ import ShowTherapy from './views/ShowTherapy.vue'
 import Login from './views/Login.vue'
 import SignUp from './views/SignUp.vue'
 import NotFound from './views/NotFound.vue'
-import BookingHome from '@/components/buttons/BookingHome.vue'
 
 Vue.use(Router)
 

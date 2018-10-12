@@ -10,7 +10,6 @@ export default {
       .signInWithEmailAndPassword(user.email, user.password)
       .then(
         user => {
-          console.log(`You are logged in as ${user.user.email}`);
           router.push('/');
         },
         err => {

@@ -34,7 +34,6 @@ export default {
       therapyName: booking.therapyName,
      })
       .then(ref => {
-        console.log('Added document with ID: ', ref.id);
         bookingId = ref.id
        })
        return bookingId;

@@ -26,7 +26,7 @@ const actions = {
   async countBookings({ commit }, therapyId) {
     commit('setBookingsTherapy', null)
     const response = await db.countBookings(therapyId)
-    console.log(response.length)
+    // console.log(response.length)
     // return response.length
   }
 }

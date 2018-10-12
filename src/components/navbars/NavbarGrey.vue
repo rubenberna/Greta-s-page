@@ -69,7 +69,6 @@
 
 <script>
   import { mapActions, mapGetters } from 'vuex'
-  import qs from 'qs'
 
   export default {
     name: 'navbarWhite',
@@ -135,7 +134,8 @@
 
       .ui.secondary.pointing.menu {
         border-bottom: 0px;
-        margin-left: -13px;
+        margin-left: -8px;
+        margin-right: -8px;
         .item {
           font-size: 17px;
           color: $color-heading;
