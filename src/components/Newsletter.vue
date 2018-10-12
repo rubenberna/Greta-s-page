@@ -13,10 +13,9 @@
              <sui-input placeholder="you@email.com"
                         class="input"
                         v-model="newsletterData.email"/>
-             <sui-button primary
-                         class="submit"
-                         @click.prevent='submit'>Newsletter
-             </sui-button>
+             <button class="submit"
+                     @click.prevent='submit'>Newsletter
+             </button>
            </div>
            <paragraph v-if='outcome.error'
                       size='l'
@@ -94,7 +93,9 @@
         .submit {
           width: 170px;
           padding-left: 45px;
-          background: #005792;
+          background: $green;
+          color: $white;
+          border-radius: 3px;
         }
       }
     }
