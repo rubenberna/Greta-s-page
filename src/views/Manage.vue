@@ -95,7 +95,7 @@
 
   .manage-dashboard {
     display: flex;
-    height: 100vh;
+    min-height: 100vh;
     .manage-menu-wrapper {
       // height: 100vh;
       width: 17%;

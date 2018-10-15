@@ -10,7 +10,7 @@
     <div v-else>
       <sui-button  class="booking-show-button"
                    @click="loginFirst">
-                  Make appointment
+                   Schedule appointment
     </sui-button>
     </div>
     <sui-modal v-model="open">

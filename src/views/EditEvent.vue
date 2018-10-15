@@ -66,7 +66,7 @@
     align-items: center;
     flex-direction: column;
     max-width: 811px;
-    height: 100vh;
+    min-height: 100vh;
     .edit-event-title {
       padding: 20px;
       width: 84%;
