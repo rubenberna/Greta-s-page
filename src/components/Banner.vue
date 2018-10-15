@@ -1,5 +1,5 @@
 <template>
-  <div class="banner" style="background-image: url('http://res.cloudinary.com/megslist/image/upload/v1535983801/karl-fredrickson-15871-unsplash.jpg')">
+  <div class="banner" style="background-image: url('https://firebasestorage.googleapis.com/v0/b/greta-f481d.appspot.com/o/rsz_banner.jpg?alt=media&token=487d1d77-51a2-4d14-bf7c-7f3290146454')">
   <navbar-white />
     <section class="banner-title">
       <h1>Terug in balans</h1>

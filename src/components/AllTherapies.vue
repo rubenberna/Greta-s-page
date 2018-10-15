@@ -68,7 +68,7 @@
   .all-therapies {
     margin: 95px 0 0 95px;
     display: grid;
-    max-width: 70%;
+    max-width: 80%;
 
     .all-therapies-intro {
       padding: 20px;

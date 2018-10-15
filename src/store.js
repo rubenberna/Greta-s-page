@@ -6,6 +6,7 @@ import auth from '@/modules/auth.js'
 import events from '@/modules/events.js'
 import newsletter from '@/modules/newsletter.js'
 import bookings from '@/modules/bookings.js'
+import loading from '@/modules/loading.js'
 import createPersistedState from 'vuex-persistedstate'
 
 Vue.use(Vuex)
@@ -17,7 +18,8 @@ export default new Vuex.Store({
     auth,
     events,
     newsletter,
-    bookings
+    bookings,
+    loading
   },
   //persist state for page reload
   plugins: [createPersistedState({

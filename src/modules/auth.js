@@ -10,7 +10,6 @@ const state = {
   },
   errorMsg: null,
   successMsg: null,
-  loading: false,
   allUsers: []
 }
 
@@ -19,20 +18,15 @@ const getters = {
   profile: state => state.profile,
   errorMsg: state => state.errorMsg,
   successMsg: state => state.successMsg,
-  loading: state => state.loading,
   allUsers: state => state.allUsers,
 }
 
 const actions = {
   async login({ commit }, user) {
-    commit('setLoadding', true)
     db.login(user)
-    commit ('setLoadding', false)
   },
   async signUp({ commit }, user) {
-    commit('setLoadding', true)
     db.signUp(user)
-    commit ('setLoadding', false)
   },
   async loggedIn({ commit }) {
     const response = await db.loggedIn()
@@ -80,9 +74,6 @@ const mutations = {
   },
   setProfile: (state, user) => {
     state.profile = user
-  },
-  setLoadding: (state, boolean) => {
-    state.loading = boolean
   },
   setUsers: (state, list) => {
     state.allUsers = list

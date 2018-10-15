@@ -9,10 +9,10 @@
 
 <script>
 // @ is an alias to /src
-import Banner from '@/components/Banner.vue';
-import AllTherapies from '@/components/AllTherapies.vue';
-import Events from '@/components/Events.vue';
-import Newsletter from '@/components/Newsletter.vue';
+import Banner from '@/components/Banner'
+import AllTherapies from '@/components/AllTherapies'
+import Events from '@/components/Events'
+import Newsletter from '@/components/Newsletter'
 
 export default {
   name: 'home',
@@ -20,7 +20,7 @@ export default {
     Banner,
     AllTherapies,
     Events,
-    Newsletter
+    Newsletter,
   }
 }
 </script>

@@ -21,13 +21,9 @@ $charcoal-grey: #353745;
 $steel: #898EA2;
 $pale-grey: #E4E5EC;
 $green: #b1d1c5;
-$flower: #7C264D;
-$flower-light: #F6B9D3;
-$bush: #747357;
 $about-background: #e3dfdb;
 $footer-background: #343434;
 $footer-font: #828386;
-$marine: rgba(0, 173, 181, 0.9);
 
 // Font-colors
 $color-heading: $charcoal-grey;
@@ -51,7 +47,7 @@ $font-size-xl: 1.1rem;
 
 
 // Font-family
-@import url("https://fonts.googleapis.com/css?family=Archivo|Montserrat");
+@import url("https://fonts.googleapis.com/css?family=Archivo");
 
 $font-family-p: 'Archivo', sans-serif;
 $font-family-h: 'Circular',sans-serif;
