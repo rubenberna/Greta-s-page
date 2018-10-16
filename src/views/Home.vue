@@ -1,6 +1,8 @@
 <template>
   <div id="home">
-    <banner/>
+    <transition name="fade" appear>
+      <banner/>
+    </transition>
     <all-therapies/>
     <events />
     <newsletter />
@@ -26,4 +28,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+  .fade-enter {
+    opacity: 0;
+  }
+
+  .fade-enter-active {
+    transition: opacity 2s;
+  }
 </style>

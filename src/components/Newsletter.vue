@@ -1,6 +1,6 @@
 <template>
   <div class="newsletter container">
-    <div v-if='!outcome.success'
+    <div v-show='!outcome.success'
          class="newsletter-unfinished">
          <div class="newsletter-intro">
            <heading weight='bold'
@@ -25,18 +25,21 @@
         </div>
     </div>
 
-    <div v-else
-         class="newsletter-sucess">
-      <div class="newsletter-sucess-intro">
-       <heading weight='bold'
-                size='m'>
-                Thank you for joining our newsletter :)
-       </heading>
+    <transition name="slide" type="transition">
+      <div v-show="outcome.success"
+           class="newsletter-sucess">
+        <div class="newsletter-sucess-intro">
+          <heading weight='bold'
+                  size='m'>
+                  Thank you for joining our newsletter :)
+          </heading>
+        </div>
+        <div class="newsletter-sucess-giff">
+          <iframe src="https://giphy.com/embed/xT1XGHkP7hqm0JvWrS" width="250" height="250" frameBorder="0"     class="giphy-embed"/>
+        </div>
       </div>
-      <div class="newsletter-sucess-giff">
-       <iframe src="https://giphy.com/embed/xT1XGHkP7hqm0JvWrS" width="250" height="250" frameBorder="0" class="giphy-embed"></iframe>
-      </div>
-    </div>
+    </transition>
+
   </div>
 </template>
 
@@ -106,6 +109,24 @@
       a {
         top: -9%;
       }
+    }
+  }
+
+  .slide-enter {
+    opacity: 0;
+  }
+
+  .slide-enter-active {
+    animation: slide-in 1s ease-out forwards;
+    transition: opacity 2s;
+  }
+
+  @keyframes slide-in {
+    from {
+      transform: translateY(20px);
+    }
+    to {
+      transform: translateY(0);
     }
   }
 </style>
