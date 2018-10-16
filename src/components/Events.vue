@@ -144,7 +144,7 @@
   }
 
   .fade-enter-active {
-    transition: opacity 1s;
+    transition: opacity 3s;
   }
 
 </style>
