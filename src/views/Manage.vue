@@ -27,6 +27,12 @@
           </heading>
           <heading class="manage-menu_item"
                    size='s'
+                   :class="getStatusClass('ArchivedBookings')"
+                   @click.native="getCurrentView('ArchivedBookings')">
+                   Archived Bookings
+          </heading>
+          <heading class="manage-menu_item"
+                   size='s'
                    :class="getStatusClass('UsersNewsletter')"
                    @click.native="getCurrentView('UsersNewsletter')">
                    Users & Newsletter
@@ -38,6 +44,7 @@
         <events v-if="currentView === 'Events'"/>
         <therapies v-if="currentView === 'Therapies'"/>
         <users-newsletter v-if="currentView === 'UsersNewsletter'"/>
+        <archived-bookings v-if="currentView === 'ArchivedBookings'"/>
       </div>
     </div>
   </div>
@@ -50,6 +57,7 @@
   import Events from '@/components/dashboardItems/EventsDashboard'
   import Therapies from '@/components/dashboardItems/TherapiesDashboard'
   import UsersNewsletter from '@/components/dashboardItems/Users&NewsletterDashboard'
+  import ArchivedBookings from '@/components/dashboardItems/ArchivedDashboard'
   import router from '../router'
 
   export default {
@@ -64,7 +72,8 @@
       Bookings,
       Events,
       Therapies,
-      UsersNewsletter
+      UsersNewsletter,
+      ArchivedBookings
     },
     computed: {
       ...mapGetters(['therapies'])
@@ -104,7 +113,7 @@
       flex-direction: column;
       align-items: center;
       .manage-menu {
-        height: 43%;
+        height: 60%;
         display: flex;
         justify-content: center;
         flex-direction: column;

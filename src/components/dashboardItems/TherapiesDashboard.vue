@@ -13,15 +13,13 @@
       <sui-table-header>
         <sui-table-row>
           <sui-table-header-cell>Name</sui-table-header-cell>
-          <sui-table-header-cell>Bookings</sui-table-header-cell>
           <sui-table-header-cell>Description</sui-table-header-cell>
-          <sui-table-header-cell>Action</sui-table-header-cell>
+          <sui-table-header-cell textAlign='center'>Action</sui-table-header-cell>
         </sui-table-row>
       </sui-table-header>
       <sui-table-body v-for="therapy in therapies" :key="therapy.id" selectable>
         <sui-table-row class="therapies-item">
           <sui-table-cell>{{ therapy.name }}</sui-table-cell>
-          <sui-table-cell class="therapies-bookings"></sui-table-cell>
           <sui-table-cell> {{ therapy.description }} </sui-table-cell>
           <sui-table-cell class="therapies-actions">
             <span class="therapies-actions_item" @click.prevent="storeTherapy(therapy); view(therapy.name)">View</span>
@@ -75,12 +73,11 @@
         letter-spacing: .135em;
       }
     }
-    th:nth-of-type(3) {
-      width: 40%;
+    th:nth-of-type(1) {
+      width: 25%;
     }
-    th:nth-of-type(4) {
-      width: 17%;
-      text-align: center;
+    th:nth-of-type(3) {
+      width: 20%;
     }
 
     .therapies-actions {
