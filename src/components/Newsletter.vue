@@ -1,45 +1,47 @@
 <template>
   <div class="newsletter container">
-    <div v-show='!outcome.success'
-         class="newsletter-unfinished">
-         <div class="newsletter-intro">
-           <heading weight='bold'
-                    size='m'>
-                    Don't miss our next events!
-           </heading>
-         </div>
-         <div class="newsletter-data">
-           <div class="newsletter-action">
-             <sui-input placeholder="you@email.com"
-                        class="input"
-                        v-model="newsletterData.email"/>
-             <button class="submit"
-                     @click.prevent='submit'>Newsletter
-             </button>
-           </div>
-           <paragraph v-if='outcome.error'
-                      size='l'
-                      type='danger'>
-                      {{ outcome.error }}
-          </paragraph>
-        </div>
-    </div>
 
-    <transition name="slide" type="transition">
-      <div v-show="outcome.success"
-           class="newsletter-sucess">
-        <div class="newsletter-sucess-intro">
-          <heading weight='bold'
-                  size='m'>
-                  Thank you for joining our newsletter :)
-          </heading>
-        </div>
-        <div class="newsletter-sucess-giff">
-          <iframe src="https://giphy.com/embed/xT1XGHkP7hqm0JvWrS" width="250" height="250" frameBorder="0"     class="giphy-embed"/>
-        </div>
+    <transition name='fade'>
+      <div v-show='!outcome.success'
+           class="newsletter-unfinished">
+           <div class="newsletter-intro">
+             <heading weight='bold'
+                      size='m'>
+                      Don't miss our next events!
+             </heading>
+           </div>
+           <div class="newsletter-data">
+             <div class="newsletter-action">
+               <sui-input placeholder="you@email.com"
+                          class="input"
+                          v-model="newsletterData.email"/>
+               <button class="submit"
+                       @click.prevent='submit'>Newsletter
+               </button>
+             </div>
+             <paragraph v-if='outcome.error'
+                        size='l'
+                        type='danger'>
+                        {{ outcome.error }}
+            </paragraph>
+          </div>
       </div>
     </transition>
 
+    <transition name="slide">
+      <div v-show='outcome.success'
+           class="newsletter-sucess">
+        <div class="newsletter-sucess-intro">
+         <heading weight='bold'
+                  size='m'>
+                  Thank you for joining our newsletter :)
+         </heading>
+        </div>
+        <div class="newsletter-sucess-giff">
+         <iframe src="https://giphy.com/embed/xT1XGHkP7hqm0JvWrS" width="250" height="250" frameBorder="0" class="giphy-embed"/>
+        </div>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -112,13 +114,29 @@
     }
   }
 
+  .fade-enter {
+    opacity: 0;
+  }
+  .fade-enter-active {
+    transition: opacity 1s;
+  }
+
+  .fade-leave {
+    // opacity: 1;
+  }
+
+  .fade-leave-active {
+    transition: opacity 1s;
+    opacity: 0;
+  }
+
   .slide-enter {
     opacity: 0;
   }
 
   .slide-enter-active {
     animation: slide-in 1s ease-out forwards;
-    transition: opacity 2s;
+    transition: opacity .5s;
   }
 
   @keyframes slide-in {
