@@ -13,7 +13,7 @@
       <div class="events-frame">
         <div class="events-frame-image">
           <clazy-load :src='ev.image'>
-            <transition name='fade'>
+            <transition name='fade' appear>
               <img :src='ev.image'>
               <div slot="placeholder">
                 <loader/>
@@ -144,7 +144,7 @@
   }
 
   .fade-enter-active {
-    transition: opacity 3s;
+    transition: opacity 2s;
   }
 
 </style>

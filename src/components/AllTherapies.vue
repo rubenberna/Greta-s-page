@@ -21,7 +21,7 @@
                @click.prevent="storeTherapy(therapy); router(`/therapy/${therapy.name}`)">
             <div class="all-therapies-card-image">
               <clazy-load :src='therapy.image'>
-                <transition name="fade">
+                <transition name="fade" appear>
                   <sui-image :src='therapy.image' size="large"/>
                   <div slot="placeholder">
                     <loader/>
