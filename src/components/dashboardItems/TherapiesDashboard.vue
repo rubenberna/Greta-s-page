@@ -13,13 +13,22 @@
       <sui-table-header>
         <sui-table-row>
           <sui-table-header-cell>Name</sui-table-header-cell>
+          <sui-table-header-cell>Bookings</sui-table-header-cell>
           <sui-table-header-cell>Description</sui-table-header-cell>
           <sui-table-header-cell>Action</sui-table-header-cell>
         </sui-table-row>
       </sui-table-header>
       <sui-table-body v-for="therapy in therapies" :key="therapy.id" selectable>
         <sui-table-row class="therapies-item">
-          <sui-table-cell> {{ therapy.name }} </sui-table-cell>
+          <sui-table-cell>{{ therapy.name }}</sui-table-cell>
+          <sui-table-cell class="therapies-bookings">
+            <span @click.prevent='calcBookings(therapy.id)'>
+                  Click
+            </span>
+            <span>
+              {{ nrBookings }}
+            </span>
+            </sui-table-cell>
           <sui-table-cell> {{ therapy.description }} </sui-table-cell>
           <sui-table-cell class="therapies-actions">
             <span class="therapies-actions_item" @click.prevent="storeTherapy(therapy); view(therapy.name)">View</span>
@@ -38,11 +47,16 @@
 
   export default {
     name: 'therapies-dashboard',
+    data() {
+      return {
+        nrBookings: null
+      }
+    },
     components: {
       Heading
     },
     computed: {
-      ...mapGetters(['therapies']),
+      ...mapGetters(['therapies', 'bookingsTherapy']),
     },
     methods: {
       ...mapActions(['storeTherapy', 'countBookings', 'deleteTherapy']),
@@ -51,6 +65,9 @@
       },
       edit(therapy) {
         this.$router.push({ name: 'editTherapy', params: { therapy_id: therapy.id}})
+      },
+      calcBookings(therapyId) {
+        this.nrBookings = this.countBookings(therapyId)
       }
     }
   }

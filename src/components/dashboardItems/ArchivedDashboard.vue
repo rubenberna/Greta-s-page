@@ -1,7 +1,7 @@
 <template>
   <div class="bookings">
     <div class="bookings-heading">
-      <heading class="bookings-heading_title"> Appointments </heading>
+      <heading class="bookings-heading_title"> Archived </heading>
     </div>
     <sui-table stackable single-line>
       <sui-table-header>
@@ -14,15 +14,15 @@
         </sui-table-row>
       </sui-table-header>
       <sui-table-body v-for="booking in bookings" :key="booking.id" selectable
-                      v-if='!booking.archived'>
+                      v-if='booking.archived'>
         <sui-table-row class="bookings-item">
           <sui-table-cell>{{ booking.date }}</sui-table-cell>
           <sui-table-cell>{{ booking.therapyName }}</sui-table-cell>
           <sui-table-cell>{{ booking.clientName }}</sui-table-cell>
           <sui-table-cell>{{ booking.phone }}</sui-table-cell>
           <sui-table-cell class="bookings-actions_item"
-                          @click.prevent='archiveBooking(booking)'>
-                          Archive
+                          @click.prevent='restoreBooking(booking)'>
+                          Restore
           </sui-table-cell>
         </sui-table-row>
       </sui-table-body>
@@ -43,7 +43,7 @@
       ...mapGetters(['bookings'])
     },
     methods: {
-      ...mapActions(['archiveBooking'])
+      ...mapActions(['restoreBooking'])
     }
   }
 </script>

@@ -15,6 +15,7 @@ export default {
           'phone': doc.data().phone,
           'therapyId': doc.data().therapyId,
           'therapyName': doc.data().therapyName,
+          'archived': doc.data().archived
         }
         result.push(data)
       })
@@ -32,6 +33,7 @@ export default {
       phone: booking.phone,
       therapyId: booking.therapyId,
       therapyName: booking.therapyName,
+      archived: false
      })
       .then(ref => {
         bookingId = ref.id
@@ -48,5 +50,19 @@ export default {
           })
         })
         return bookings
-    }
+    },
+    archiveBooking(booking) {
+      const eventRef = db.bookingsCollection.doc(booking.id)
+
+      eventRef.update({
+        archived: true
+      })
+    },
+    restoreBooking(booking) {
+      const eventRef = db.bookingsCollection.doc(booking.id)
+
+      eventRef.update({
+        archived: false
+      })
+    },
 }
