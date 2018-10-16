@@ -13,18 +13,14 @@
       <sui-table-header>
         <sui-table-row>
           <sui-table-header-cell>Name</sui-table-header-cell>
-          <sui-table-header-cell>Bookings</sui-table-header-cell>
           <sui-table-header-cell>Description</sui-table-header-cell>
           <sui-table-header-cell>Action</sui-table-header-cell>
         </sui-table-row>
       </sui-table-header>
       <sui-table-body v-for="therapy in therapies" :key="therapy.id" selectable>
         <sui-table-row class="therapies-item">
-          <sui-table-cell>{{ therapy.name }}</sui-table-cell>
-          <sui-table-cell class="therapies-bookings"></sui-table-cell>
-          <sui-table-cell>
-            {{ therapy.description }}
-          </sui-table-cell>
+          <sui-table-cell> {{ therapy.name }} </sui-table-cell>
+          <sui-table-cell> {{ therapy.description }} </sui-table-cell>
           <sui-table-cell class="therapies-actions">
             <span class="therapies-actions_item" @click.prevent="storeTherapy(therapy); view(therapy.name)">View</span>
             <span class="therapies-actions_item" @click.prevent="storeTherapy(therapy); edit(therapy)">Edit</span>
@@ -55,9 +51,6 @@
       },
       edit(therapy) {
         this.$router.push({ name: 'editTherapy', params: { therapy_id: therapy.id}})
-      },
-      count(a, b) {
-        return a + b;
       }
     }
   }
