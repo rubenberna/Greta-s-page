@@ -20,7 +20,14 @@
           <div class="all-therapies-card_container"
                @click.prevent="storeTherapy(therapy); router(`/therapy/${therapy.name}`)">
             <div class="all-therapies-card-image">
-               <sui-image :src='therapy.image' size="large"/>
+              <clazy-load :src='therapy.image'>
+                <transition name="fade">
+                  <sui-image :src='therapy.image' size="large"/>
+                  <div slot="placeholder">
+                    <loader/>
+                  </div>
+                </transition>
+              </clazy-load>
             </div>
             <div class="all-therapies-description">
               <paragraph class="all-therapies-card-text">
@@ -42,8 +49,9 @@
 <script>
   import { mapGetters, mapActions } from 'vuex'
   import Booking from '@/components/buttons/BookingHome'
-  import Heading from '@/components/typography/Heading';
-  import Paragraph from '@/components/typography/Paragraph';
+  import Heading from '@/components/typography/Heading'
+  import Paragraph from '@/components/typography/Paragraph'
+  import Loader from '@/components/Loader'
 
   export default {
     name: 'allTherapies',
@@ -51,7 +59,8 @@
     components: {
       Booking,
       Heading,
-      Paragraph
+      Paragraph,
+      Loader
     },
     methods: {
       ...mapActions(['storeTherapy']),
@@ -165,6 +174,14 @@
         width: 76%;
       }
     }
+  }
+
+  .fade-enter {
+    opacity: 0;
+  }
+
+  .fade-enter-active {
+    transition: opacity 1s;
   }
 
 </style>

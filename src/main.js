@@ -4,10 +4,15 @@ import router from './router'
 import firebase from 'firebase'
 import '../db/firebaseInit'
 import store from './store'
-import * as VueGoogleMaps from "vue2-google-maps";
+import * as VueGoogleMaps from "vue2-google-maps"
+import VueClazyLoad from 'vue-clazy-load'
+import Delay from 'vue-delay'
 
 const moment = require('moment')
 require('moment/locale/nl')
+
+Vue.use(VueClazyLoad)
+Vue.use(Delay)
 
 Vue.use(require('vue-moment'), {
     moment
@@ -24,7 +29,7 @@ Vue.use(VueGoogleMaps, {
 
 let app
 
-firebase.auth().onAuthStateChanged(user => {
+firebase.auth().onAuthStateChanged(() => {
   if(!app) {
     app = new Vue({
       router,

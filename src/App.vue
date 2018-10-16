@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <router-view/>
-    <Footer/>
+    <delay :wait='5000'>
+      <Footer/>
+    </delay>
   </div>
 </template>
 
