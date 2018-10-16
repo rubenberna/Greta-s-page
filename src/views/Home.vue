@@ -34,6 +34,6 @@ export default {
   }
 
   .fade-enter-active {
-    transition: opacity 2s;
+    transition: opacity 3s;
   }
 </style>
