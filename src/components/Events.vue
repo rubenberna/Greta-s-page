@@ -12,7 +12,14 @@
     <div v-for="ev in futureEvents" :key="ev.id">
       <div class="events-frame">
         <div class="events-frame-image">
-          <img :src='ev.image'>
+          <clazy-load :src='ev.image'>
+            <transition name='fade'>
+              <img :src='ev.image'>
+              <div slot="placeholder">
+                <loader/>
+              </div>
+            </transition>
+          </clazy-load>
         </div>
         <div class="events-frame-description">
           <h5 class="title">{{ ev.name }}.</h5>
@@ -27,7 +34,7 @@
       <div class="separation">
         <span/>
       </div>
-  </div>
+    </div>
   </div>
 </template>
 
@@ -35,12 +42,14 @@
   import { mapGetters } from 'vuex'
   import Heading from './typography/Heading'
   import Paragraph from './typography/Paragraph'
+  import Loader from '@/components/Loader'
 
   export default {
     name: 'events',
     components: {
       Heading,
-      Paragraph
+      Paragraph,
+      Loader
     },
     computed: {
       ...mapGetters(['events', 'futureEvents']),
@@ -130,5 +139,12 @@
     }
   }
 
+  .fade-enter {
+    opacity: 0;
+  }
+
+  .fade-enter-active {
+    transition: opacity 1s;
+  }
 
 </style>

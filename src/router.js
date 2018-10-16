@@ -1,19 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import firebase from 'firebase'
-import Home from './views/Home.vue'
-import About from './views/About.vue'
-import Manage from './views/Manage.vue'
-import NewTherapy from './views/NewTherapy.vue'
-import NewEvent from './views/NewEvent.vue'
-import EditTherapy from './views/EditTherapy.vue'
-import EditEvent from './views/EditEvent.vue'
-import ShowTherapy from './views/ShowTherapy.vue'
-import Login from './views/Login.vue'
-import SignUp from './views/SignUp.vue'
-import NotFound from './views/NotFound.vue'
 
 Vue.use(Router)
+
+function loadView(view) {
+  return () => import(/* webpackChunkName: "view-[request]" */ `@/views/${view}.vue`);
+}
 
 let router = new Router({
   mode: 'history',
@@ -22,12 +15,12 @@ let router = new Router({
     {
       path: '/',
       name: 'home',
-      component: Home
+      component: loadView('Home')
     },
     {
       path: '/sign-up',
       name: 'signUp',
-      component: SignUp,
+      component: loadView('SignUp'),
       meta: {
         requiresGuest: true
       }
@@ -35,7 +28,7 @@ let router = new Router({
     {
       path: '/login',
       name: 'login',
-      component: Login,
+      component: loadView('Login'),
       props: true,
       meta: {
         requiresGuest: true
@@ -44,7 +37,7 @@ let router = new Router({
     {
       path: '/newtherapy',
       name: 'newTherapy',
-      component: NewTherapy,
+      component: loadView('NewTherapy'),
       meta: {
         requiresAuth: true
       }
@@ -52,7 +45,7 @@ let router = new Router({
     {
       path: '/edit/:therapy_id',
       name: 'editTherapy',
-      component: EditTherapy,
+      component: loadView('EditTherapy'),
       props: true,
       meta: {
         requiresAuth: true
@@ -61,7 +54,7 @@ let router = new Router({
     {
       path: '/newevent',
       name: 'newEvent',
-      component: NewEvent,
+      component: loadView('NewEvent'),
       meta: {
         requiresAuth: true
       }
@@ -69,7 +62,7 @@ let router = new Router({
     {
       path: '/edit/:event_id',
       name: 'editEvent',
-      component: EditEvent,
+      component: loadView('EditEvent'),
       meta: {
         requiresAuth: true
       }
@@ -77,7 +70,7 @@ let router = new Router({
     {
       path: '/management',
       name: 'manage',
-      component: Manage,
+      component: loadView('Manage'),
       meta: {
         requiresAuth: true
       }
@@ -85,17 +78,17 @@ let router = new Router({
     {
       path: '/about',
       name: 'about',
-      component: About
+      component: loadView('About')
     },
     {
       path: '/therapy/:name',
       name: 'showTherapy',
-      component: ShowTherapy
+      component: loadView('ShowTherapy')
     },
     {
       path: '*',
       name: 'NotFound',
-      component: NotFound
+      component: loadView('NotFound')
     }
   ]
 })
