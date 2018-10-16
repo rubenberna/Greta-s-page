@@ -66,7 +66,7 @@
         text-transform: uppercase;
       }
       .signature {
-        font-family: 'Charmonman', cursive;
+        font-family: $font-about;
         font-size: 24px;
       }
       .about-frame {

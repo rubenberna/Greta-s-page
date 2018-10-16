@@ -97,7 +97,6 @@
     display: flex;
     min-height: 100vh;
     .manage-menu-wrapper {
-      // height: 100vh;
       width: 17%;
       background-color: $green;
       color: $white;
