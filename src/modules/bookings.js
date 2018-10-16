@@ -27,6 +27,14 @@ const actions = {
     commit('setBookingsTherapy', null)
     const response = await db.countBookings(therapyId)
     commit('setBookingsTherapy', response)
+  },
+  archiveBooking({ dispatch }, booking) {
+    db.archiveBooking(booking)
+    dispatch('fetchBookings')
+  },
+  restoreBooking({ dispatch }, booking) {
+    db.restoreBooking(booking)
+    dispatch('fetchBookings')
   }
 }
 

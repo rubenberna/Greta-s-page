@@ -19,7 +19,7 @@
       </sui-table-header>
       <sui-table-body v-for="therapy in therapies" :key="therapy.id" selectable>
         <sui-table-row class="therapies-item">
-          <sui-table-cell> {{ therapy.name }} </sui-table-cell>
+          <sui-table-cell>{{ therapy.name }}</sui-table-cell>
           <sui-table-cell> {{ therapy.description }} </sui-table-cell>
           <sui-table-cell class="therapies-actions">
             <span class="therapies-actions_item" @click.prevent="storeTherapy(therapy); view(therapy.name)">View</span>
@@ -38,11 +38,16 @@
 
   export default {
     name: 'therapies-dashboard',
+    data() {
+      return {
+        nrBookings: null
+      }
+    },
     components: {
       Heading
     },
     computed: {
-      ...mapGetters(['therapies']),
+      ...mapGetters(['therapies', 'bookingsTherapy']),
     },
     methods: {
       ...mapActions(['storeTherapy', 'countBookings', 'deleteTherapy']),
