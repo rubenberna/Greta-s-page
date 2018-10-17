@@ -6,8 +6,8 @@
         <heading size='s'
                  uppercase
                  weight='semibold'> New
-      </heading>
-    </router-link>
+        </heading>
+      </router-link>
     </div>
     <sui-table fixed single-line>
       <sui-table-header>
@@ -28,7 +28,7 @@
           </sui-table-cell>
         </sui-table-row>
       </sui-table-body>
-  </sui-table>
+    </sui-table>
   </div>
 </template>
 

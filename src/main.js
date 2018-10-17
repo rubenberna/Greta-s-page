@@ -24,7 +24,7 @@ Vue.use(VueGoogleMaps, {
 
 let app
 
-firebase.auth().onAuthStateChanged(user => {
+firebase.auth().onAuthStateChanged(() => {
   if(!app) {
     app = new Vue({
       router,
