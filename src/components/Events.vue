@@ -25,6 +25,26 @@
           <h5 class="title">{{ ev.name }}.</h5>
           <span class="small-border"/>
           <p class="description">{{ ev.description }}</p>
+
+          <div class="events-interested">
+            <transition name="slide-fade" mode="out-in">
+              <sui-button animated
+                          v-if='!interested'
+                          key='not-interested'
+                          class="button-not-interested"
+                          @click.stop='toggle'>
+                <sui-button-content visible>Not interested</sui-button-content>
+                <sui-button-content hidden>
+                  <sui-icon name="right arrow" />
+                </sui-button-content>
+              </sui-button>
+               <sui-button  v-else
+                            key='interested'
+                            positive content="I'm in!"
+                            @click.stop='toggle'/>
+            </transition>
+          </div>
+
           <div class="coordinates">
             <p class="date">{{ ev.date | moment("dddd, MMMM Do YYYY") }}</p>
             <p class="address">{{ ev.address }}</p>
@@ -46,6 +66,11 @@
 
   export default {
     name: 'events',
+    data() {
+      return {
+        interested: false
+      }
+    },
     components: {
       Heading,
       Paragraph,
@@ -54,6 +79,11 @@
     computed: {
       ...mapGetters(['events', 'futureEvents']),
     },
+    methods: {
+      toggle() {
+        this.interested = !this.interested
+      }
+    }
   }
 </script>
 
@@ -139,12 +169,26 @@
     }
   }
 
+  //Animations
+
   .fade-enter {
     opacity: 0;
   }
 
   .fade-enter-active {
     transition: opacity 2s;
+  }
+
+  .slide-fade-enter-active {
+  transition: all .3s ease;
+  }
+  .slide-fade-leave-active {
+    transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+  }
+  .slide-fade-enter, .slide-fade-leave-to
+  /* .slide-fade-leave-active below version 2.1.8 */ {
+    transform: translateX(10px);
+    opacity: 0;
   }
 
 </style>
