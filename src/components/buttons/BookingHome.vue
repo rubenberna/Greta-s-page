@@ -5,7 +5,7 @@
          <sui-button  class="booking-home-button"
                       @click.native="toggle">
                       Make appointment
-       </sui-button>
+         </sui-button>
     </div>
     <div v-else>
       <sui-button  class="booking-home-button"
