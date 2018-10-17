@@ -6,7 +6,7 @@
                   key='not-interested'
                   class="button-not-interested"
                   @click.stop="toggle">
-        <sui-button-content visible>Not interested</sui-button-content>
+        <sui-button-content visible>Interested?</sui-button-content>
         <sui-button-content hidden>
           <sui-icon name="right arrow" />
         </sui-button-content>
