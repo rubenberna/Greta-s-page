@@ -4,7 +4,8 @@
       <div class="users-newsletter-heading">
         <heading class="users-newsletter-heading_title"> Users </heading>
       </div>
-      <sui-table stackable single-line>
+      <sui-table stackable single-line
+                 class="table">
         <sui-table-header>
           <sui-table-row>
             <sui-table-header-cell>Name</sui-table-header-cell>
@@ -26,7 +27,8 @@
       <div class="users-newsletter-heading">
         <heading class="users-newsletter-heading_title"> Newsletter </heading>
       </div>
-      <sui-table stackable single-line>
+      <sui-table stackable single-line
+                 class="table">
         <sui-table-header>
           <sui-table-row>
             <sui-table-header-cell>Email</sui-table-header-cell>
@@ -56,35 +58,37 @@
   }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import '../../../style/main.scss';
 
-    .users-newsletter {
-      display: flex;
-      justify-content: space-evenly;
-      width: 100%;
-      .users {
-        width: 40%;
-      }
+  .users-newsletter {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    .users {
+      width: 40%;
+    }
 
-      .newsletter {
-        width: 25%;
-      }
-      .users-newsletter-heading {
-        display: flex;
-        align-items: center;
-        width: 19%;
-        justify-content: space-between;
-        margin-bottom: 15px;
-        .users-newsletter-heading_title {
-          display: inline-block;
-          line-height: 1em;
-          letter-spacing: .135em;
-        }
-      }
-      .users-newsletter-item:hover {
-        background: rgba(203, 155, 66, 0.1);
-        cursor: default;
+    .newsletter {
+      width: 25%;
+    }
+
+    .users-newsletter-heading {
+      display: flex;
+      align-items: center;
+      width: 19%;
+      justify-content: space-between;
+      margin-bottom: 15px;
+      .users-newsletter-heading_title {
+        display: inline-block;
+        line-height: 1em;
+        letter-spacing: .135em;
       }
     }
+    .users-newsletter-item:hover {
+      background: rgba(203, 155, 66, 0.1);
+      cursor: default;
+    }
+  }
+
 </style>
