@@ -36,9 +36,8 @@ export default {
 
 <style lang="scss">
 
-  button.button-not-interested.ui-animated-button {
-    background: white !important;
-    border: 1px solid grey !important;
+  .button-not-interested {
+    background: wheat !important;
   }
   .slide-fade-enter-active {
   transition: all .3s ease;
