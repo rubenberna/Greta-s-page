@@ -21,10 +21,12 @@
             </transition>
           </clazy-load>
         </div>
+
         <div class="events-frame-description">
           <h5 class="title">{{ ev.name }}.</h5>
           <span class="small-border"/>
           <p class="description">{{ ev.description }}</p>
+          <event-button />
           <div class="coordinates">
             <p class="date">{{ ev.date | moment("dddd, MMMM Do YYYY") }}</p>
             <p class="address">{{ ev.address }}</p>
@@ -43,17 +45,19 @@
   import Heading from './typography/Heading'
   import Paragraph from './typography/Paragraph'
   import Loader from '@/components/Loader'
+  import EventButton from '@/components/buttons/BookingEvent'
 
   export default {
     name: 'events',
     components: {
       Heading,
       Paragraph,
-      Loader
+      Loader,
+      EventButton
     },
     computed: {
       ...mapGetters(['events', 'futureEvents']),
-    },
+    }
   }
 </script>
 
