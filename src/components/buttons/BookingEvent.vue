@@ -45,6 +45,7 @@ export default {
 
   .button-interested {
     letter-spacing: 1px;
+    margin-top: 13px !important;
   }
 
   .slide-fade-enter-active {
