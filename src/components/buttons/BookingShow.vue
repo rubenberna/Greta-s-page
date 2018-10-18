@@ -28,7 +28,7 @@
             </sui-header>
             <div class="booking-description">
               <p>Thank you for choosing the {{ therapy.name }} therapy!</p>
-              <p>This treatment is available on {{ therapy.availability.toLowerCase() }} with a price of {{ therapy.price }} per session.</p>
+              <p>This treatment is available on {{ therapy.availability.toLowerCase() }} with a price of €{{ therapy.price }} per session.</p>
               <p>Would you like to schedule an appointment?</p>
             </div>
             <sui-form class="booking-details">

@@ -71,6 +71,7 @@
       cursor: default;
       .bookings-actions_item:hover {
         font-weight: $semibold;
+        cursor: pointer;
       }
     }
   }

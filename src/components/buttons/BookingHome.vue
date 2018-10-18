@@ -28,7 +28,7 @@
             </sui-header>
             <div class="booking-description">
               <p>Thank you for choosing the {{ therapy.name }} therapy!</p>
-              <p>This treatment is available on {{ therapy.availability.toLowerCase() }} with a price of {{ therapy.price }} per session.</p>
+              <p>This treatment is available on {{ therapy.availability.toLowerCase() }} with a price of €{{ therapy.price }} per session.</p>
               <p>Would you like to schedule an appointment?</p>
             </div>
             <sui-form class="booking-details">
@@ -109,7 +109,7 @@
         this.open = !this.open;
       },
       loginFirst() {
-        router.push({ name: 'login', params: { loginMsg: 'Please login or create an account first ;)'}})
+        router.push({ name: 'login', params: { loginMsg: 'Hi! Please login or create an account first ;)'}})
       },
       validateBooking() {
         if (!this.booking.phone || !this.booking.date) {
@@ -212,7 +212,6 @@
       margin-bottom: 12px;
     }
     .booking-success {
-      // text-align: center;
       transition: all 3s;
       color: $success;
     }
