@@ -99,7 +99,7 @@
 
       .events-frame-description {
         width: 50%;
-        height: 89%;
+        height: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -119,7 +119,7 @@
           margin-top: 8%;
         }
         .coordinates {
-          height: 118px;
+          height: 49%;
           display: flex;
           flex-direction: column;
           justify-content: flex-end;

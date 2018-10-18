@@ -13,6 +13,7 @@
       </sui-button>
        <sui-button  v-else
                     key='interested'
+                    class="button-interested"
                     positive content="I'm in!"/>
     </transition>
   </div>
@@ -38,7 +39,14 @@ export default {
 
   .button-not-interested {
     background: wheat !important;
+    margin-top: 13px !important;
+    letter-spacing: 1px;
   }
+
+  .button-interested {
+    letter-spacing: 1px;
+  }
+
   .slide-fade-enter-active {
   transition: all .3s ease;
   }
