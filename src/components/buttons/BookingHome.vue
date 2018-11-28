@@ -22,24 +22,24 @@
             <div class="booking-description">
               <p>Thank you for choosing the {{ therapy.name }} therapy!</p>
               <p>This treatment is available on {{ therapy.availability.toLowerCase() }} at €{{ therapy.price }} per session.</p>
-              <p>Please enter your details</p>
+              <p>Please enter your details to make an appointment.</p>
             </div>
             <sui-form>
               <div class="booking-details">
                 <sui-form-field v-if='!currentUser'>
                   <label>Email address</label>
-                  <input v-model="booking.email" type="email" placeholder="your@email.com">
+                  <input v-model="booking.email" type="email" placeholder="your@email.com" class="booking-form-input">
                 </sui-form-field>
                 <sui-form-field>
                   <label>Phone number</label>
-                  <input v-model="booking.phone" type="tel" placeholder="0489 555 555">
+                  <input v-model="booking.phone" type="tel" placeholder="0489 555 555" class="booking-form-input">
                 </sui-form-field>
               </div>
 
               <div class="booking-details">
                 <sui-form-field>
                   <label>Preferred date</label>
-                  <input v-model="booking.date" type="date" placeholder="dd.mm.jj">
+                  <input v-model="booking.date" type="date" placeholder="dd.mm.jj" class="booking-form-input">
                 </sui-form-field>
                 <sui-button type='submit'
                               v-if='!outcome.success'
@@ -208,8 +208,9 @@
     margin-top: 37px;
     display: flex;
     justify-content: space-between;
-    input {
-      height: 16px;
+    input.booking-form-input {
+      height: 17px;
+      width: 150px !important;
     }
     .notification {
       margin-bottom: 12px;
@@ -222,8 +223,8 @@
   }
 
   button.schedule-button.ui.button {
-    height: 42px;
-    width: 197px;
-    margin-top: 18px
+    height: 41px;
+    width: 196px;
+    margin-top: 22px
   }
 </style>
