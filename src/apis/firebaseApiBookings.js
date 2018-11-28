@@ -13,6 +13,7 @@ export default {
           'clientName': doc.data().clientName,
           'date': doc.data().date,
           'phone': doc.data().phone,
+          'email': doc.data().email,
           'therapyId': doc.data().therapyId,
           'therapyName': doc.data().therapyName,
           'archived': doc.data().archived
@@ -28,6 +29,7 @@ export default {
     await db.bookingsCollection.add({
       createdOn: booking.createdOn,
       userId: booking.userId,
+      email: booking.email,
       clientName: booking.clientName,
       date: booking.date,
       phone: booking.phone,

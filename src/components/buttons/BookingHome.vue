@@ -1,17 +1,10 @@
 <template lang="html">
   <div class="booking">
-    <div class="currentUser"
-         v-if="currentUser">
-         <sui-button  class="booking-home-button"
-                      @click.native="toggle">
-                      Make appointment
-         </sui-button>
-    </div>
-    <div v-else>
-      <sui-button  class="booking-home-button"
-                   @click="loginFirst">
-                   Make appointment
-      </sui-button>
+    <div class="currentUser">
+       <sui-button  class="booking-home-button"
+                    @click.native="toggle">
+                    Make appointment
+       </sui-button>
     </div>
     <sui-modal v-model="open">
       <sui-modal-content image>
@@ -28,39 +21,49 @@
             </sui-header>
             <div class="booking-description">
               <p>Thank you for choosing the {{ therapy.name }} therapy!</p>
-              <p>This treatment is available on {{ therapy.availability.toLowerCase() }} with a price of €{{ therapy.price }} per session.</p>
-              <p>Would you like to schedule an appointment?</p>
+              <p>This treatment is available on {{ therapy.availability.toLowerCase() }} at €{{ therapy.price }} per session.</p>
+              <p>Please enter your details</p>
             </div>
-            <sui-form class="booking-details">
-              <sui-form-field>
-                <label>Preferred date</label>
-                <input v-model="booking.date" type="date" placeholder="dd.mm.jj">
-              </sui-form-field>
-              <sui-form-field>
-                <label>Phone number</label>
-                <input v-model="booking.phone" type="tel" placeholder="0489 555 555">
-              </sui-form-field>
-              <sui-label v-if='outcome.error'
-                         basic color="red" pointing='above'
-                         class="notification">
-                         {{outcome.errorMsg}}
-              </sui-label>
-              <sui-button v-if='!outcome.success'
-                          primary
-                          @click.prevent='validateBooking()'>
-                          Schedule appointment
-              </sui-button>
-              <div v-else
-                   class="booking-success">
-                   <paragraph size='l'
-                              weight='semibold'>
-                              Thank you!!
-                  </paragraph>
-                   <paragraph size='l'
-                              weight='semibold'>
-                              I will get in touch with you shortly!
-                  </paragraph>
+            <sui-form>
+              <div class="booking-details">
+                <sui-form-field v-if='!currentUser'>
+                  <label>Email address</label>
+                  <input v-model="booking.email" type="email" placeholder="your@email.com">
+                </sui-form-field>
+                <sui-form-field>
+                  <label>Phone number</label>
+                  <input v-model="booking.phone" type="tel" placeholder="0489 555 555">
+                </sui-form-field>
               </div>
+
+              <div class="booking-details">
+                <sui-form-field>
+                  <label>Preferred date</label>
+                  <input v-model="booking.date" type="date" placeholder="dd.mm.jj">
+                </sui-form-field>
+                <sui-button type='submit'
+                              v-if='!outcome.success'
+                              class='schedule-button'
+                              @click.prevent='validateBooking()'>
+                              Schedule appointment
+                 </sui-button>
+                 <div v-else
+                       class="booking-success">
+                    <paragraph size='l'
+                               weight='semibold'>
+                               Thank you!!
+                    </paragraph>
+                    <paragraph size='l'
+                               weight='semibold'>
+                               I will get in touch with you shortly!
+                    </paragraph>
+                  </div>
+                </div>
+                <sui-label v-if='outcome.error'
+                           basic color="red" pointing='above'
+                           class="notification">
+                           {{outcome.errorMsg}}
+                </sui-label>
             </sui-form>
           </sui-modal-description>
       </sui-modal-content>
@@ -70,7 +73,6 @@
 
 <script>
   import { mapGetters, mapActions } from 'vuex'
-  import router from '../../router'
   import { validatePhone } from '../_helpers/validatePhone'
   import { validateMobile } from '../_helpers/validateMobile'
   import Paragraph from '@/components/typography/Paragraph'
@@ -88,6 +90,7 @@
           phone: null,
           therapyId: null,
           therapyName: null,
+          email: null
         },
         outcome: {
           success: false,
@@ -108,14 +111,11 @@
       toggle() {
         this.open = !this.open;
       },
-      loginFirst() {
-        router.push({ name: 'login', params: { loginMsg: 'Hi! Please login or create an account first ;)'}})
-      },
       validateBooking() {
         if (!this.booking.phone || !this.booking.date) {
           this.outcome.error = true
           this.outcome.errorMsg = null
-          this.outcome.errorMsg = 'Please fill in both fields first'
+          this.outcome.errorMsg = 'Please fill all fields'
         // } else if (!validatePhone(this.booking.phone) || !validateMobile(this.booking.phone)) {
         //   this.outcome.errorMsg = null
         //   this.outcome.errorMsg = 'Please enter a valid Belgian number'
@@ -127,8 +127,14 @@
         }
       },
       makeBooking() {
-        this.booking.userId = this.currentUser.uid
-        this.booking.clientName = this.profile.name
+        if (this.currentUser) {
+          this.booking.userId = this.currentUser.uid
+          this.booking.clientName = this.profile.name
+          this.booking.email = this.profile.email
+        } else {
+          this.booking.userId = "no account"
+          this.booking.clientName = "no account"
+        }
         this.booking.therapyId = this.therapy.id
         this.booking.therapyName = this.therapy.name
         this.createBooking(this.booking);
@@ -142,13 +148,9 @@
   @import '../../../style/main.scss';
 
   .modal {
-    max-height: 60% !important;
+    max-height: 50% !important;
     left: 27% !important;
     top: 25% !important;
-  }
-
-  sui-modal.content {
-    background: orange;
   }
 
   .booking-home-button {
@@ -200,16 +202,18 @@
     color: $color-text;
     font-weight: 300;
   }
+
   .booking-details {
-    max-width: 55%;
+    max-width: 80%;
     margin-top: 37px;
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     input {
-      height: 23px;
+      height: 16px;
     }
     .notification {
       margin-bottom: 12px;
+      max-width: 175px;
     }
     .booking-success {
       transition: all 3s;
@@ -217,17 +221,9 @@
     }
   }
 
-  .ui.primary.button {
-    background: $white;
-    border: 2px solid $green;
-    border-radius: 4px;
-    color: $color-text;
-    width: 79%;
-    height: 45px;
-    margin-top: 3px;
-    &:hover {
-    background: $green;
-    color: $white;
-    }
+  button.schedule-button.ui.button {
+    height: 42px;
+    width: 197px;
+    margin-top: 18px
   }
 </style>
