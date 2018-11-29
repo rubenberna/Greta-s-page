@@ -9,6 +9,7 @@
           <sui-table-header-cell>Date</sui-table-header-cell>
           <sui-table-header-cell>Therapy</sui-table-header-cell>
           <sui-table-header-cell>Client</sui-table-header-cell>
+          <sui-table-header-cell>Email</sui-table-header-cell>
           <sui-table-header-cell>Phone</sui-table-header-cell>
           <sui-table-header-cell>Action</sui-table-header-cell>
         </sui-table-row>
@@ -19,6 +20,7 @@
           <sui-table-cell>{{ booking.date }}</sui-table-cell>
           <sui-table-cell>{{ booking.therapyName }}</sui-table-cell>
           <sui-table-cell>{{ booking.clientName }}</sui-table-cell>
+          <sui-table-cell>{{ booking.email }}</sui-table-cell>
           <sui-table-cell>{{ booking.phone }}</sui-table-cell>
           <sui-table-cell class="bookings-actions_item"
                           @click.prevent='archiveBooking(booking)'>
