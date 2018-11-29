@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="booking">
     <div class="currentUser">
-       <sui-button  class="booking-home-button"
+       <sui-button  class="booking-show-button"
                     @click.native="toggle">
                     Schedule appointment
        </sui-button>
