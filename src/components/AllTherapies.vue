@@ -82,13 +82,13 @@
 
     .all-therapies-intro {
       padding: 20px;
-      max-width: 87%;
+      max-width: 79%;
     }
 
     .all-therapies-group {
-      width: 600px;
+      width: 534px;
       background-color: orange;
-      height: 400px;
+      height: 356px;
       box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
       background: rgba(177, 209, 197, 0.3);
       margin-bottom: 78px;
@@ -174,7 +174,7 @@
       .all-therapies-card-availability {
         display: flex;
         justify-content: flex-end;
-        width: 76%;
+        width: 80%;
       }
     }
   }

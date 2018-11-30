@@ -46,9 +46,12 @@
     h5 {
       font-size: 12px;
       font-weight: 600;
+      letter-spacing: .135em;
+      line-height: 1em;
+      padding-bottom: .125em;
     }
     li {
-      font-size: 10px;
+      font-size: 12px;
     }
   }
 </style>
