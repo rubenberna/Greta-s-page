@@ -105,8 +105,7 @@ export default {
      description: updatedEvent.description,
      date: updatedEvent.date,
      address: updatedEvent.address,
-     image: updatedEvent.image,
+     image: imageURL,
    })
  }
-
 }
