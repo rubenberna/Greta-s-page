@@ -64,7 +64,10 @@
     },
     computed: mapGetters(['therapy']),
     methods: {
-      ...mapActions(['editTherapy'])
+      ...mapActions(['editTherapy', 'uploadImageTherapy']),
+      onFileSelect(image) {
+        this.uploadImageTherapy(image)
+      }
     }
   }
 </script>

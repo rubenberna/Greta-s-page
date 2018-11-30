@@ -99,7 +99,7 @@ export default {
       indications: therapy.indications,
       availability: therapy.availability,
       price: therapy.price,
-      image: therapy.image
+      image: imageURL
     })
   }
 }

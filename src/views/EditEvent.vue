@@ -14,7 +14,7 @@
           <div class="btn">
             <span>Image</span>
             <input type="file"
-            @change='onFileSelect($thatEvent.target.files[0])'>
+            @change='onFileSelect($event.target.files[0])'>
           </div>
           <div class="file-path-wrapper">
             <input class="file-path validate" type="text">
@@ -54,7 +54,10 @@
     },
     computed: mapGetters(['thatEvent']),
     methods: {
-      ...mapActions(['editEvent'])
+      ...mapActions(['editEvent', 'uploadImageEvent']),
+      onFileSelect(image) {
+        this.uploadImageEvent(image)
+      }
     }
   }
 </script>
