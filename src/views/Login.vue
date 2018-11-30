@@ -8,7 +8,7 @@
     </div>
     <sui-form>
       <sui-form-field>
-        <label>Email address</label>
+        <label>Email adres</label>
         <input placeholder="Email address"
                v-model='user.email'>
           <sui-label v-if='errorMsg || resetPass.error'
@@ -24,15 +24,15 @@
       </sui-form-field>
       <sui-form-field>
         <section class='login-password'>
-          <label>Password</label>
-          <label @click='newPassword'>Reset password</label>
+          <label>Paswoord</label>
+          <label @click='newPassword'>Paswoord Reset</label>
         </section>
         <input type="password"
                placeholder="Password"
                v-model='user.password'>
       </sui-form-field>
       <sui-form-field>
-        <span>No account yet? You can <router-link to="/sign-up" style="font-weight:bold" @click="clearMsgs">create one</router-link></span>
+        <span>Nog geen account? Je kan <router-link to="/sign-up" style="font-weight:bold" @click="clearMsgs">hier</router-link> een creëren</span>
       </sui-form-field>
       <div class="login-submit">
         <sui-button type="submit"
@@ -41,7 +41,7 @@
         </sui-button>
         <sui-button basic negative
                     @click.prevent='home'>
-                    Back
+                    Home
        </sui-button>
        <clip-loader :loading='loading'
                     class='loader'/>
@@ -82,7 +82,7 @@
       },
       newPassword() {
         if (!this.user.email) {
-          this.resetPass.error = "Please fill in your email address first"
+          this.resetPass.error = "Vul beide velden is AUB"
           this.clearMsgs()
         } else {
           this.resetPass.error = null

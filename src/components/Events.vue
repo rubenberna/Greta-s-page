@@ -3,10 +3,10 @@
     <div class="events-intro">
       <heading weight='bold'
                size='l'>
-        A catching phrase about upcoming events
+        Helemaal welkom voor de volgende sessies
       </heading>
       <paragraph size='xl'>
-          A text to make an introduction to your events
+          Meestal zijn onze events heel snel volgeboekt. Schrijf je dus snel in zodat je plaats gereserveerd is.
       </paragraph>
     </div>
     <div v-for="ev in futureEvents" :key="ev.id">

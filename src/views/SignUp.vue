@@ -1,24 +1,24 @@
 <template>
   <div class="signUp container">
     <div class="signUp-title">
-      <h4>New account</h4>
+      <h4>Nieuw account</h4>
     </div>
     <sui-form>
       <sui-form-field>
-        <label>Name</label>
+        <label>Naam</label>
         <input v-model='user.name'
-               placeholder="Name" >
+               placeholder="Naam" >
       </sui-form-field>
       <sui-form-field>
-        <label>Email address</label>
+        <label>Email adres</label>
         <input v-model='user.email'
-               placeholder="Email address" >
+               placeholder="Email adres" >
       </sui-form-field>
       <sui-form-field>
-        <label>Password</label>
+        <label>Paswoord</label>
         <input v-model='user.password'
                type="password"
-               placeholder="Password" >
+               placeholder="Paswoord" >
       </sui-form-field>
       <sui-label v-if='errorMsg || err'
                  basic color="red" pointing='above'
@@ -31,7 +31,7 @@
                     Sign-up
         </sui-button>
         <clip-loader :loading='loading' />
-        <span class="signUp-nav">Or go back to the <router-link to="/" style="font-weight:bold">Homepage</router-link></span>
+        <span class="signUp-nav">Terug naar de <router-link to="/" style="font-weight:bold">Homepage</router-link></span>
       </sui-form-field>
     </sui-form>
   </div>
@@ -61,7 +61,7 @@
       ...mapActions(['signUp', 'clearMsgs']),
       checkSignUp() {
         if (!this.user.name || !this.user.email || !this.user.password) {
-          this.err = "Please complete all fields first"
+          this.err = "Gelieve alle velden in te vullen AUB"
         } else {
           this.err = null
           this.signUp(this.user)

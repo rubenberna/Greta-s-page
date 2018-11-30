@@ -11,7 +11,7 @@
           />
         </sui-menu-menu>
         <sui-menu-menu position="right">
-          <sui-dropdown text="Treatments">
+          <sui-dropdown text="Behandelingen">
             <sui-dropdown-menu>
                <sui-dropdown-item v-for='therapy in therapies' :key='therapy.id'>
                  <a
@@ -33,9 +33,9 @@
         <sui-menu-menu position="right">
           <a
           is="sui-menu-item"
-          :active="isActive('About')"
-          content="About"
-          @click.prevent="select('About'); router('/about');"
+          :active="isActive('Even voorstellen')"
+          content="Even voorstellen"
+          @click.prevent="select('Even voorstellen'); router('/about');"
           />
         </sui-menu-menu>
         <sui-menu-menu position="right"
@@ -75,7 +75,7 @@
     data() {
       return {
         active: 'Home',
-        items: ['Home', 'About', 'Treatments', 'Events'],
+        items: ['Home', 'Even voorstellen', 'Behandelingen', 'Events'],
       };
     },
     computed: {

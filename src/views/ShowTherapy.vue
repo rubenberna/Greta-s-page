@@ -6,15 +6,15 @@
 
       <div class="show-board">
         <div class="show-board-item">
-          <h5 class="show-board-item_title">What is it?</h5>
+          <h5 class="show-board-item_title">Wat is het ?</h5>
           <p class="show-board-item_text">{{ therapy.description }}</p>
         </div>
         <div class="show-board-item">
-          <h5 class="show-board-item_title">How it works</h5>
+          <h5 class="show-board-item_title">Hoe werkt het ?</h5>
           <p class="show-board-item_text">{{ therapy.method }}</p>
         </div>
         <div class="show-board-item">
-          <h5 class="show-board-item_title">Who is it for?</h5>
+          <h5 class="show-board-item_title">Voor wie is het ?</h5>
           <p class="show-board-item_text">{{ therapy.indications }}</p>
         </div>
       </div>
@@ -27,7 +27,7 @@
         </div>
         <div class="show-knobs_item">
           <img src="../../style/assets/calendar.png">
-          <span>Availability: {{ therapy.availability }}</span>
+          <span>Beschikbaar: {{ therapy.availability }}</span>
         </div>
         <div class="show-knobs_item">
           <i class="far fa-check-square"></i>
