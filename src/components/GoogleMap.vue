@@ -36,7 +36,7 @@
 <style lang="scss" scoped>
 
   .googleMap-directions {
-    width: 50%;
+    width: 44.5%;
     display: flex;
     justify-content: flex-end;
   }
