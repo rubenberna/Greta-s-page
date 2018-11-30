@@ -4,14 +4,11 @@
       <sui-button animated
                   v-if='!interested'
                   key='not-interested'
-                  class="button-not-interested">
-        <sui-button-content visible>Interested?</sui-button-content>
-        <sui-button-content hidden style="background: white">
-          <input type="text"
-                 placeholder="your@email.com"
-                 style="padding-bottom: 25px;">
-         <sui-icon name="right arrow"
-                   @click.stop="toggle"/>
+                  class="button-not-interested"
+                  @click.stop="toggle">
+        <sui-button-content visible>Geïnteresseerd?</sui-button-content>
+        <sui-button-content hidden>
+          <sui-icon name="right arrow" />
         </sui-button-content>
       </sui-button>
        <sui-button  v-else
@@ -33,9 +30,6 @@ export default {
   methods: {
     toggle() {
       this.interested = !this.interested
-    },
-    changeClass() {
-      console.log('changed');
     }
   }
 }

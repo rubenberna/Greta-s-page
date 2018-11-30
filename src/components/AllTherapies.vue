@@ -3,10 +3,11 @@
     <div class="all-therapies-intro">
       <heading weight='bold'
                size='l'>
-        A catching phrase about the therapies
+        Luister naar je lichaam
       </heading>
       <paragraph size='xl'>
-          A text to make an introduction to your therapies
+        Heel vaak zitten we veel te veel in ons hoofd en luisteren niet naar de signalen die ons lichaam ons geeft. En als we al aandacht hebben voor ons lichaam, zijn we het vaak aan’t pushen met intens sporten of net nauwelijks bewegen, met moedig volhouden totdat we crashen, met diëten of overeten enz.
+        Ik wil je graag helpen om contact te maken met je lichaam, echt te gaan luisteren naar jouw lijf dat alles weet.
       </paragraph>
     </div>
     <div class="row">
@@ -34,7 +35,7 @@
                   {{therapy.description}}
               </paragraph>
               <paragraph class="all-therapies-card-text_more">
-                Read more
+                Lees meer
              </paragraph >
             </div>
           </div>
@@ -81,6 +82,7 @@
 
     .all-therapies-intro {
       padding: 20px;
+      max-width: 87%;
     }
 
     .all-therapies-group {

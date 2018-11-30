@@ -56,7 +56,7 @@ export default {
       .auth()
       .sendPasswordResetEmail(email)
       .then(() => {
-        store.dispatch('recordSuccess', `Email sent to ${email}`);
+        store.dispatch('recordSuccess', `Er is een mailtje gestuurd naar ${email}`);
       }).catch(error => {
         store.dispatch('recordError', error.message)
       })

@@ -7,7 +7,7 @@
            <div class="newsletter-intro">
              <heading weight='bold'
                       size='m'>
-                      Don't miss our next events!
+                      Mis onze volgende afspraak niet
              </heading>
            </div>
            <div class="newsletter-data">
@@ -34,7 +34,7 @@
         <div class="newsletter-sucess-intro">
          <heading weight='bold'
                   size='m'>
-                  Thank you for joining our newsletter :)
+                  Vanaf nu ontvang je regelmatig ook onze info in je mailbox. Bedankt hiervoor :)
          </heading>
         </div>
         <div class="newsletter-sucess-giff">

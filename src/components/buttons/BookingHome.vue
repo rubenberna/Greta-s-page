@@ -3,7 +3,7 @@
     <div class="currentUser">
        <sui-button  class="booking-home-button"
                     @click.native="toggle">
-                    Make appointment
+                    Maak een afspraak
        </sui-button>
     </div>
     <sui-modal v-model="open">
@@ -16,46 +16,46 @@
               <p>{{ therapy.name }}</p>
               <span class="booking-header_close"
                     @click='toggle'>
-                    close
+                    sluiten
               </span>
             </sui-header>
             <div class="booking-description">
-              <p>Thank you for choosing the {{ therapy.name }} therapy!</p>
-              <p>This treatment is available on {{ therapy.availability.toLowerCase() }} at €{{ therapy.price }} per session.</p>
-              <p>Please enter your details to make an appointment.</p>
+              <p>Bedankt om hiervoor te kiezen.</p>
+              <p>Deze behandeling is beschikbaar na afspraak.</p>
+              <p>Wil je graag een afspraak maken ?</p>
             </div>
             <sui-form>
               <div class="booking-details">
                 <sui-form-field v-if='!currentUser'>
-                  <label>Email address</label>
+                  <label>Email adres</label>
                   <input v-model="booking.email" type="email" placeholder="your@email.com" class="booking-form-input">
                 </sui-form-field>
                 <sui-form-field>
-                  <label>Phone number</label>
+                  <label>Telefoonnummer</label>
                   <input v-model="booking.phone" type="tel" placeholder="0489 555 555" class="booking-form-input">
                 </sui-form-field>
               </div>
 
               <div class="booking-details">
                 <sui-form-field>
-                  <label>Preferred date</label>
+                  <label>Voorkeursdag(en)</label>
                   <input v-model="booking.date" type="date" placeholder="dd.mm.jj" class="booking-form-input">
                 </sui-form-field>
                 <sui-button type='submit'
                               v-if='!outcome.success'
                               class='schedule-button'
                               @click.prevent='validateBooking()'>
-                              Schedule appointment
+                              Boek een afspraak
                  </sui-button>
                  <div v-else
                        class="booking-success">
                     <paragraph size='l'
                                weight='semibold'>
-                               Thank you!!
+                               Bedankt !!
                     </paragraph>
                     <paragraph size='l'
                                weight='semibold'>
-                               I will get in touch with you shortly!
+                               Ik zal je binnenkort contacteren!
                     </paragraph>
                   </div>
                 </div>
@@ -115,7 +115,7 @@
         if (!this.booking.phone || !this.booking.date) {
           this.outcome.error = true
           this.outcome.errorMsg = null
-          this.outcome.errorMsg = 'Please fill all fields'
+          this.outcome.errorMsg = 'Gelieve alle velden in te vullen AUB.'
         // } else if (!validatePhone(this.booking.phone) || !validateMobile(this.booking.phone)) {
         //   this.outcome.errorMsg = null
         //   this.outcome.errorMsg = 'Please enter a valid Belgian number'
