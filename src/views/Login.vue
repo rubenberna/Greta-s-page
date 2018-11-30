@@ -41,7 +41,7 @@
         </sui-button>
         <sui-button basic negative
                     @click.prevent='home'>
-                    Home
+                    Terug
        </sui-button>
        <clip-loader :loading='loading'
                     class='loader'/>
