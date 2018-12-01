@@ -48,6 +48,9 @@
           <div class="input-field col s4">
             <input id="availability" type="text" class="validate" v-model='therapy.availability'>
           </div>
+          <div class="input-field col s4">
+            <input id="position" type="text" class="validate" v-model='therapy.position'>
+          </div>
         </div>
         <div class="action-buttons">
           <router-link :to="{ name: 'manage'}"><sui-button>Back</sui-button></router-link>

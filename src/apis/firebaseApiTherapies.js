@@ -15,7 +15,8 @@ export default {
           'availability': doc.data().availability,
           'price': doc.data().price,
           'therapist': doc.data().therapist,
-          'image': doc.data().image
+          'image': doc.data().image,
+          'position': doc.data().position
         }
         result.push(data)
       })
@@ -50,14 +51,20 @@ export default {
   editTherapy(therapy, imageURL) {
     const therapyRef = db.therapiesCollection.doc(therapy.id)
 
+    // if image changed during edit
+    if(imageURL) {
+      therapyRef.update({
+        image: imageURL
+      })
+    }
+
     therapyRef.update({
       name: therapy.name,
       description: therapy.description,
       method: therapy.method,
       indications: therapy.indications,
       availability: therapy.availability,
-      price: therapy.price,
-      image: imageURL
+      price: therapy.price
     })
   }
 }
