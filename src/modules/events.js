@@ -24,23 +24,22 @@ const actions = {
     const upcommingEvents = state.events.filter(ev => new Date(ev.date) >= new Date ())
     commit('setFutureEvents', upcommingEvents)
   },
-  createEvent({ dispatch }, newEvent) {
-    db.createEvent(newEvent);
+  async createEvent({ rootState, dispatch }, newEvent) {
+    const { imageURL } = rootState.images
+    await db.createEvent(newEvent, imageURL);
     dispatch('fetchEvents')
     router.push('/management');
   },
   storeEvent({ commit }, event) {
     commit('setEvent', event)
   },
-  uploadImageEvent({ commit }, image) {
-    db.uploadImage(image);
-  },
   deleteEvent({ dispatch }, eventId) {
     db.deleteEvent(eventId)
     dispatch('fetchEvents')
   },
-  async editEvent({ dispatch }, updatedEvent) {
-    const response = await db.editEvent(updatedEvent)
+  async editEvent({ rootState, dispatch }, updatedEvent) {
+    const { imageURL } = rootState.images
+    await db.editEvent(updatedEvent, imageURL)
     dispatch('fetchEvents')
     router.push('/management')
   }

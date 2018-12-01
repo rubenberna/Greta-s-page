@@ -82,9 +82,9 @@
       Heading
     },
     methods: {
-      ...mapActions(['createTherapy', 'uploadImageTherapy']),
+      ...mapActions(['createTherapy', 'uploadImageTherapy', 'uploadImage']),
       onFileSelect(image) {
-        this.uploadImageTherapy(image)
+        this.uploadImage(image, 'therapies')
       }
     }
   }

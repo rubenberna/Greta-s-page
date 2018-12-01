@@ -54,9 +54,9 @@
     },
     computed: mapGetters(['thatEvent']),
     methods: {
-      ...mapActions(['editEvent', 'uploadImageEvent']),
+      ...mapActions(['editEvent', 'uploadImage']),
       onFileSelect(image) {
-        this.uploadImageEvent(image)
+        this.uploadImage(image, 'events')
       }
     }
   }

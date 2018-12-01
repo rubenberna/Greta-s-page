@@ -68,9 +68,9 @@
       Heading
     },
     methods: {
-      ...mapActions(['createEvent', 'uploadImageEvent']),
+      ...mapActions(['createEvent', 'uploadImage']),
       onFileSelect(image) {
-        this.uploadImageEvent(image)
+        this.uploadImage(image, 'events')
       }
     }
   }
