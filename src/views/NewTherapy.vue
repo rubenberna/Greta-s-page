@@ -23,6 +23,7 @@
             <div v-show='progress'>
               <sui-progress :percent="progress"
                             :indicating="true"/>
+              <label>{{Math.floor(progress)}}% completed</label>
             </div>
           </div>
         </div>
@@ -123,5 +124,9 @@
         height: 40px;
       }
     }
+  }
+
+  .ui.progress:first-child {
+    margin-bottom: 0;
   }
 </style>
