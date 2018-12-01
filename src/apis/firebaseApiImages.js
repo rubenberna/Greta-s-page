@@ -13,7 +13,9 @@ export default {
     const uploadTask = imageRef.put(image, metadata);
     await uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
       snapshot => {
-        console.log('Upload is ' + '% done');
+        var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        store.dispatch('getProgress', progress)
+        console.log('Upload is ' +  progress + '% done');
         switch (snapshot.case) {
           case firebase.storage.TaskState.PAUSED:
             console.log('Upload is paused');
@@ -37,7 +39,6 @@ export default {
        }, () => {
           uploadTask.snapshot.ref.getDownloadURL()
             .then(function(downloadURL) {
-              console.log('File available at', downloadURL);
               store.commit('setImageURL', downloadURL)
             })
       })

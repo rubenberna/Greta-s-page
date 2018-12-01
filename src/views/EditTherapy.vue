@@ -5,51 +5,55 @@
              Edit Therapy
     </heading>
     <div class="row">
-    <form class="col s12">
-      <div class="row">
-        <div class="input-field col s4">
-          <input id="name" type="text" class="validate" v-model='therapy.name'>
-        </div>
-        <div class="file-field input-field col s4">
-          <div class="btn">
-            <span>Image</span>
-            <input type="file"
-                   @change='onFileSelect($event.target.files[0])'>
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s4">
+            <input id="name" type="text" class="validate" v-model='therapy.name'>
           </div>
-          <div class="file-path-wrapper">
-            <input class="file-path validate" type="text">
+          <div class="file-field input-field col s4">
+            <div class="btn">
+              <span>Image</span>
+              <input type="file"
+                     @change='onFileSelect($event.target.files[0])'>
+            </div>
+            <div class="file-path-wrapper">
+              <input class="file-path validate" type="text">
+            </div>
+            <div v-show='progress'>
+              <sui-progress :percent="progress"
+                            :indicating="true"/>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <textarea id="textarea1" class="materialize-textarea" v-model='therapy.description'/>
+        <div class="row">
+          <div class="input-field col s12">
+            <textarea id="textarea1" class="materialize-textarea" v-model='therapy.description'/>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <textarea id="textarea1" class="materialize-textarea" v-model='therapy.method' />
+        <div class="row">
+          <div class="input-field col s12">
+            <textarea id="textarea1" class="materialize-textarea" v-model='therapy.method' />
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <textarea id="textarea1" class="materialize-textarea" v-model='therapy.indications' />
+        <div class="row">
+          <div class="input-field col s12">
+            <textarea id="textarea1" class="materialize-textarea" v-model='therapy.indications' />
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s4">
-          <input id="price" type="number" class="validate" v-model='therapy.price'>
+        <div class="row">
+          <div class="input-field col s4">
+            <input id="price" type="number" class="validate" v-model='therapy.price'>
+          </div>
+          <div class="input-field col s4">
+            <input id="availability" type="text" class="validate" v-model='therapy.availability'>
+          </div>
         </div>
-        <div class="input-field col s4">
-          <input id="availability" type="text" class="validate" v-model='therapy.availability'>
+        <div class="action-buttons">
+          <router-link :to="{ name: 'manage'}"><sui-button>Back</sui-button></router-link>
+          <a class="waves-effect waves-light btn" style="color:white" @click='editTherapy(therapy)'>update</a>
         </div>
-      </div>
-      <div class="action-buttons">
-        <router-link :to="{ name: 'manage'}"><sui-button>Back</sui-button></router-link>
-        <a class="waves-effect waves-light btn" style="color:white" @click='editTherapy(therapy)'>update</a>
-      </div>
-    </form>
-  </div>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -62,7 +66,7 @@
     components: {
       Heading
     },
-    computed: mapGetters(['therapy']),
+    computed: mapGetters(['therapy', 'progress']),
     methods: {
       ...mapActions(['editTherapy', 'uploadImage']),
       onFileSelect(image) {

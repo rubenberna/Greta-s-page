@@ -1,25 +1,31 @@
 import db from '../apis/firebaseApiImages'
 
 const state = {
-  imageURL: null
+  imageURL: null,
+  progress: null
 }
 
 const getters = {
-  imageURL: state => state.imageURL
+  imageURL: state => state.imageURL,
+  progress: state => state.progress
 }
 
 const actions = {
   async uploadImage({ commit }, image, location) {
     commit('setImageURL', null)
-    const response = await db.uploadImage(image, location)
-    console.log(response)
-    // commit('setImageURL', response)
+    await db.uploadImage(image, location)
+  },
+  getProgress ({ commit}, progress) {
+    commit('setProgress', progress)
   }
 }
 
 const mutations = {
   setImageURL: (state, url) => {
     state.imageURL = url
+  },
+  setProgress: (state, progress) => {
+    state.progress = progress
   }
 }
 
