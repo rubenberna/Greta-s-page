@@ -3,9 +3,11 @@
     <transition name="fade" appear>
       <banner/>
     </transition>
-    <all-therapies/>
-    <events />
-    <newsletter />
+    <div class="home-body">
+      <all-therapies/>
+      <events />
+      <newsletter />
+    </div>
   </div>
 </template>
 
@@ -28,6 +30,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+  .home-body {
+    margin-left: 50px;
+  }
 
   .fade-enter {
     opacity: 0;
