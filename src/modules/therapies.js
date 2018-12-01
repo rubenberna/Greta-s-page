@@ -17,13 +17,11 @@ const actions = {
     const response = await db.fetchTherapies();
     commit('setTherapies', response)
   },
-  createTherapy({ dispatch }, therapy) {
-    db.createTherapy(therapy)
+  async createTherapy({ rootState, dispatch }, therapy) {
+    const { imageURL } = rootState.images
+    await db.createTherapy(therapy, imageURL)
     dispatch('fetchTherapies')
     router.push('/management')
-  },
-  uploadImageTherapy({ commit }, image) {
-    db.uploadImage(image)
   },
   storeTherapy({ commit }, therapy) {
     commit('setTherapy', therapy)
@@ -32,8 +30,9 @@ const actions = {
     db.deleteTherapy(therapyId)
     dispatch('fetchTherapies')
   },
-  async editTherapy({ dispatch }, therapy) {
-    const response = await db.editTherapy(therapy)
+  async editTherapy({ rootState, dispatch }, therapy) {
+    const { imageURL } = rootState.images
+    await db.editTherapy(therapy, imageURL)
     dispatch('fetchTherapies')
     router.push('/management')
   }

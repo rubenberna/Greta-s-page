@@ -5,41 +5,45 @@
              Edit event
     </heading>
     <div class="row">
-    <form class="col s12">
-      <div class="row">
-        <div class="input-field col s4">
-          <input id="name" type="text" class="validate" v-model='thatEvent.name'>
-        </div>
-        <div class="file-field input-field col s4">
-          <div class="btn">
-            <span>Image</span>
-            <input type="file"
-            @change='onFileSelect($thatEvent.target.files[0])'>
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s4">
+            <input id="name" type="text" class="validate" v-model='thatEvent.name'>
           </div>
-          <div class="file-path-wrapper">
-            <input class="file-path validate" type="text">
+          <div class="file-field input-field col s4">
+            <div class="btn">
+              <span>Image</span>
+              <input type="file"
+              @change='onFileSelect($event.target.files[0])'>
+            </div>
+            <div class="file-path-wrapper">
+              <input class="file-path validate" type="text">
+            </div>
+            <div v-show='progress'>
+              <sui-progress :percent="progress"
+                            :indicating="true"/>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <textarea id="textarea1" class="materialize-textarea" v-model='thatEvent.description'/>
+        <div class="row">
+          <div class="input-field col s12">
+            <textarea id="textarea1" class="materialize-textarea" v-model='thatEvent.description'/>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s4">
-          <input id="date" type="date" class="validate" v-model='thatEvent.date'>
+        <div class="row">
+          <div class="input-field col s4">
+            <input id="date" type="date" class="validate" v-model='thatEvent.date'>
+          </div>
+          <div class="input-field col s4">
+            <input id="address" type="text" class="validate" v-model='thatEvent.address'>
+          </div>
         </div>
-        <div class="input-field col s4">
-          <input id="address" type="text" class="validate" v-model='thatEvent.address'>
+        <div class="action-buttons">
+          <router-link :to="{ name: 'manage'}"><sui-button>Back</sui-button></router-link>
+          <a class="waves-effect waves-light btn" style="color:white" @click='editEvent(thatEvent)'>update</a>
         </div>
-      </div>
-      <div class="action-buttons">
-        <router-link :to="{ name: 'manage'}"><sui-button>Back</sui-button></router-link>
-        <a class="waves-effect waves-light btn" style="color:white" @click='editEvent(thatEvent)'>update</a>
-      </div>
-    </form>
-  </div>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -52,9 +56,12 @@
     components: {
       Heading
     },
-    computed: mapGetters(['thatEvent']),
+    computed: mapGetters(['thatEvent', 'progress']),
     methods: {
-      ...mapActions(['editEvent'])
+      ...mapActions(['editEvent', 'uploadImage']),
+      onFileSelect(image) {
+        this.uploadImage(image, 'events')
+      }
     }
   }
 </script>
