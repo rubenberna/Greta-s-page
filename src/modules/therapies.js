@@ -36,6 +36,11 @@ const actions = {
     await db.editTherapy(therapy, imageURL)
     dispatch('fetchTherapies')
     router.push('/management')
+  },
+  async sortTherapy({ state, dispatch }, therapy, direction) {
+    const others = state.therapies.filter(th => th.name !== therapy.name)
+    console.log(others);
+    // await db.sortTherapy(others, therapy, direction)
   }
 }
 

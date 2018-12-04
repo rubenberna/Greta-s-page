@@ -21,7 +21,6 @@ export default {
         result.push(data)
       })
     })
-    console.log(result);
     return result
   },
    createTherapy(therapy, imageURL, position) {

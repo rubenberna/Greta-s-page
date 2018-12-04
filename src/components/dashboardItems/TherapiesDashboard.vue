@@ -28,7 +28,7 @@
             <span class="therapies-actions_item" @click.prevent="storeTherapy(therapy); edit(therapy)">Edit</span>
             <span class="therapies-actions_item" @click.prevent='deleteTherapy(therapy.id)'>Delete</span>
             <div class="therapies-actions-sort">
-              <span class="sort" @click.prevent='deleteTherapy(therapy.id)'><i class="fas fa-sort-up"></i></span>
+              <span class="sort" @click.prevent='sortTherapy(therapy, up)'><i class="fas fa-sort-up"></i></span>
               <span class="sort" @click.prevent='deleteTherapy(therapy.id)'><i class="fas fa-sort-down"></i></span>
             </div>
           </sui-table-cell>
@@ -52,7 +52,7 @@
       ...mapGetters(['therapies', 'bookingsTherapy']),
     },
     methods: {
-      ...mapActions(['storeTherapy', 'countBookings', 'deleteTherapy']),
+      ...mapActions(['storeTherapy', 'countBookings', 'deleteTherapy', 'sortTherapy']),
       view(therapy) {
         this.$router.push(`/therapy/${therapy}`)
       },
