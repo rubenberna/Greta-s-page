@@ -21,16 +21,21 @@
       <sui-table-body v-for="therapy in therapies" :key="therapy.id" selectable>
         <sui-table-row class="therapies-item">
           <sui-table-cell>{{ therapy.name }}</sui-table-cell>
-          <sui-table-cell> {{ therapy.position }} </sui-table-cell>
-          <sui-table-cell> {{ therapy.description }} </sui-table-cell>
+          <sui-table-cell>{{ therapy.position }}</sui-table-cell>
+          <sui-table-cell>{{ therapy.description }}</sui-table-cell>
           <sui-table-cell class="therapies-actions">
             <span class="therapies-actions_item" @click.prevent="storeTherapy(therapy); view(therapy.name)">View</span>
             <span class="therapies-actions_item" @click.prevent="storeTherapy(therapy); edit(therapy)">Edit</span>
             <span class="therapies-actions_item" @click.prevent='deleteTherapy(therapy.id)'>Delete</span>
+            <div class="therapies-actions-sort">
+              <span class="sort" @click.prevent='deleteTherapy(therapy.id)'><i class="fas fa-sort-up"></i></span>
+              <span class="sort" @click.prevent='deleteTherapy(therapy.id)'><i class="fas fa-sort-down"></i></span>
+            </div>
           </sui-table-cell>
         </sui-table-row>
       </sui-table-body>
     </sui-table>
+
   </div>
 </template>
 
@@ -94,9 +99,19 @@
         font-weight: $semibold;
       }
     }
-    .therapies-item:hover {
-      background: rgba(203, 155, 66, 0.1);
-      cursor: default;
+    .therapies-item{
+      &:hover {
+        background: rgba(203, 155, 66, 0.1);
+        cursor: default;
+      }
+      .therapies-actions-sort {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        .sort {
+          margin: -5px;
+        }
+      }
     }
   }
 </style>
