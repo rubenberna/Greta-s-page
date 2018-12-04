@@ -38,12 +38,10 @@ const actions = {
     router.push('/management')
   },
   async sortUpTherapy({ state, dispatch }, therapy) {
-    // const others = state.therapies.filter(th => th.name !== therapy.name)
     await db.sortUpTherapy(therapy)
     dispatch('fetchTherapies')
   },
   async sortDownTherapy({ state, dispatch }, therapy) {
-    // const others = state.therapies.filter(th => th.name !== therapy.name)
     await db.sortDownTherapy(therapy)
     dispatch('fetchTherapies')
   }
