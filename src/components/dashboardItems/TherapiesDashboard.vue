@@ -13,7 +13,6 @@
       <sui-table-header>
         <sui-table-row>
           <sui-table-header-cell>Name</sui-table-header-cell>
-          <sui-table-header-cell>Position</sui-table-header-cell>
           <sui-table-header-cell>Description</sui-table-header-cell>
           <sui-table-header-cell textAlign='center'>Action</sui-table-header-cell>
         </sui-table-row>
@@ -21,16 +20,20 @@
       <sui-table-body v-for="therapy in therapies" :key="therapy.id" selectable>
         <sui-table-row class="therapies-item">
           <sui-table-cell>{{ therapy.name }}</sui-table-cell>
-          <sui-table-cell> {{ therapy.position }} </sui-table-cell>
-          <sui-table-cell> {{ therapy.description }} </sui-table-cell>
+          <sui-table-cell>{{ therapy.description }}</sui-table-cell>
           <sui-table-cell class="therapies-actions">
             <span class="therapies-actions_item" @click.prevent="storeTherapy(therapy); view(therapy.name)">View</span>
             <span class="therapies-actions_item" @click.prevent="storeTherapy(therapy); edit(therapy)">Edit</span>
             <span class="therapies-actions_item" @click.prevent='deleteTherapy(therapy.id)'>Delete</span>
+            <div class="therapies-actions-sort">
+              <span class="sort" @click.prevent='sortDownTherapy(therapy)'><i class="fas fa-sort-up"></i></span>
+              <span class="sort" @click.prevent='sortUpTherapy(therapy)'><i class="fas fa-sort-down"></i></span>
+            </div>
           </sui-table-cell>
         </sui-table-row>
       </sui-table-body>
     </sui-table>
+
   </div>
 </template>
 
@@ -47,7 +50,7 @@
       ...mapGetters(['therapies', 'bookingsTherapy']),
     },
     methods: {
-      ...mapActions(['storeTherapy', 'countBookings', 'deleteTherapy']),
+      ...mapActions(['storeTherapy', 'countBookings', 'deleteTherapy', 'sortUpTherapy', 'sortDownTherapy']),
       view(therapy) {
         this.$router.push(`/therapy/${therapy}`)
       },
@@ -79,10 +82,10 @@
       width: 18%;
     }
     th:nth-of-type(2) {
-      width: 10%;
+      width: 50%;
     }
     th:nth-of-type(3) {
-      width: 50%;
+      width: 30%;
     }
 
     .therapies-actions {
@@ -94,9 +97,23 @@
         font-weight: $semibold;
       }
     }
-    .therapies-item:hover {
-      background: rgba(203, 155, 66, 0.1);
-      cursor: default;
+    .therapies-item{
+      &:hover {
+        background: rgba(203, 155, 66, 0.1);
+        cursor: default;
+      }
+      .therapies-actions-sort {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        .sort {
+          margin: -5px;
+          color: $color-text-light;
+          &:hover {
+            color: $color-text;
+          }
+        }
+      }
     }
   }
 </style>

@@ -21,7 +21,6 @@ export default {
         result.push(data)
       })
     })
-    console.log(result);
     return result
   },
    createTherapy(therapy, imageURL, position) {
@@ -67,6 +66,22 @@ export default {
       indications: therapy.indications,
       availability: therapy.availability,
       price: therapy.price
+    })
+  },
+  sortUpTherapy(therapy) {
+    const therapyRef = db.therapiesCollection.doc(therapy.id)
+    // increase position
+    const newPosition = therapy.position + 1
+    therapyRef.update({
+      position: newPosition
+    })
+  },
+  sortDownTherapy(therapy) {
+    const therapyRef = db.therapiesCollection.doc(therapy.id)
+    // decrease position
+    const newPosition = therapy.position - 1
+    therapyRef.update({
+      position: newPosition
     })
   }
 }
