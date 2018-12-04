@@ -37,11 +37,11 @@ const actions = {
     dispatch('fetchTherapies')
     router.push('/management')
   },
-  async sortUpTherapy({ state, dispatch }, therapy) {
+  async sortUpTherapy({ dispatch }, therapy) {
     await db.sortUpTherapy(therapy)
     dispatch('fetchTherapies')
   },
-  async sortDownTherapy({ state, dispatch }, therapy) {
+  async sortDownTherapy({ dispatch }, therapy) {
     await db.sortDownTherapy(therapy)
     dispatch('fetchTherapies')
   }
