@@ -67,5 +67,26 @@ export default {
       availability: therapy.availability,
       price: therapy.price
     })
+  },
+  sortUpTherapy(therapy) {
+    const therapyRef = db.therapiesCollection.doc(therapy.id)
+    // increase position
+
+    const newPosition = therapy.position + 1
+
+    therapyRef.update({
+      position: newPosition
+    })
+
+  },
+  sortDownTherapy(therapy) {
+    const therapyRef = db.therapiesCollection.doc(therapy.id)
+    // increase position
+
+    const newPosition = therapy.position - 1
+
+    therapyRef.update({
+      position: newPosition
+    })
   }
 }

@@ -37,10 +37,15 @@ const actions = {
     dispatch('fetchTherapies')
     router.push('/management')
   },
-  async sortTherapy({ state, dispatch }, therapy, direction) {
-    const others = state.therapies.filter(th => th.name !== therapy.name)
-    console.log(others);
-    // await db.sortTherapy(others, therapy, direction)
+  async sortUpTherapy({ state, dispatch }, therapy) {
+    // const others = state.therapies.filter(th => th.name !== therapy.name)
+    await db.sortUpTherapy(therapy)
+    dispatch('fetchTherapies')
+  },
+  async sortDownTherapy({ state, dispatch }, therapy) {
+    // const others = state.therapies.filter(th => th.name !== therapy.name)
+    await db.sortDownTherapy(therapy)
+    dispatch('fetchTherapies')
   }
 }
 
