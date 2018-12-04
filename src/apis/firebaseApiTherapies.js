@@ -51,7 +51,6 @@ export default {
   },
   editTherapy(therapy, imageURL) {
     const therapyRef = db.therapiesCollection.doc(therapy.id)
-
     // if image changed during edit
     if(imageURL) {
       therapyRef.update({
