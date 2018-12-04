@@ -66,7 +66,7 @@
 </template>
 
 <script>
-  import { mapGetters, mapActions, mapMutations } from 'vuex'
+  import { mapGetters, mapActions } from 'vuex'
   import Heading from '@/components/typography/Heading'
 
   export default {
@@ -77,23 +77,10 @@
     computed: mapGetters(['therapy', 'progress']),
     methods: {
       ...mapActions(['editTherapy', 'uploadImage']),
-      ...mapMutations(['setImageURL']),
       onFileSelect(image) {
         this.uploadImage(image, 'therapies')
       }
-    },
-    watch: {
-      '$route' (to, from) {
-      // react to route changes...
-      console.log('changed');
-      }
-    },
-    beforeRouteUpdate (to, from, next) {
-   // react to route changes...
-   // don't forget to call next()
-    console.log('changed 3');
-    next()
-   }
+    }
   }
 </script>
 

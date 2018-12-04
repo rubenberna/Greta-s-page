@@ -17,6 +17,9 @@ const actions = {
   },
   getProgress ({ commit}, progress) {
     commit('setProgress', progress)
+  },
+  clearImageURL({ commit }) {
+    commit('setImageURL', null)
   }
 }
 
