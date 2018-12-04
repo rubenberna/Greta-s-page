@@ -36,6 +36,14 @@ const actions = {
     await db.editTherapy(therapy, imageURL)
     dispatch('fetchTherapies')
     router.push('/management')
+  },
+  async sortUpTherapy({ state, dispatch }, therapy) {
+    await db.sortUpTherapy(therapy)
+    dispatch('fetchTherapies')
+  },
+  async sortDownTherapy({ state, dispatch }, therapy) {
+    await db.sortDownTherapy(therapy)
+    dispatch('fetchTherapies')
   }
 }
 
