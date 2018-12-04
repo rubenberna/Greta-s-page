@@ -17,9 +17,10 @@ const actions = {
     const response = await db.fetchTherapies();
     commit('setTherapies', response)
   },
-  async createTherapy({ rootState, dispatch }, therapy) {
+  async createTherapy({ rootState, dispatch, state }, therapy) {
     const { imageURL } = rootState.images
-    await db.createTherapy(therapy, imageURL)
+    const position = state.therapies.length + 1
+    await db.createTherapy(therapy, imageURL, position)
     dispatch('fetchTherapies')
     router.push('/management')
   },

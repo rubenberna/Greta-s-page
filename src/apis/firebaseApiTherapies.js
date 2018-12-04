@@ -3,7 +3,7 @@ import db from '../../db/firebaseInit'
 export default {
   async fetchTherapies() {
     const result = []
-    await db.therapiesCollection.get()
+    await db.therapiesCollection.orderBy('position', 'asc').get()
     .then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         const data = {
@@ -15,14 +15,16 @@ export default {
           'availability': doc.data().availability,
           'price': doc.data().price,
           'therapist': doc.data().therapist,
-          'image': doc.data().image
+          'image': doc.data().image,
+          'position': doc.data().position
         }
         result.push(data)
       })
     })
-    return result;
+    console.log(result);
+    return result
   },
-   createTherapy(therapy, imageURL) {
+   createTherapy(therapy, imageURL, position) {
     db.therapiesCollection.add({
       name: therapy.name,
       description: therapy.description,
@@ -30,7 +32,8 @@ export default {
       indications: therapy.indications,
       availability: therapy.availability,
       price: therapy.price,
-      image: imageURL
+      image: imageURL,
+      position: position
     })
       .then(ref => {
         console.log('Added document with ID: ', ref.id);
@@ -50,14 +53,20 @@ export default {
   editTherapy(therapy, imageURL) {
     const therapyRef = db.therapiesCollection.doc(therapy.id)
 
+    // if image changed during edit
+    if(imageURL) {
+      therapyRef.update({
+        image: imageURL
+      })
+    }
+
     therapyRef.update({
       name: therapy.name,
       description: therapy.description,
       method: therapy.method,
       indications: therapy.indications,
       availability: therapy.availability,
-      price: therapy.price,
-      image: imageURL
+      price: therapy.price
     })
   }
 }
