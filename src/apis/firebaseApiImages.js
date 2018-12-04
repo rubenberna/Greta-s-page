@@ -1,5 +1,5 @@
 import firebase from 'firebase'
-import store from '../store';
+import store from '../store'
 
 export default {
   async uploadImage(image, location) {

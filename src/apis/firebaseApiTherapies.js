@@ -3,7 +3,7 @@ import db from '../../db/firebaseInit'
 export default {
   async fetchTherapies() {
     const result = []
-    await db.therapiesCollection.get()
+    await db.therapiesCollection.orderBy('position', 'asc').get()
     .then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         const data = {
@@ -21,9 +21,10 @@ export default {
         result.push(data)
       })
     })
-    return result;
+    console.log(result);
+    return result
   },
-   createTherapy(therapy, imageURL) {
+   createTherapy(therapy, imageURL, position) {
     db.therapiesCollection.add({
       name: therapy.name,
       description: therapy.description,
@@ -31,7 +32,8 @@ export default {
       indications: therapy.indications,
       availability: therapy.availability,
       price: therapy.price,
-      image: imageURL
+      image: imageURL,
+      position: position
     })
       .then(ref => {
         console.log('Added document with ID: ', ref.id);

@@ -53,7 +53,11 @@
           </div>
         </div>
         <div class="action-buttons">
-          <router-link :to="{ name: 'manage'}"><sui-button>Back</sui-button></router-link>
+          <router-link :to="{ name: 'manage'}">
+            <sui-button>
+              Back
+            </sui-button>
+          </router-link>
           <a class="waves-effect waves-light btn" style="color:white" @click='editTherapy(therapy)'>update</a>
         </div>
       </form>
@@ -62,7 +66,7 @@
 </template>
 
 <script>
-  import { mapGetters, mapActions } from 'vuex'
+  import { mapGetters, mapActions, mapMutations } from 'vuex'
   import Heading from '@/components/typography/Heading'
 
   export default {
@@ -73,10 +77,23 @@
     computed: mapGetters(['therapy', 'progress']),
     methods: {
       ...mapActions(['editTherapy', 'uploadImage']),
+      ...mapMutations(['setImageURL']),
       onFileSelect(image) {
         this.uploadImage(image, 'therapies')
       }
-    }
+    },
+    watch: {
+      '$route' (to, from) {
+      // react to route changes...
+      console.log('changed');
+      }
+    },
+    beforeRouteUpdate (to, from, next) {
+   // react to route changes...
+   // don't forget to call next()
+    console.log('changed 3');
+    next()
+   }
   }
 </script>
 
