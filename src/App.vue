@@ -15,10 +15,11 @@
     components: {
       Footer
     },
-    methods: mapActions(['fetchTherapies', 'fetchEvents']),
+    methods: mapActions(['fetchTherapies', 'fetchEvents', 'fetchAbout']),
     created() {
       this.fetchTherapies()
       this.fetchEvents()
+      this.fetchAbout()
     }
   }
 </script>

@@ -1,4 +1,5 @@
 import db from '../apis/firebaseApiAbout'
+import router from '../router'
 
 const state = {
   about: null
@@ -14,8 +15,12 @@ const actions = {
     const response = await db.fetchAbout()
     commit('setAbout', response)
   },
-  async editAbout({ }) {
-
+  async editAbout({ rootState, dispatch }, about) {
+    console.log(about.text)
+    const { imageURL } = rootState.images
+    await db.editAbout(about, imageURL)
+    dispatch('fetchAbout')
+    router.push('/about')
   }
 }
 

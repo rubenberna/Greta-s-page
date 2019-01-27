@@ -1,10 +1,10 @@
 <template>
   <div class="about-dashboard">
     <heading size='l'
-             class="edit-event-title">
+             class="edit-about-title">
              Edit About
     </heading>
-    <div class="row">
+    <div class="row about-edit">
       <form class="col s12">
         <div class="row">
           <div class="file-field input-field col s4">
@@ -28,6 +28,9 @@
             <textarea id="textarea1" class="materialize-textarea" v-model='about.text'/>
           </div>
         </div>
+        <div class="action-buttons">
+          <a class="waves-effect waves-light btn" style="color:white" @click='editAbout(about)'>update</a>
+        </div>
       </form>
     </div>
   </div>
@@ -42,14 +45,21 @@
     components: {
       Heading
     },
-    computed: mapGetters(['about']),
+    computed: mapGetters(['about', 'progress']),
     methods: {
-      ...mapActions(['fetchAbout'])
+      ...mapActions(['editAbout', 'uploadImage']),
+      onFileSelect(image) {
+        this.uploadImage(image, 'about')
+      }
     }
   }
 </script>
 
 <style lang="scss" scoped>
   @import '../../../style/main.scss';
+
+  .about-edit {
+    width: 600px;
+  }
 
 </style>

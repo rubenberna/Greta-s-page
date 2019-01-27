@@ -58,12 +58,17 @@ export default {
    editEvent(updatedEvent, imageURL) {
      const eventRef = db.eventsCollection.doc(updatedEvent.id)
 
+     if(imageURL) {
+       eventRef.update({
+         image: imageURL
+       })
+     }
+
      eventRef.update({
        name: updatedEvent.name,
        description: updatedEvent.description,
        date: updatedEvent.date,
-       address: updatedEvent.address,
-       image: imageURL,
+       address: updatedEvent.address
      })
    }
 }

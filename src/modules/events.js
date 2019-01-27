@@ -28,7 +28,7 @@ const actions = {
     const { imageURL } = rootState.images
     await db.createEvent(newEvent, imageURL);
     dispatch('fetchEvents')
-    router.push('/management');
+    router.push('/management')
   },
   storeEvent({ commit }, event) {
     commit('setEvent', event)

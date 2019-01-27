@@ -1,31 +1,21 @@
 import db from '../../db/firebaseInit'
 
 export default {
-  async fetchAbout() {
-    const result = []
-    await db.aboutCollection.get()
-    .then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        const data = {
-          'id': doc.id,
-          'text': doc.data().text,
-          'address': doc.data().address,
-          'image': doc.data().image,
-        }
-        result.push(data)
-      })
-    })
-    return result
+   fetchAbout() {
+    return db.aboutCollection.doc('vdpiRzj7nJHK9PNbF06S').get()
+    .then(doc => doc.data())
   },
-   editEvent(updatedEvent, imageURL) {
-     const eventRef = db.eventsCollection.doc(updatedEvent.id)
+   editAbout(about, imageURL) {
+     const aboutRef = db.aboutCollection.doc('vdpiRzj7nJHK9PNbF06S')
 
-     eventRef.update({
-       name: updatedEvent.name,
-       description: updatedEvent.description,
-       date: updatedEvent.date,
-       address: updatedEvent.address,
-       image: imageURL,
+     if(imageURL) {
+       aboutRef.update({
+         image: imageURL
+       })
+     }
+
+     aboutRef.update({
+       text: about.text
      })
    }
 }
