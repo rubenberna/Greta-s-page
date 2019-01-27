@@ -8,6 +8,7 @@ import newsletter from '@/modules/newsletter.js'
 import bookings from '@/modules/bookings.js'
 import loading from '@/modules/loading.js'
 import images from '@/modules/images.js'
+import about from '@/modules/about.js'
 import createPersistedState from 'vuex-persistedstate'
 
 Vue.use(Vuex)
@@ -21,7 +22,8 @@ export default new Vuex.Store({
     newsletter,
     bookings,
     loading,
-    images
+    images,
+    about
   },
   //persist state for page reload
   plugins: [createPersistedState({

@@ -37,6 +37,12 @@
                    @click.native="getCurrentView('UsersNewsletter')">
                    Users & Newsletter
           </heading>
+          <heading class="manage-menu_item"
+                   size='s'
+                   :class="getStatusClass('About')"
+                   @click.native="getCurrentView('About')">
+                   About page
+          </heading>
         </div>
       </div>
       <div class="manage-view">
@@ -45,6 +51,7 @@
         <therapies v-if="currentView === 'Therapies'"/>
         <users-newsletter v-if="currentView === 'UsersNewsletter'"/>
         <archived-bookings v-if="currentView === 'ArchivedBookings'"/>
+        <about v-if="currentView === 'About'"/>
       </div>
     </div>
   </div>
@@ -58,6 +65,7 @@
   import Therapies from '@/components/dashboardItems/TherapiesDashboard'
   import UsersNewsletter from '@/components/dashboardItems/Users&NewsletterDashboard'
   import ArchivedBookings from '@/components/dashboardItems/ArchivedDashboard'
+  import About from '@/components/dashboardItems/AboutDashboard'
   import router from '../router'
 
   export default {
@@ -73,13 +81,14 @@
       Events,
       Therapies,
       UsersNewsletter,
-      ArchivedBookings
+      ArchivedBookings,
+      About
     },
     computed: {
       ...mapGetters(['therapies'])
     },
     methods: {
-      ...mapActions(['fetchNewsletter', 'fetchBookings', 'fetchUsers', 'clearImageURL']),
+      ...mapActions(['fetchNewsletter', 'fetchBookings', 'fetchUsers', 'clearImageURL', 'fetchAbout']),
       goHome() {
         router.push('/')
       },
@@ -95,6 +104,7 @@
       this.fetchBookings()
       this.fetchUsers()
       this.clearImageURL()
+      this.fetchAbout()
       this.currentView = 'Therapies'
     }
   }
