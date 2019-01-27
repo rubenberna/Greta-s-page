@@ -18,6 +18,7 @@ const bookingsCollection = db.collection('bookings')
 const therapistsCollection = db.collection('therapists')
 const eventsCollection = db.collection('events')
 const newsletterCollection = db.collection('newsletter')
+const aboutCollection = db.collection('about')
 
 export default {
   db,
@@ -28,5 +29,6 @@ export default {
   bookingsCollection,
   therapistsCollection,
   eventsCollection,
-  newsletterCollection
+  newsletterCollection,
+  aboutCollection
 }
